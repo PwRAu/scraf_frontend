@@ -1,113 +1,226 @@
 import 'package:flutter/material.dart';
+import 'package:passwordfield/passwordfield.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
+  
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF90A4AE),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Login(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+class User{
+  String name;
+  String surname;
+  String email;
+  String password;
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class RegUser{
+  String rePassword;
+}
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+class Login extends StatefulWidget{
+  Login({Key key, title}): super(key:key);
+  final String title = "SCRAF";
+  final String presentazione= "";
+  
+  String username="francolino";
+  String password="triplosette";
+  
+  
+  @override
+  State<StatefulWidget> createState()=> _Login(); 
   }
+  
+  //singIn(String email, String password) async{
+   // Map data ={
+      //'email':email,
+      //'password':password,
+    //};
+   // var response = await http.post
+
+ // }
+
+class _Login extends State<Login>{
+
+  var _controllerUser = TextEditingController();
+  var _controllerPass = TextEditingController();
+ // bool _isLoading = false;
+  
+  final RegUser user = RegUser();
+
+  @override
+   Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xFF26A69A),
+        body: Row(
+        children:<Widget>[
+          Expanded( 
+            child:Container(
+            color: Color(0xFFB0BEC5),
+            height: MediaQuery.of(context).size.height,
+            width: 500,
+            child: Container(
+              margin: EdgeInsets.only(top: 425),
+              child: Text("SCRAF",style: TextStyle(fontSize:80,), textAlign: TextAlign.center,)
+              ),
+            ), 
+          ),
+          Expanded(
+            child:Container(
+            color: Color(0xFFB0BEC5),
+            height: MediaQuery.of(context).size.height,
+            width: 500,
+            child: Container(
+              margin: EdgeInsets.only(top: 285),
+              child: Column(
+                children: <Widget> [
+                  Row(
+                    children:<Widget> [
+                      Text("Benvenuto su SCRAF !", style: TextStyle(fontSize: 42), textAlign: TextAlign.right,),
+                    ],
+                  ),
+                  Row(
+                    children:<Widget> [
+                      Text("Controlla il tuo andamento scolastico",style: TextStyle(fontSize: 32), textAlign: TextAlign.left,),
+                    ],
+                  ),
+                  Row(
+                    children:<Widget> [
+                      Text("oppure quello dei tuoi alunni!",style: TextStyle(fontSize: 32), textAlign: TextAlign.left,)
+                    ],
+                  ),
+                  Row(
+                    children:<Widget> [
+                      Container(
+                        width: 200,
+                        margin: EdgeInsets.fromLTRB(125,100,0,0),
+                        child: Text("Username/Email",style: TextStyle(fontSize: 26),)
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children:<Widget> [
+                      Flexible(
+                        child:Container(
+                          margin: EdgeInsets.only(left: 87),
+                          width: 235,
+                          //color: Color(0xFF90A4AE),
+                          child: TextFormField(
+                            controller: _controllerUser,
+                            cursorColor: Colors.black,
+                            scrollPadding: EdgeInsets.only(top: 200),
+                            cursorWidth: 1,
+                            decoration: InputDecoration(
+                            labelText: "username/email",
+                            suffixIcon: IconButton(
+                            onPressed: () => _controllerUser.clear(),
+                            icon: Icon(Icons.clear),
+                            ),
+                            icon: Icon(Icons.account_circle_outlined)
+                          ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children:<Widget> [
+                      Container(
+                        width: 200,
+                        margin: EdgeInsets.fromLTRB(125,30,0,0),
+                        child: Text("Password",style: TextStyle(fontSize: 26),)
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children:<Widget> [
+                      Center(
+                      child: Flexible(
+                        child:Container(
+                          width: 235,
+                          margin: EdgeInsets.only(left: 87),
+                          child: TextFormField(
+                            controller: _controllerPass,
+                            cursorColor: Colors.black,
+                            obscureText: true,
+                            scrollPadding: EdgeInsets.only(top: 200),
+                            cursorWidth: 1,
+                            decoration: InputDecoration(
+                            labelText: "password",
+                            suffixIcon: IconButton(
+                            onPressed: () => _controllerPass.clear(),
+                            icon: Icon(Icons.clear),
+                            ),
+                            icon: Icon(Icons.security_outlined)
+                          ),
+                          ),
+                        ),
+                      ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children:<Widget>[
+                      Container(
+                        width: 200,
+                        margin: EdgeInsets.fromLTRB(125,50,0,0),
+                        child: RaisedButton(
+                          color: Color(0xFF90A4AE),
+                          onPressed: () { 
+                            //_isLoading = true;
+                            //singIn(_controllerUser.text, _controllerPass.text);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),)); //premi il bottone per cambiare pagina
+                           },
+                          textColor: Colors.black,
+                          child: Text("Accedi"),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              ),
+            ), 
+          ),  
+        ],
+      ), 
+    );  
+   }
+  }
+
+
+class HomePage extends StatefulWidget{
+  HomePage({Key key, title}): super(key:key);
+  @override
+  State<StatefulWidget> createState() => _HomePage();
+  
+  
+}
+
+
+class _HomePage extends State<HomePage>{
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      backgroundColor: Color(0xFFFDDFFF),
+      body: Container(
+        margin: EdgeInsets.fromLTRB(600,425,0,0),
+        child: Text("BENVENUTO", style: TextStyle(fontSize: 120),),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
     );
   }
+  
 }
