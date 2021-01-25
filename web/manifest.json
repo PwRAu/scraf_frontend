@@ -1,6 +1,6 @@
 {
-    "name": "scraf_frontend",
-    "short_name": "scraf_frontend",
+    "name": "home",
+    "short_name": "home",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
