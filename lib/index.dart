@@ -11,7 +11,7 @@ class Index extends StatelessWidget{
     double _width = MediaQuery.of(context).size.width;
     //print("index: "+menuState.toString());
     return Scrollbar(
-      thickness: 10,
+      thickness: 8,
       child:SingleChildScrollView(
         child:Material(
           child:Center(

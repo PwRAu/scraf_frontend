@@ -17,7 +17,7 @@ class ImageHomeWidget extends StatelessWidget{
             decoration: BoxDecoration(
               border: Border.all(color: Colors.purple),
               image: DecorationImage(
-                image: AssetImage('assets/FotoDiciotto_5.jpg'),
+                image: AssetImage('FotoDiciotto_5.jpg'),
                 fit: BoxFit.fill,
               ),
             ),

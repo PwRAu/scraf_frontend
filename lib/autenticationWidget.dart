@@ -26,11 +26,11 @@ class _AutenticationWidget extends State<AutenticationWidget>{
         children: [
           FittedBox(
             child: Container(
-              margin: EdgeInsets.fromLTRB(_width*0.004, 0, 0, 0),
+              margin: EdgeInsets.fromLTRB(_width*0.2, 0, 0, 0),
               padding: EdgeInsets.only(top:25),
               
-              width: _width*0.8*0.40,
-              height: 460,
+              width: _width*0.8*0.50,
+              height: 500,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -56,7 +56,7 @@ class _AutenticationWidget extends State<AutenticationWidget>{
                     decoration: BoxDecoration(
                       //border: Border.all(color: Colors.purple),
                       image: DecorationImage(
-                      image: AssetImage('assets/slogo.jpg'),
+                      image: AssetImage('slogo.jpg'),
                       fit: BoxFit.fill,
                       ),
                     ),
@@ -185,14 +185,16 @@ class _AutenticationWidget extends State<AutenticationWidget>{
       children: [
         FittedBox(
           child: Container(
-            margin: EdgeInsets.fromLTRB(_width*0.004, 0, 0, 0),
+            margin: EdgeInsets.fromLTRB(_width*0.1, 0, 0, 0),
             padding: EdgeInsets.only(top:25),
             
             width: _width*0.8*0.95,
             height: 462,
+            /*
             decoration: BoxDecoration(
               border: Border.all(color: Colors.orange)
             ),
+            */
             child: Column(
               children:[
                 Container(
@@ -201,7 +203,7 @@ class _AutenticationWidget extends State<AutenticationWidget>{
                   decoration: BoxDecoration(
                     //border: Border.all(color: Colors.purple),
                     image: DecorationImage(
-                    image: AssetImage('assets/slogo.jpg'),
+                    image: AssetImage('slogo.jpg'),
                     fit: BoxFit.fill,
                     ),
                   ),
