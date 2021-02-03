@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
+
 void main() {
-  
   runApp(MyApp());
 }
 
@@ -26,13 +26,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scrollbar(
-        thickness: 8,
-        child:SingleChildScrollView(
-          //padding: EdgeInsets.only(top: 50),
-          reverse: false,
-          child: HomePage(),
-        )
-      ),
+          thickness: 8,
+          child: SingleChildScrollView(
+            //padding: EdgeInsets.only(top: 50),
+            reverse: false,
+            child: HomePage(),
+          )),
     );
   }
 }
