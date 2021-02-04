@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:home/graph.dart';
 import 'package:home/icon_menu.dart';
 import 'homepage.dart';
-import 'homepage.dart';
 import 'index.dart';
 import 'settingsPage.dart';
 
@@ -25,21 +24,21 @@ class _ListIcon extends State<ListIcon> {
       iconName: Icons.settings,
       who: SettingsPage(),
     ),
-    IconMmenu(iconLabel: "Exit", iconName: Icons.exit_to_app),
+    IconMmenu(iconLabel: "Esci", iconName: Icons.exit_to_app),
   ];
 
   Widget build(BuildContext context) {
     //print("lico: "+widget.isMenuOpen.toString());
-
+    //double _height = MediaQuery.of(context).size.height;
     return Container(
-      height: 500,
+      height: 700*0.80,
       width: 300,
       child: ListView.builder(
         itemCount: menuIcons.length,
         itemBuilder: (context, i) {
           return InkWell(
               onTap: () {
-                if (menuIcons[i].iconLabel == "Exit") {
+                if (menuIcons[i].iconLabel == "Esci") {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -156,100 +155,6 @@ class _ListIcon extends State<ListIcon> {
               ));
         },
       ),
-    );
-  }
-}
-
-//Mobile
-
-class ListIconMobile extends StatefulWidget {
-  @override
-  _ListIconMobile createState() => _ListIconMobile();
-}
-
-class _ListIconMobile extends State<ListIconMobile> {
-  final List<IconMmenu> menuIcons = [
-    IconMmenu(iconLabel: "Home", iconName: Icons.home, who: Graph()),
-    IconMmenu(
-      iconLabel: "Impostazioni",
-      iconName: Icons.settings,
-      who: SettingsPage(),
-    ),
-    IconMmenu(iconLabel: "Exit", iconName: Icons.exit_to_app),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      width: 300,
-      child: ListView.builder(
-          itemCount: menuIcons.length,
-          itemBuilder: (context, i) {
-            return InkWell(
-              onTap: () {
-                if (menuIcons[i].iconLabel == "Exit") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Scrollbar(
-                            thickness: 8,
-                            child: SingleChildScrollView(
-                              //padding: EdgeInsets.only(top: 50),
-                              reverse: false,
-                              child: HomePage(),
-                            ))),
-                  );
-                } else {
-                  Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                          pageBuilder: (_, __, ___) => Index(
-                                buildWho: menuIcons[i].who,
-                              )));
-                }
-                /*
-                Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                        pageBuilder: (_, __, ___) =>
-                            Index(buildWho: menuIcons[i].who)));
-                            */
-              },
-              child: Column(
-                children: [
-                  SizedBox(height: 10),
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 500),
-                    width: 50,
-                    height: 50,
-                    child: Row(
-                      children: [
-                        Container(
-                            width: 50,
-                            height: 50,
-                            child: Icon(
-                              menuIcons[i].iconName,
-                              size: 50,
-                              color: Colors.white,
-                            )),
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                        //color:Colors.green,
-                        ),
-                  ),
-                  /*
-                  Container(
-                    width:50,
-                    height: 1,
-                    color: Colors.white,
-                  )
-                  */
-                ],
-              ),
-            );
-          }),
     );
   }
 }

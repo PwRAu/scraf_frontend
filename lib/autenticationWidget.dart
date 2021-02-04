@@ -34,10 +34,10 @@ class _AutenticationWidget extends State<AutenticationWidget> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10)),
+                  topLeft: Radius.circular(5),
+                  topRight: Radius.circular(5),
+                  bottomLeft: Radius.circular(5),
+                  bottomRight: Radius.circular(5)),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
@@ -214,9 +214,9 @@ class _AutenticationWidget extends State<AutenticationWidget> {
           FittedBox(
               child: Container(
             margin: EdgeInsets.fromLTRB(_width * 0.1, 0, 0, 0),
-            padding: EdgeInsets.only(top: 25),
+            padding: EdgeInsets.only(top: 0),
             width: _width * 0.8 * 0.95,
-            height: 462,
+            height: 400,
             /*
             decoration: BoxDecoration(
               border: Border.all(color: Colors.orange)
@@ -243,14 +243,14 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                   children: <Widget>[
                     new Container(
                       padding: EdgeInsets.only(top: 15),
-                      width: _width * 0.8 * 0.95 * 0.6,
+                      width: _width * 0.8 * 0.95 * 0.8,
                       height: 60,
                       child: TextFormField(
                         decoration: new InputDecoration(
                           labelText: "Inserisci username",
                           fillColor: Colors.white,
                           border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(20.0),
+                            borderRadius: new BorderRadius.circular(2.0),
                             borderSide: new BorderSide(),
                           ),
                         ),
@@ -264,7 +264,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                     page == false
                         ? new Container(
                             padding: EdgeInsets.only(top: 10),
-                            width: _width * 0.8 * 0.95 * 0.6,
+                            width: _width * 0.8 * 0.95 * 0.8,
                             //height: _height*0.7*0.90*0.15,
                             height: 55,
                             child: TextFormField(
@@ -272,7 +272,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                                 labelText: "Inserisci e-mail",
                                 fillColor: Colors.white,
                                 border: new OutlineInputBorder(
-                                  borderRadius: new BorderRadius.circular(20.0),
+                                  borderRadius: new BorderRadius.circular(2.0),
                                   borderSide: new BorderSide(),
                                 ),
                               ),
@@ -285,14 +285,14 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                         : new Container(),
                     new Container(
                       padding: EdgeInsets.only(top: 10),
-                      width: _width * 0.8 * 0.95 * 0.6,
+                      width: _width * 0.8 * 0.95 * 0.8,
                       height: 55,
                       child: TextFormField(
                         decoration: new InputDecoration(
                           labelText: "Inserisci password",
                           fillColor: Colors.white,
                           border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(20.0),
+                            borderRadius: new BorderRadius.circular(2.0),
                             borderSide: new BorderSide(),
                           ),
                         ),
@@ -311,55 +311,63 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                   //width: _width*0.8*0.40*0.6,
                   child: Wrap(
                     children: [
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          setState(() {
-                            stringa = 'Accedi';
-                            page = true;
-                          });
-                          if (myController.text.isNotEmpty) {
-                            return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content: Text(
-                                        'nome utente: ' + myController.text),
-                                  );
-                                });
-                          }
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Index(buildWho: Graph()),
-                              ));
-                        },
-                        icon: Icon(
-                          Icons.login,
-                          size: 18,
-                        ),
-                        label: Text(
-                          'Accedi',
-                          style: TextStyle(fontSize: 18),
+                      SizedBox(
+                        width: 110,
+                        height: 35,
+                        child:ElevatedButton.icon(
+                          onPressed: () {
+                            setState(() {
+                              stringa = 'Accedi';
+                              page = true;
+                            });
+                            if (myController.text.isNotEmpty) {
+                              return showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Text(
+                                          'nome utente: ' + myController.text),
+                                    );
+                                  });
+                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Index(buildWho: Graph()),
+                                ));
+                          },
+                          icon: Icon(
+                            Icons.login,
+                            size: 18,
+                          ),
+                          label: Text(
+                            'Accedi',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
                       ),
                       SizedBox(
                         width: 10,
                         height: 40,
                       ),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          setState(() {
-                            stringa = 'Registrati';
-                            page = false;
-                          });
-                        },
-                        icon: Icon(
-                          Icons.app_registration,
-                          size: 18,
-                        ),
-                        label: Text(
-                          'Registrati',
-                          style: TextStyle(fontSize: 18),
+                      SizedBox(
+                        width: 140,
+                        height: 35,
+                        child:ElevatedButton.icon(
+                          onPressed: () {
+                            setState(() {
+                              stringa = 'Registrati';
+                              page = false;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.app_registration,
+                            size: 18,
+                          ),
+                          label: Text(
+                            'Registrati',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
                       ),
                     ],
