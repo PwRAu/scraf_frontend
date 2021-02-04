@@ -8,6 +8,7 @@ class Graph extends StatelessWidget{
     // ignore: deprecated_member_use
     List<double> voti = new List(5);
     double _width = MediaQuery.of(context).size.width;
+    double _height= MediaQuery.of(context).size.height;
     
     for(int i=0;i<voti.length;i++){
       var r = new Random();
@@ -106,6 +107,7 @@ class Graph extends StatelessWidget{
     }else{
       return Container(
         width: _width*0.9,
+        height: _height*0.9,
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children:[
