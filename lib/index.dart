@@ -83,7 +83,10 @@ class Index extends StatelessWidget {
                 height: _height*0.90,
                 child: buildWho,
               ),
-              MenuWidget(menuState: false,),
+              Container(
+                color: Colors.blueAccent,
+                child: MenuWidget(menuState: false,),
+              ),
             ],
           ),
         ),
