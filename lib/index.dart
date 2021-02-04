@@ -17,7 +17,6 @@ class Index extends StatelessWidget {
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Material(
-            color: Colors.white,
             child: Container(
               height: 800,
               width: _width,
