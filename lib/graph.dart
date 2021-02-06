@@ -23,7 +23,7 @@ class _Graph extends State<Graph>{
 
     if(_width>650){
       return  Container(
-        color: Colors.deepOrange,
+        //color: Colors.deepOrange,
         padding: EdgeInsets.only(top:50),
         width: _width*0.5,
         child: Column(
@@ -43,6 +43,7 @@ class _Graph extends State<Graph>{
                     ),
                   ),
                   SizedBox(height: 25),
+                  /*
                   Container(
                     height: 300,
                     width: _width*0.35,
@@ -86,6 +87,7 @@ class _Graph extends State<Graph>{
                       
                     ),
                   ),
+                  */
                 ]
               ),
               decoration: BoxDecoration(
@@ -117,7 +119,7 @@ class _Graph extends State<Graph>{
           //mainAxisAlignment: MainAxisAlignment.center,
           children:[
             Container(
-              color: Colors.deepOrange[200],
+              //color: Colors.deepOrange[200],
               width: _width,
               height: 450,
               child: Column(
@@ -130,6 +132,7 @@ class _Graph extends State<Graph>{
                     ),
                   ),
                   SizedBox(height: 25),
+                  /*
                   Container(
                     height: 300,
                     width: _width*0.9,
@@ -171,7 +174,7 @@ class _Graph extends State<Graph>{
                       ),
                       
                     ),
-                  ),
+                  ),*/
                 ]
               ),
             ),
