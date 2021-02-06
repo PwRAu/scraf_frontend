@@ -1,19 +1,21 @@
-import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class Graph extends StatelessWidget{
   Widget build(BuildContext context) {
-    List<double> voti = new List(5);
+    //List<double> voti = new List(5);
     double _width = MediaQuery.of(context).size.width;
     double _height= MediaQuery.of(context).size.height;
+    var voti = [4,5,1,5,7];
     
+    /*
     for(int i=0;i<voti.length;i++){
       var r = new Random();
       double n = r.nextDouble()*10;
       voti[i] = n;
     }
+    */
 
     if(_width>650){
       return  Container(
@@ -34,7 +36,7 @@ class Graph extends StatelessWidget{
                     style: TextStyle(
                       color: Colors.lightBlue,
                       fontSize: 45,
-                    )
+                    ),
                   ),
                   SizedBox(height: 25),
                   Container(
@@ -50,11 +52,11 @@ class Graph extends StatelessWidget{
                         lineBarsData: [
                           LineChartBarData(
                             spots:[
-                              FlSpot(0,voti[0]),
-                              FlSpot(4,voti[1]),
-                              FlSpot(7,voti[2]),
-                              FlSpot(11,voti[3]),
-                              FlSpot(15,voti[4]),
+                              FlSpot(0,voti[0].toDouble()),
+                              FlSpot(4,voti[1].toDouble()),
+                              FlSpot(7,voti[2].toDouble()),
+                              FlSpot(11,voti[3].toDouble()),
+                              FlSpot(15,voti[4].toDouble()),
                             ],
                             isCurved: true,
                             curveSmoothness: 0.5,
@@ -105,7 +107,6 @@ class Graph extends StatelessWidget{
       );
     }else{
       return Container(
-        
         width: _width,
         height: _height*0.85,
         child: Column(
@@ -122,7 +123,7 @@ class Graph extends StatelessWidget{
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 45,
-                    )
+                    ),
                   ),
                   SizedBox(height: 25),
                   Container(
@@ -138,11 +139,11 @@ class Graph extends StatelessWidget{
                         lineBarsData: [
                           LineChartBarData(
                             spots:[
-                              FlSpot(0,voti[0]),
-                              FlSpot(4,voti[1]),
-                              FlSpot(7,voti[2]),
-                              FlSpot(11,voti[3]),
-                              FlSpot(15,voti[4]),
+                              FlSpot(0,voti[0].toDouble()),
+                              FlSpot(4,voti[1].toDouble()),
+                              FlSpot(7,voti[2].toDouble()),
+                              FlSpot(11,voti[3].toDouble()),
+                              FlSpot(15,voti[4].toDouble()),
                             ],
                             isCurved: true,
                             curveSmoothness: 0.5,
