@@ -15,7 +15,7 @@ class Index extends StatelessWidget {
       return Scrollbar(
         thickness: 8,
         child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+          //scrollDirection: Axis.vertical,
           child: Material(
             child: Container(
               height: 800,

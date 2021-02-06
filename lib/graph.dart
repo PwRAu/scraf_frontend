@@ -5,7 +5,6 @@ import 'package:fl_chart/fl_chart.dart';
 
 class Graph extends StatelessWidget{
   Widget build(BuildContext context) {
-    // ignore: deprecated_member_use
     List<double> voti = new List(5);
     double _width = MediaQuery.of(context).size.width;
     double _height= MediaQuery.of(context).size.height;
@@ -105,72 +104,72 @@ class Graph extends StatelessWidget{
       );
     }else{
       return Container(
+        padding: EdgeInsets.only(top:0),
         width: _width,
-        height: _height*0.8,
-        child:Container(    
-          width: _width,
-          height: _height*0.6,
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children:[
-              Column(
-                  children: <Widget>[
-                    SizedBox(height: 10),
-                    Text(
-                      "Grafico prova",
-                      style: TextStyle(
-                        color: Colors.lightBlue,
-                        fontSize: 45,
-                      )
-                    ),
-                    SizedBox(height: 25),
-                    Container(
-                      height: 300,
-                      width: _width*0.8,
-                      child: LineChart(
-                        LineChartData(
-                          minX: 0,
-                          maxX: 15,
-                          minY: 0,
-                          maxY: 10,
-                          //backgroundColor: Color(0xff4dd0e1),
-                          lineBarsData: [
-                            LineChartBarData(
-                              spots:[
-                                FlSpot(0,voti[0]),
-                                FlSpot(4,voti[1]),
-                                FlSpot(7,voti[2]),
-                                FlSpot(11,voti[3]),
-                                FlSpot(15,voti[4]),
-                              ],
-                              isCurved: true,
-                              curveSmoothness: 0.5,
-                              colors: [Color(0xff23b6e6)],
-                              
-                              colorStops: null,
-                              dotData: FlDotData(show: true),
-                              belowBarData: BarAreaData(
-                                show: true,
-                                colors: [Color(0xff23b6e6)].map((e) => e.withOpacity(0.3)).toList(),
-                              ),
-                              preventCurveOverShooting: true,
+        height: _height*0.9,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:[
+            Container(
+              width: _width*0.9,
+              height: 450,
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "Grafico prova",
+                    style: TextStyle(
+                      color: Colors.lightBlue,
+                      fontSize: 45,
+                    )
+                  ),
+                  SizedBox(height: 25),
+                  Container(
+                    height: 300,
+                    width: _width*0.9,
+                    child: LineChart(
+                      LineChartData(
+                        minX: 0,
+                        maxX: 15,
+                        minY: 0,
+                        maxY: 10,
+                        //backgroundColor: Color(0xff4dd0e1),
+                        lineBarsData: [
+                          LineChartBarData(
+                            spots:[
+                              FlSpot(0,voti[0]),
+                              FlSpot(4,voti[1]),
+                              FlSpot(7,voti[2]),
+                              FlSpot(11,voti[3]),
+                              FlSpot(15,voti[4]),
+                            ],
+                            isCurved: true,
+                            curveSmoothness: 0.5,
+                            colors: [Color(0xff23b6e6)],
                             
+                            colorStops: null,
+                            dotData: FlDotData(show: true),
+                            belowBarData: BarAreaData(
+                              show: true,
+                              colors: [Color(0xff23b6e6)].map((e) => e.withOpacity(0.3)).toList(),
                             ),
-                            
-                          ],
-                          borderData: FlBorderData(
-                            show: true,
-                            border: Border.all(color: const Color(0xff37434d),width: 2),
+                            preventCurveOverShooting: true,
+                          
                           ),
                           
+                        ],
+                        borderData: FlBorderData(
+                          show: true,
+                          border: Border.all(color: const Color(0xff37434d),width: 2),
                         ),
                         
                       ),
+                      
                     ),
-                  ]
-                ),    
-            ],
-          ),
+                  ),
+                ]
+              ),
+            ),
+          ],
         ),
       );
     }
