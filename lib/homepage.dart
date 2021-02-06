@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Material(
-      color: Colors.white,
+      //color: Colors.white,
       child: Column(
         children: [
           _width >= 900
