@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class Graph extends StatelessWidget{
-  Widget build(BuildContext context) {
+class Graph extends StatefulWidget{
+  _Graph createState()=> _Graph();
+}
+
+class _Graph extends State<Graph>{
+    Widget build(BuildContext context) {
     //List<double> voti = new List(5);
     double _width = MediaQuery.of(context).size.width;
     double _height= MediaQuery.of(context).size.height;
