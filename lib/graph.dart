@@ -57,13 +57,13 @@ class Graph extends StatelessWidget{
                             ],
                             isCurved: true,
                             curveSmoothness: 0.5,
-                            colors: [Color(0xff23b6e6)],
+                            colors: [Colors.lightBlue],
                             
                             colorStops: null,
                             dotData: FlDotData(show: true),
                             belowBarData: BarAreaData(
                               show: true,
-                              colors: [Color(0xff23b6e6)].map((e) => e.withOpacity(0.3)).toList(),
+                              colors: [Colors.lightBlue].map((e) => e.withOpacity(0.3)).toList(),
                             ),
                             preventCurveOverShooting: true,
                           
@@ -72,7 +72,7 @@ class Graph extends StatelessWidget{
                         ],
                         borderData: FlBorderData(
                           show: true,
-                          border: Border.all(color: const Color(0xff37434d),width: 2),
+                          border: Border.all(color: Colors.blueGrey,width: 2),
                         ),
                         
                       ),
@@ -143,13 +143,13 @@ class Graph extends StatelessWidget{
                             ],
                             isCurved: true,
                             curveSmoothness: 0.5,
-                            colors: [Color(0xff23b6e6)],
+                            colors: [Colors.lightBlue],
                             
                             colorStops: null,
                             dotData: FlDotData(show: true),
                             belowBarData: BarAreaData(
                               show: true,
-                              colors: [Color(0xff23b6e6)].map((e) => e.withOpacity(0.3)).toList(),
+                              colors: [Colors.lightBlue].map((e) => e.withOpacity(0.3)).toList(),
                             ),
                             preventCurveOverShooting: true,
                           
@@ -158,9 +158,8 @@ class Graph extends StatelessWidget{
                         ],
                         borderData: FlBorderData(
                           show: true,
-                          border: Border.all(color: const Color(0xff37434d),width: 2),
+                          border: Border.all(color: Colors.blueGrey,width: 2),
                         ),
-                        
                       ),
                       
                     ),
