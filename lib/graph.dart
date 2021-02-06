@@ -104,11 +104,10 @@ class Graph extends StatelessWidget{
       );
     }else{
       return Container(
-        padding: EdgeInsets.only(top:0),
         width: _width,
-        height: _height*0.9,
+        height: _height*0.85,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children:[
             Container(
               width: _width*0.9,
