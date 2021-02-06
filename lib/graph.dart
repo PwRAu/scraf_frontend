@@ -118,7 +118,7 @@ class Graph extends StatelessWidget{
                   Text(
                     "Grafico prova",
                     style: TextStyle(
-                      color: Colors.lightBlue,
+                      color: Colors.redAccent,
                       fontSize: 45,
                     )
                   ),
