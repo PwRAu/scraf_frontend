@@ -17,10 +17,11 @@ class Graph extends StatelessWidget{
 
     if(_width>650){
       return  Container(
+        color: Colors.deepOrange,
         padding: EdgeInsets.only(top:50),
         width: _width*0.5,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children:[
             Container(
               width: _width*0.4,
@@ -104,20 +105,22 @@ class Graph extends StatelessWidget{
       );
     }else{
       return Container(
+        
         width: _width,
         height: _height*0.85,
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children:[
             Container(
-              width: _width*0.9,
+              color: Colors.deepOrange[200],
+              width: _width,
               height: 450,
               child: Column(
                 children: <Widget>[
                   Text(
                     "Grafico prova",
                     style: TextStyle(
-                      color: Colors.redAccent,
+                      color: Colors.black,
                       fontSize: 45,
                     )
                   ),

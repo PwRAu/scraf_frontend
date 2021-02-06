@@ -335,7 +335,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Index(buildWho: SettingsPage()),
+                                  builder: (context) => Index(buildWho: SettingsPage(),menuState: false,),
                                 ));
                           },
                           icon: Icon(

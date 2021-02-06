@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:home/graph.dart';
+import 'graph.dart';
 import 'package:home/icon_menu.dart';
 import 'homepage.dart';
 import 'index.dart';
@@ -13,6 +13,7 @@ class ListIconMobile extends StatefulWidget{
 class _ListIconMobile extends State<ListIconMobile>{
   final List<IconMmenu> menuIcons = [
     IconMmenu(iconLabel: "Home", iconName: Icons.home, who: Graph()),
+    IconMmenu(iconLabel: "Sos", iconName: Icons.follow_the_signs, who: Graph()),
     IconMmenu(
       iconLabel: "Impostazioni",
       iconName: Icons.settings,
