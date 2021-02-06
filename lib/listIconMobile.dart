@@ -43,7 +43,7 @@ class _ListIconMobile extends State<ListIconMobile>{
                               thickness: 8,
                               child: SingleChildScrollView(
                                 //padding: EdgeInsets.only(top: 50),
-                                reverse: false,
+                                //reverse: false,
                                 child: HomePage(),
                               ))),
                     );

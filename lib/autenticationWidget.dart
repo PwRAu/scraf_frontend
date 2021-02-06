@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:home/graph.dart';
 import 'index.dart';
+import 'settingsPage.dart';
+import 'settingsPage.dart';
 
 class AutenticationWidget extends StatefulWidget {
   _AutenticationWidget createState() => _AutenticationWidget();
@@ -162,7 +164,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Index(
-                                      buildWho: Graph(), menuState: false),
+                                      buildWho: SettingsPage(), menuState: false),
                                 ));
                           },
                           icon: Icon(
@@ -333,7 +335,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Index(buildWho: Graph()),
+                                  builder: (context) => Index(buildWho: SettingsPage()),
                                 ));
                           },
                           icon: Icon(
