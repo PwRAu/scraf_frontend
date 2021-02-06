@@ -80,7 +80,7 @@ class Index extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: _height*0.90,
+                height: _height*0.9,
                 child: buildWho,
               ),
               Container(

@@ -98,7 +98,7 @@ class _MenuWidget extends State<MenuWidget>{
         //Menu a icone mostrato su smartphone
         return Container(
           width: _width,
-          height: _height*0.15,
+          height: _height*0.1,
           decoration: BoxDecoration(
             color: Colors.blueAccent,
           ),

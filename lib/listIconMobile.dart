@@ -28,7 +28,7 @@ class _ListIconMobile extends State<ListIconMobile>{
     
     return Container(
       width: _width,
-      height: _height*0.15,
+      height: _height*0.10,
       child:ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: menuIcons.length,
