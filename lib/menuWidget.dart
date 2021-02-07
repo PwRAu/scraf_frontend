@@ -38,7 +38,7 @@ class _MenuWidget extends State<MenuWidget>{
         height: 750*0.85,
         decoration: BoxDecoration(
           color: Colors.blueAccent,
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(12),bottomLeft: Radius.circular(12)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(3),bottomLeft: Radius.circular(3)),
 
         ),
         child: Column(
@@ -46,11 +46,10 @@ class _MenuWidget extends State<MenuWidget>{
             SizedBox(height:20),
             ClipOval(
               child: Container(
-                color: Colors.white,
                 child: InkWell(
                   child: AnimatedIconButton(
-                    startIcon: isMenuOpen==false? new Icon(Icons.menu):new Icon(Icons.close), 
-                    endIcon: isMenuOpen==false? new Icon(Icons.close):new Icon(Icons.menu), 
+                    startIcon: isMenuOpen==false? new Icon(Icons.menu,color: Colors.white,):new Icon(Icons.close,color: Colors.white,), 
+                    endIcon: isMenuOpen==false? new Icon(Icons.close,color: Colors.white,):new Icon(Icons.menu,color: Colors.white,), 
                       onPressed: (){
                         setState(() {
                           if(!isMenuOpen){
@@ -98,7 +97,7 @@ class _MenuWidget extends State<MenuWidget>{
         //Menu a icone mostrato su smartphone
         return Container(
           width: _width,
-          height: _height*0.1,
+          height: _height*0.09,
           decoration: BoxDecoration(
             color: Colors.greenAccent[200],
           ),

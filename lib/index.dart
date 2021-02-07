@@ -17,57 +17,40 @@ class Index extends StatelessWidget {
         child: SingleChildScrollView(
           //scrollDirection: Axis.vertical,
           child: Material(
-            child: Container(
-              height: 800,
-              width: _width,
-              child: Center(
-                child: Container(
-                  margin: EdgeInsets.only(
-                    top: 0,
-                    bottom: 0,
-                    left: _width * 0.014,
-                    right: _width * 0.014
-                  ),
-                  height: 750*0.85,
-                  width: _width * 0.85,
-                  //color: Colors.grey[300],
-                  child: Row(
-                    children: [
-                      Column(
+              child:Container(
+                height: 800,
+                width: _width,
+                child: Center(
+                  child:Card(
+                    elevation: 1.5,
+                    child: Container(
+                      height: 750*0.85,
+                      width: _width * 0.85,
+                      //color: Colors.grey[300],
+                      child: Row(
                         children: [
-                          menuState==null?
-                          new MenuWidget(
-                            menuState: false,
-                          ):new MenuWidget(
-                            menuState: menuState,
+                          Column(
+                            children: [
+                              menuState==null?
+                              new MenuWidget(
+                                menuState: false,
+                              ):new MenuWidget(
+                                menuState: menuState,
+                              ),
+                            ],
+                          ),
+                          Container(
+                            child:Column(
+                              children: [
+                                buildWho, //widget passato al costruttore
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                      Column(
-                        children: [
-                          buildWho, //widget passato al costruttore
-                        ],
-                      ),
-                    ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                        bottomLeft: Radius.circular(12),
-                        bottomRight: Radius.circular(12)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
             ),
           ),
         ),
@@ -80,7 +63,7 @@ class Index extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: _height*0.9,
+                height: _height*0.91,
                 child: buildWho,
               ),
               Container(

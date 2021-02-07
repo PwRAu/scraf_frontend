@@ -42,7 +42,6 @@ class _Graph extends State<Graph>{
                     ),
                   ),
                   SizedBox(height: 25),
-                  /*
                   Container(
                     height: 300,
                     width: _width*0.35,
@@ -72,7 +71,7 @@ class _Graph extends State<Graph>{
                               show: true,
                               colors: [Colors.lightBlue].map((e) => e.withOpacity(0.3)).toList(),
                             ),
-                            preventCurveOverShooting: true,
+                            //preventCurveOverShooting: true,
                           
                           ),
                           
@@ -86,9 +85,9 @@ class _Graph extends State<Graph>{
                       
                     ),
                   ),
-                  */
+                  
                 ]
-              ),
+              ),/*
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -105,7 +104,7 @@ class _Graph extends State<Graph>{
                     offset: Offset(0, 3), // changes position of shadow
                   ),
                 ],
-              ),
+              ),*/
             )
           ],
         ),
