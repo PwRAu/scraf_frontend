@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'config.dart';
 import 'homepage.dart';
 
-void main() {
+void main() async{
+  box = await Hive.openBox('theme');
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  _MyApp createState()=> _MyApp();
   // This widget is the root of your application.
-  @override
+  
+}
+
+class _MyApp extends State<MyApp>{
+  void initState(){
+    super.initState();
+    currentTheme.addListener(() {
+      setState(() {
+        
+      });
+    });
+  }
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SCRAF',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        //brightness: Brightness.dark,
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: currentTheme.currentTheme(),
       home: Scrollbar(
           thickness: 8,
           child: SingleChildScrollView(

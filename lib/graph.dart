@@ -38,7 +38,6 @@ class _Graph extends State<Graph>{
                   Text(
                     "Grafico prova",
                     style: TextStyle(
-                      color: Colors.lightBlue,
                       fontSize: 45,
                     ),
                   ),
@@ -124,11 +123,11 @@ class _Graph extends State<Graph>{
               height: 450,
               child: Column(
                 children: <Widget>[
+                  SizedBox(height: 25),
                   Text(
                     "Grafico prova",
                     style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 45,
+                      fontSize: 28,
                     ),
                   ),
                   SizedBox(height: 25),

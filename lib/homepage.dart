@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Material(
-      color: Colors.white,
+      //color: Colors.white,
       child: Column(
         children: [
           _width >= 900
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               */
-                )
+              )
               : new Container(
                   padding: EdgeInsets.only(
                       top: 18,
@@ -56,20 +56,12 @@ class HomePage extends StatelessWidget {
                       right: _width * 0.014),
                   margin: EdgeInsets.fromLTRB(0, 50, 0, 0),
                   width: _width,
-                  height: 500,
+                  height: _height,
                   child: Row(
                     children: [
-                      ImageHomeWidget(),
+                      //ImageHomeWidget(),
                       AutenticationWidget(),
                     ],
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5),
-                        bottomLeft: Radius.circular(5),
-                        bottomRight: Radius.circular(5)),
                   ),
                 ),
           SizedBox(height: 50),

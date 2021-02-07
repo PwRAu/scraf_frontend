@@ -28,27 +28,15 @@ class _AutenticationWidget extends State<AutenticationWidget> {
       return Column(
         children: [
           FittedBox(
-              child: Container(
-            margin: EdgeInsets.fromLTRB(_width * 0.2, 0, 0, 0),
-            padding: EdgeInsets.only(top: 25),
-            width: _width * 0.8 * 0.50,
-            height: heightState,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(5),
-                  topRight: Radius.circular(5),
-                  bottomLeft: Radius.circular(5),
-                  bottomRight: Radius.circular(5)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 3,
-                  blurRadius: 4,
-                  offset: Offset(0, 1), // changes position of shadow
-                ),
-              ],
-            ),
+              child: Card(
+                margin: EdgeInsets.only(left:_width*0.2),
+                child:Container(
+                //color: Theme.of(context).cardColor,
+                margin: EdgeInsets.fromLTRB(_width * 0, 0, 0, 0),
+                padding: EdgeInsets.only(top: 25),
+                width: _width * 0.8 * 0.50,
+                height: heightState,
+                
             child: Column(
               children: [
                 Container(
@@ -57,7 +45,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                   decoration: BoxDecoration(
                     //border: Border.all(color: Colors.purple),
                     image: DecorationImage(
-                      image: AssetImage('slogo.jpg'),
+                      image: AssetImage('slogo.png'),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -207,7 +195,9 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                 ),
               ],
             ),
-          )),
+          )
+          ),
+          )
         ],
       );
     } else {
@@ -232,11 +222,12 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                   decoration: BoxDecoration(
                     //border: Border.all(color: Colors.purple),
                     image: DecorationImage(
-                      image: AssetImage('slogo.jpg'),
+                      image: AssetImage('slogo.png'),
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
+                SizedBox(height:15),
                 Text(
                   stringa,
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
@@ -245,7 +236,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                   children: <Widget>[
                     new Container(
                       padding: EdgeInsets.only(top: 15),
-                      width: _width * 0.8 * 0.95 * 0.8,
+                      width: _width * 0.8 * 0.95,
                       height: 60,
                       child: TextFormField(
                         decoration: new InputDecoration(
@@ -266,7 +257,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                     page == false
                         ? new Container(
                             padding: EdgeInsets.only(top: 10),
-                            width: _width * 0.8 * 0.95 * 0.8,
+                            width: _width * 0.8 * 0.95,
                             //height: _height*0.7*0.90*0.15,
                             height: 55,
                             child: TextFormField(
@@ -287,7 +278,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                         : new Container(),
                     new Container(
                       padding: EdgeInsets.only(top: 10),
-                      width: _width * 0.8 * 0.95 * 0.8,
+                      width: _width * 0.8 * 0.95,
                       height: 55,
                       child: TextFormField(
                         decoration: new InputDecoration(

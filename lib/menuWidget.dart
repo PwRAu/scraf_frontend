@@ -100,7 +100,7 @@ class _MenuWidget extends State<MenuWidget>{
           width: _width,
           height: _height*0.1,
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: Colors.greenAccent[200],
           ),
           child:Row(
             children: [
