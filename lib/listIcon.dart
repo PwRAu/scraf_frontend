@@ -29,9 +29,9 @@ class _ListIcon extends State<ListIcon> {
 
   Widget build(BuildContext context) {
     //print("lico: "+widget.isMenuOpen.toString());
-    //double _height = MediaQuery.of(context).size.height;
+    double _height = MediaQuery.of(context).size.height;
     return Container(
-      height: 700*0.80,
+      height: _height*0.85,
       width: 300,
       child: ListView.builder(
         itemCount: menuIcons.length,

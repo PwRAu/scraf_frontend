@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/listIcon.dart';
 
+import 'config.dart';
 import 'listIcon.dart';
 import 'listIconMobile.dart';
 import 'listIconTablet.dart';
@@ -36,11 +37,6 @@ class _MenuWidget extends State<MenuWidget>{
         //width: _width*0.85*0.15*mul,
         width: 160*mul,
         height: _height,
-        decoration: BoxDecoration(
-          color: Colors.blueAccent,
-          //borderRadius: BorderRadius.only(topLeft: Radius.circular(3),bottomLeft: Radius.circular(3)),
-
-        ),
         child: Column(
           children:[
             SizedBox(height:20),
@@ -86,16 +82,23 @@ class _MenuWidget extends State<MenuWidget>{
             new ListIcon(isMenuOpen: isMenuOpen),            
           ],
         ),
+        decoration: currentTheme.currentTheme()==ThemeMode.dark? 
+          new BoxDecoration(
+            color:Colors.greenAccent[200]
+          ):new BoxDecoration(
+            color: Colors.blueAccent
+          )
       );
     }else{
       if(_width>=650){
         return Container(
           width: 70,
-          height: 750*0.85,
-          decoration: BoxDecoration(
-            color: Colors.blueAccent,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(12),bottomLeft: Radius.circular(12)),
-
+          height: _height,
+          decoration: currentTheme.currentTheme()==ThemeMode.dark? 
+          new BoxDecoration(
+            color:Colors.greenAccent[200]
+          ):new BoxDecoration(
+            color: Colors.blueAccent
           ),
           child: Column(
             children:[

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'config.dart';
 import 'index.dart';
 import 'settingsPage.dart';
 
@@ -11,7 +12,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
   bool page = true;
   double heightState = 500;
   int counter = 2;
-  final myController = TextEditingController();
+  
 
   void dispose() {
     myController.dispose();
@@ -65,7 +66,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                       child: TextFormField(
                         decoration: new InputDecoration(
                           labelText: "Inserisci username",
-                          fillColor: Colors.white,
+                          //fillColor: Colors.white,
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(2.0),
                             borderSide: new BorderSide(),
@@ -107,7 +108,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                       child: TextFormField(
                         decoration: new InputDecoration(
                           labelText: "Inserisci password",
-                          fillColor: Colors.white,
+                          //fillColor: Colors.white,
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(2.0),
                             borderSide: new BorderSide(),
@@ -137,16 +138,6 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                               stringa = 'Accedi';
                               page = true;
                             });
-                            if (myController.text.isNotEmpty) {
-                              return showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      content: Text(
-                                          'nome utente: ' + myController.text),
-                                    );
-                                  });
-                            }
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -312,16 +303,6 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                               stringa = 'Accedi';
                               page = true;
                             });
-                            if (myController.text.isNotEmpty) {
-                              return showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      content: Text(
-                                          'nome utente: ' + myController.text),
-                                    );
-                                  });
-                            }
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(

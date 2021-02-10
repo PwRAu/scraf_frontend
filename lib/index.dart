@@ -38,11 +38,15 @@ class Index extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Column(
-                            children: [
-                              buildWho, //widget passato al costruttore
-                            ],
-                          ),
+                          Container(
+                            width: _width-224,
+                            child: Column(
+                              children: [
+                                buildWho, //widget passato al costruttore
+                              ],
+                            ),
+                          )
+                          
                         ],
                       ),
                     ),
