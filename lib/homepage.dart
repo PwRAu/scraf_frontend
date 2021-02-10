@@ -1,15 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/autenticationWidget.dart';
-import 'package:home/imageHomeWidget.dart';
-import 'imageHomeWidget.dart';
 
 class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Material(
-      //color: Colors.white,
       child: Column(
         children: [
           _width >= 900

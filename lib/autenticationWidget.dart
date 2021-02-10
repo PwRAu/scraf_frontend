@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home/graph.dart';
 import 'index.dart';
-import 'settingsPage.dart';
 import 'settingsPage.dart';
 
 class AutenticationWidget extends StatefulWidget {
@@ -29,6 +27,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
         children: [
           FittedBox(
               child: Card(
+                elevation: 1.5,
                 margin: EdgeInsets.only(left:_width*0.2),
                 child:Container(
                 //color: Theme.of(context).cardColor,
@@ -152,7 +151,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Index(
-                                      buildWho: SettingsPage(), menuState: false),
+                                      buildWho: SettingsPage(), menuState: true),
                                 ));
                           },
                           icon: Icon(

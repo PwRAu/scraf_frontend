@@ -29,7 +29,7 @@ class _Graph extends State<Graph>{
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           children:[
-            Container(
+            SizedBox(
               width: _width*0.4,
               height: 450,
               child: Column(
@@ -71,7 +71,7 @@ class _Graph extends State<Graph>{
                               show: true,
                               colors: [Colors.lightBlue].map((e) => e.withOpacity(0.3)).toList(),
                             ),
-                            //preventCurveOverShooting: true,
+                            preventCurveOverShooting: true,
                           
                           ),
                           
@@ -87,24 +87,7 @@ class _Graph extends State<Graph>{
                   ),
                   
                 ]
-              ),/*
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10)
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),*/
+              ),
             )
           ],
         ),
@@ -126,7 +109,7 @@ class _Graph extends State<Graph>{
                   Text(
                     "Grafico prova",
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 29,
                     ),
                   ),
                   SizedBox(height: 25),

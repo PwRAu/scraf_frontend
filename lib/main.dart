@@ -27,7 +27,16 @@ class _MyApp extends State<MyApp>{
     return MaterialApp(
       title: 'SCRAF',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
+      theme: ThemeData(
+        //primaryColor: Colors.indigo,
+        //buttonColor: Colors.red,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            //onPrimary: Colors.greenAccent[200],
+            primary: Colors.greenAccent[200],
+          )
+        ),
+      ),
       darkTheme: ThemeData.dark(),
       themeMode: currentTheme.currentTheme(),
       home: Scrollbar(

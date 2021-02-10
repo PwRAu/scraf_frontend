@@ -18,14 +18,13 @@ class Index extends StatelessWidget {
           //scrollDirection: Axis.vertical,
           child: Material(
               child:Container(
-                height: 800,
+                height: _height,
                 width: _width,
                 child: Center(
-                  child:Card(
-                    elevation: 1.5,
+                  child:Container(
                     child: Container(
-                      height: 750*0.85,
-                      width: _width * 0.85,
+                      height: _height,
+                      width: _width,
                       //color: Colors.grey[300],
                       child: Row(
                         children: [
@@ -64,8 +63,18 @@ class Index extends StatelessWidget {
             children: [
               Container(
                 height: _height*0.91,
-                child: buildWho,
+                //La scrollbar serve a rendere la pagina scrollabile, in modo da avere lo spazio per 
+                //più contenuti e lasciare sul fondo la barra di navigazione
+                child: Scrollbar(
+                  thickness: 8,
+                  child: SingleChildScrollView(
+                    child: Container(
+                      height:_height*1.6,
+                      child:buildWho),
+                  ),
+                ),
               ),
+              //Container che contiene la barra inferiore di navigazione
               Container(
                 child: MenuWidget(menuState: false,),
               ),

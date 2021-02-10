@@ -24,12 +24,11 @@ class _ListIconMobile extends State<ListIconMobile>{
 
   @override
   Widget build(BuildContext context){
-    double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     
     return Container(
       width: _width,
-      height: _height*0.10,
+      height: 75,
       child:ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: menuIcons.length,
