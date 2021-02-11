@@ -41,13 +41,13 @@ class _SettingsPage extends State<SettingsPage>{
                       child:Column(
                         children:[
                           Text(
-                            "Settings",
+                            "Impostazioni",
                             style: TextStyle(fontSize:26),
                           ),
                           SizedBox(height:25),
                           Row(
                             children:[
-                              Text("Change theme",style: TextStyle(fontSize: 19)),
+                              Text("Dark theme",style: TextStyle(fontSize: 19)),
                               Switch(value: _light,onChanged: (state){
                                 currentTheme.switchTheme();
                                 setState(() {

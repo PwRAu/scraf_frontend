@@ -58,7 +58,7 @@ class _ListIconMobile extends State<ListIconMobile>{
                 },
                 child: Column(
                   children:[
-                    SizedBox(height: 0,width: _width/menuIcons.length,),
+                    SizedBox(height: 3,width: _width/menuIcons.length,),
                     AnimatedContainer(
                       duration: Duration(milliseconds: 500),
                       width: 50,

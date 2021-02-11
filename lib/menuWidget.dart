@@ -112,8 +112,11 @@ class _MenuWidget extends State<MenuWidget>{
         return Container(
           width: _width,
           height: _height*0.09,
-          decoration: BoxDecoration(
-            color: Colors.greenAccent[200],
+          decoration: currentTheme.currentTheme()==ThemeMode.dark? 
+          new BoxDecoration(
+            color:Colors.greenAccent[200]
+          ):new BoxDecoration(
+            color: Colors.blueAccent
           ),
           child:Row(
             children: [
