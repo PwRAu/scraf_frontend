@@ -12,11 +12,7 @@ class Index extends StatelessWidget {
     double _height = MediaQuery.of(context).size.height;
     //print("index: "+_width.toString());
     if(_width>=650){
-      return Scrollbar(
-        thickness: 8,
-        child: SingleChildScrollView(
-          //scrollDirection: Axis.vertical,
-          child: Material(
+      return  Material(
               child:Container(
                 height: _height,
                 width: _width,
@@ -38,23 +34,27 @@ class Index extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Container(
-                            width: _width-224,
-                            child: Column(
-                              children: [
-                                buildWho, //widget passato al costruttore
-                              ],
+                          Scrollbar(
+                            thickness: 8,
+                            child:SingleChildScrollView(
+                              reverse: false,
+                              child:Container(
+                                width: _width-224,
+                                height: _height*2,
+                                child: Column(
+                                  children: [
+                                    buildWho, //widget passato al costruttore
+                                  ],
+                                ),
+                              ),
                             ),
-                          )
-                          
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
             ),
-          ),
-        ),
       );
     }else{
       return Material(
