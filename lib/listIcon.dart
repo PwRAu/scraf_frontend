@@ -42,13 +42,8 @@ class _ListIcon extends State<ListIcon> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Scrollbar(
-                            thickness: 8,
-                            child: SingleChildScrollView(
-                              //padding: EdgeInsets.only(top: 50),
-                              reverse: false,
-                              child: HomePage(),
-                            ))),
+                       builder: (context) => HomePage(),
+                    ),    
                   );
                 } else {
                   Navigator.push(
