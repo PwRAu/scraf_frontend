@@ -31,6 +31,7 @@ dependencies:
   fl_chart: ^0.12.2
   animated_icon_button: ^0.3.0
   hive: ^1.4.4+1
+  http: ^0.12.2
 
 
 dev_dependencies:
