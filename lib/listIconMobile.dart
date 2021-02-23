@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'graph.dart';
 import 'package:home/icon_menu.dart';
-import 'homepage.dart';
 import 'index.dart';
+import 'main.dart';
 import 'settingsPage.dart';
 
 class ListIconMobile extends StatefulWidget{
@@ -39,13 +39,8 @@ class _ListIconMobile extends State<ListIconMobile>{
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Scrollbar(
-                              thickness: 8,
-                              child: SingleChildScrollView(
-                                //padding: EdgeInsets.only(top: 50),
-                                //reverse: false,
-                                child: HomePage(),
-                              ))),
+                        builder: (context) => MyApp(),
+                      ),    
                     );
                   } else {
                     Navigator.push(

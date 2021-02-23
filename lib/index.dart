@@ -13,48 +13,48 @@ class Index extends StatelessWidget {
     //print("index: "+_width.toString());
     if(_width>=650){
       return  Material(
-              child:Container(
+        child:Container(
+          height: _height,
+          width: _width,
+          child: Center(
+            child:Container(
+              child: Container(
                 height: _height,
                 width: _width,
-                child: Center(
-                  child:Container(
-                    child: Container(
-                      height: _height,
-                      width: _width,
-                      //color: Colors.grey[300],
-                      child: Row(
-                        children: [
-                          Column(
+                //color: Colors.grey[300],
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        menuState==null?
+                        new MenuWidget(
+                          menuState: false,
+                        ):new MenuWidget(
+                          menuState: menuState,
+                        ),
+                      ],
+                    ),
+                    Scrollbar(
+                      thickness: 0,
+                      child:SingleChildScrollView(
+                        reverse: false,
+                        child:Container(
+                          width: _width-224,
+                          height: _height*2,
+                          child: Column(
                             children: [
-                              menuState==null?
-                              new MenuWidget(
-                                menuState: false,
-                              ):new MenuWidget(
-                                menuState: menuState,
-                              ),
+                              buildWho, //widget passato al costruttore
                             ],
                           ),
-                          Scrollbar(
-                            thickness: 8,
-                            child:SingleChildScrollView(
-                              reverse: false,
-                              child:Container(
-                                width: _width-224,
-                                height: _height*2,
-                                child: Column(
-                                  children: [
-                                    buildWho, //widget passato al costruttore
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
+              ),
             ),
+          ),
+        ),
       );
     }else{
       return Material(

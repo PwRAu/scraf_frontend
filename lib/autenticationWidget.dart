@@ -47,9 +47,11 @@ class _AutenticationWidget extends State<AutenticationWidget> {
 
                   child: Column(
                     children: [
+                      SizedBox(height: 10,),
                       Container(
+                        margin: EdgeInsets.only(top:5),
                         width: _width * 0.8 * 0.40 * 0.7,
-                        height: 90,
+                        height: 110,
                         decoration: BoxDecoration(
                           //border: Border.all(color: Colors.purple),
                           image: DecorationImage(

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/graph.dart';
 import 'package:home/icon_menu.dart';
-import 'homepage.dart';
 import 'index.dart';
+import 'main.dart';
 import 'settingsPage.dart';
 
 class ListIcon extends StatefulWidget {
@@ -42,7 +42,7 @@ class _ListIcon extends State<ListIcon> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                       builder: (context) => HomePage(),
+                       builder: (context) => MyApp(),
                     ),    
                   );
                 } else {
