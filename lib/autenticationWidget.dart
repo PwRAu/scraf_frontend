@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'config.dart';
 import 'index.dart';
 import 'settingsPage.dart';
 import 'dart:convert';
 
-void httpService() async {
-  final response = await client.post('*endPoint url*',
-      //headers: *headers if you have any*,
-      body: jsonEncode({'name': 'doodle', 'color': 'blue'}));
+  httpService() async {
+  // set up POST request arguments
+  String url = 'https://api.scraf.pappacoda.it/students';
+  Map<String, String> headers = {"Content-type": "application/json"};
+  String json = '{"mail": "aleg@sos.it", "password": "1234","name": "alessandro","surname": "gioia"}';
 
-  print(json.decode((response.body)));
+  http.Response response = await http.post(url,headers: headers, body: jsonEncode(json));
+
+  int statusCode = response.statusCode;
+  // this API passes back the id of the new item added to the body
+  String body = response.body;
+  // {
+  //   "title": "Hello",
+  //   "body": "body text",
+  //   "userId": 1,
+  //   "id": 101
+  // }
+  print("ciao");
 }
 
 class AutenticationWidget extends StatefulWidget {
@@ -25,6 +38,19 @@ class _AutenticationWidget extends State<AutenticationWidget> {
   void dispose() {
     myController.dispose();
     super.dispose();
+  }
+
+  
+  _makeGetRequest() async {
+    // make GET request
+    String url = 'https://api.jsonbin.io/b/5e1219328d761771cc8b9394';
+    http.Response response = await http.get(url);
+    // sample info available in response
+    int statusCode = response.statusCode;
+    Map<String, String> headers = response.headers;
+    String contentType = headers['content-type'];
+    String json = response.body;
+    print(response.body);
   }
 
   Widget build(BuildContext context) {
@@ -181,6 +207,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                                     stringa = 'Registrati';
                                     heightState = 550;
                                     page = false;
+                                    httpService();
                                   });
                                 },
                                 icon: Icon(
