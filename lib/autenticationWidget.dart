@@ -6,24 +6,25 @@ import 'settingsPage.dart';
 import 'dart:convert';
 
   httpService() async {
-  // set up POST request arguments
-  String url = 'https://api.scraf.pappacoda.it/students';
-  Map<String, String> headers = {"Content-type": "application/json"};
-  String json = '{"mail": "aleg@sos.it", "password": "1234","name": "alessandro","surname": "gioia"}';
+    // set up POST request arguments
+    String url = 'https://api.scraf.pappacoda.it/students';
+    Map<String, String> headers = {"Content-type": " application/json"};
+    String json = '{"mail": "bellafrancolino@sos.it", "password": "1234","name": "alessandro","surname": "gioia"}';
 
-  http.Response response = await http.post(url,headers: headers, body: jsonEncode(json));
+    http.Response response = await http.post(url,headers: headers, body: jsonEncode(json));
 
-  int statusCode = response.statusCode;
-  // this API passes back the id of the new item added to the body
-  String body = response.body;
-  // {
-  //   "title": "Hello",
-  //   "body": "body text",
-  //   "userId": 1,
-  //   "id": 101
-  // }
-  print("ciao");
-}
+    int statusCode = response.statusCode;
+    // this API passes back the id of the new item added to the body
+    //String body = response.body;
+    // {
+    //   "title": "Hello",
+    //   "body": "body text",
+    //   "userId": 1,
+    //   "id": 101
+    // }
+    print(response.body);
+    print(statusCode);
+  }
 
 class AutenticationWidget extends StatefulWidget {
   _AutenticationWidget createState() => _AutenticationWidget();
@@ -43,7 +44,8 @@ class _AutenticationWidget extends State<AutenticationWidget> {
   
   _makeGetRequest() async {
     // make GET request
-    String url = 'https://api.jsonbin.io/b/5e1219328d761771cc8b9394';
+    //String url = 'https://api.jsonbin.io/b/5e1219328d761771cc8b9394';
+    String url = 'https://api.scraf.pappacoda.it/students/name=Andrea';
     http.Response response = await http.get(url);
     // sample info available in response
     int statusCode = response.statusCode;
