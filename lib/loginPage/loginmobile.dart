@@ -38,13 +38,24 @@ class _LoginFormMobile extends State<LoginFormMobile> {
             */
             child: Column(
               children: [
-                Container(
+                currentTheme.currentTheme()==ThemeMode.light?//In base al tema che è attivo cambio il logo
+                new Container(
                   width: _width * 0.8 * 0.95 * 0.65,
                   height: 110,
                   decoration: BoxDecoration(
                     //border: Border.all(color: Colors.purple),
                     image: DecorationImage(
                       image: AssetImage('scrafblacklogo.png'),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ):new Container(
+                  width: _width * 0.8 * 0.95 * 0.65,
+                  height: 110,
+                  decoration: BoxDecoration(
+                    //border: Border.all(color: Colors.purple),
+                    image: DecorationImage(
+                      image: AssetImage('scrafwhitelogo.png'),
                       fit: BoxFit.fill,
                     ),
                   ),

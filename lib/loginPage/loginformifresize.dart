@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home/global/config.dart';
 import 'package:home/loginPage/autenticationWidget.dart';
 import 'package:home/webApp/index.dart';
 
@@ -42,11 +43,18 @@ class _LoginFormIf extends State<LoginFormIf> {
             SizedBox(
               height: 15,
             ),
-            Container(
+            currentTheme.currentTheme()==ThemeMode.light?//In base al tema che è attivo cambio il logo
+            new Container(
               margin: EdgeInsets.only(bottom: _height / 20),
               height: _height / 5,
               width: 400,
               child: Image.asset('scrafblacklogo.png',
+                  fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
+            ):new Container(
+              margin: EdgeInsets.only(bottom: _height / 20),
+              height: _height / 5,
+              width: 400,
+              child: Image.asset('scrafwhitelogo.png',
                   fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
             ),
             Container(
