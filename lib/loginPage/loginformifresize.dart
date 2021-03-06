@@ -46,7 +46,7 @@ class _LoginFormIf extends State<LoginFormIf> {
               margin: EdgeInsets.only(bottom: _height / 20),
               height: _height / 5,
               width: 400,
-              child: Image.asset('slogo.png',
+              child: Image.asset('scrafblacklogo.png',
                   fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
             ),
             Container(

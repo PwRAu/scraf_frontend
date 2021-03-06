@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:home/global/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:home/webApp/applicationMainPages/graph.dart';
@@ -51,20 +52,29 @@ class _LoginForm extends State<LoginForm> {
     double _height = MediaQuery.of(context).size.height;
     double containerwidth = 460;
     double allcontainerwidth = 540;
+    bool _theme;
     if (page == true) {
       cardheight = _height / 3;
     } else {
       cardheight = _height / 2.5;
     }
+
     return Container(
       child: Center(
         child: Column(
           children: [
-            Container(
+            currentTheme.currentTheme()==ThemeMode.light?//In base al tema che è attivo cambio il logo
+            new Container(
               margin: EdgeInsets.only(bottom: _height / 40),
               height: _height / 3,
               width: width / 4,
-              child: Image.asset('slogo.png',
+              child: Image.asset('scrafblacklogo.png',
+                  fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
+            ):new Container(
+              margin: EdgeInsets.only(bottom: _height / 40),
+              height: _height / 3,
+              width: width / 4,
+              child: Image.asset('scrafwhitelogo.png',
                   fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
             ),
             Container(

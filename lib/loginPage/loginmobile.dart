@@ -44,7 +44,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                   decoration: BoxDecoration(
                     //border: Border.all(color: Colors.purple),
                     image: DecorationImage(
-                      image: AssetImage('slogo.png'),
+                      image: AssetImage('scrafblacklogo.png'),
                       fit: BoxFit.fill,
                     ),
                   ),
