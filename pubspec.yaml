@@ -32,6 +32,7 @@ dependencies:
   animated_icon_button: ^0.3.0
   hive: ^1.4.4+1
   http: ^0.12.2
+  carousel_pro: ^1.0.0
 
 
 dev_dependencies:
@@ -52,6 +53,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - slogo.png
+    - sunset.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

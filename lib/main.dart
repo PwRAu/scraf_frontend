@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:http/http.dart';
-import 'config.dart';
-import 'homepage.dart';
+import 'global/config.dart';
+import 'loginPage/homepage.dart';
 
 void main() async{
   box = await Hive.openBox('theme');
