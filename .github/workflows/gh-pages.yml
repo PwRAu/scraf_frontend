@@ -31,7 +31,7 @@ jobs:
       - name: Build Scraf
         run: |
           flutter pub get
-          flutter build web --web-renderer canvaskit --release
+          flutter build web --web-renderer html --release
       
       - name: Publish site
         uses: peaceiris/actions-gh-pages@v3
