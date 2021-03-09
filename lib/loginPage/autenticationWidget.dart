@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:home/loginPage/loginform.dart';
 import 'package:http/http.dart' as http;
 import '../global/config.dart';
 import '../webApp/index.dart';
 import '../webApp/applicationMainPages/settingsPage.dart';
 import 'dart:convert';
 
+/*
   httpService() async {
     // set up POST request arguments
     String url = 'https://api.scraf.pappacoda.it/students';
@@ -25,7 +27,6 @@ import 'dart:convert';
     print(response.body);
     print(statusCode);
   }
-
 class AutenticationWidget extends StatefulWidget {
   _AutenticationWidget createState() => _AutenticationWidget();
 }
@@ -37,7 +38,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
   int counter = 2;
 
   void dispose() {
-    myController.dispose();
+    username.dispose();
     super.dispose();
   }
 
@@ -117,7 +118,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                                 fontFamily: "Poppins",
                                 fontSize: 18,
                               ),
-                              controller: myController,
+                              controller: username,
                             ),
                           ),
                           page == false
@@ -285,7 +286,7 @@ class _AutenticationWidget extends State<AutenticationWidget> {
                           fontFamily: "Poppins",
                           fontSize: 18,
                         ),
-                        controller: myController,
+                        controller: username,
                       ),
                     ),
                     page == false
@@ -401,3 +402,4 @@ class _AutenticationWidget extends State<AutenticationWidget> {
     }
   }
 }
+*/

@@ -7,9 +7,9 @@ import 'package:home/webApp/index.dart';
 
 httpService() async {
     // set up POST request arguments
-    String url = 'http://api.scraf.pappacoda.it/students';
+    String url = 'https://server.mfrancolino.it';
     Map<String, String> headers = {"Content-Type": " application/json"};
-    String json = '{"mail":"bellafrancolino@sos.it","password":"1234","name":"alessandro","surname":"gioia"}';
+    String json = '{"mail":"'+email.text+'","password":"'+password.text+'","name":"'+username.text+'","surname":"gioia"}';
 
     http.Response response = await http.post(url,headers: headers, body: jsonEncode(json));
 
@@ -24,6 +24,10 @@ httpService() async {
     // }
     print(response.body);
     print(statusCode);
+    print(username.text);
+    print(password.text);
+    print(email.text);
+    print(json);
   }
 
 class LoginForm extends StatefulWidget {
@@ -37,12 +41,13 @@ class LoginForm extends StatefulWidget {
 
 class _LoginForm extends State<LoginForm> {
   String stringa = 'Accedi';
-  final mycontroller = TextEditingController();
   bool page = true;
   double cardheight;
 
   void dispose() {
-    mycontroller.dispose();
+    username.dispose();
+    password.dispose();
+    email.dispose();
     super.dispose();
   }
 
@@ -52,11 +57,11 @@ class _LoginForm extends State<LoginForm> {
     double _height = MediaQuery.of(context).size.height;
     double containerwidth = 460;
     double allcontainerwidth = 540;
-    bool _theme;
+
     if (page == true) {
-      cardheight = _height / 3;
+      cardheight = 950 / 3;
     } else {
-      cardheight = _height / 2.5;
+      cardheight = 950 / 2.5;
     }
 
     return Container(
@@ -115,7 +120,7 @@ class _LoginForm extends State<LoginForm> {
                               style: TextStyle(
                                 fontSize: 18,
                               ),
-                              controller: mycontroller,
+                              controller: username,
                             ),
                           ),
                           page == false
@@ -134,6 +139,7 @@ class _LoginForm extends State<LoginForm> {
                                     style: TextStyle(
                                       fontSize: 18,
                                     ),
+                                    controller: email,
                                   ),
                                 )
                               : Container(),
@@ -151,6 +157,7 @@ class _LoginForm extends State<LoginForm> {
                               style: TextStyle(
                                 fontSize: 18,
                               ),
+                              controller: password,
                             ),
                           ),
                           Container(
@@ -197,8 +204,8 @@ class _LoginForm extends State<LoginForm> {
                                     onPressed: () {
                                       setState(() {
                                         stringa = 'Registrati';
+                                        if(!page)httpService();
                                         page = false;
-                                        httpService();
                                       });
                                     },
                                     icon: Icon(

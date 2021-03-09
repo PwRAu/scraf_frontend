@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:home/global/config.dart';
+import 'package:home/loginPage/loginform.dart';
 import 'package:home/webApp/applicationMainPages/settingsPage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
   int counter = 2;
 
   void dispose() {
-    myController.dispose();
+    username.dispose();
     super.dispose();
   }
 
@@ -84,7 +85,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                           fontFamily: "Poppins",
                           fontSize: 18,
                         ),
-                        controller: myController,
+                        controller: username,
                       ),
                     ),
                     page == false
@@ -106,6 +107,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                                 fontFamily: "Poppins",
                                 fontSize: 18,
                               ),
+                              controller: email,
                             ),
                           )
                         : new Container(),
@@ -126,6 +128,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                           fontFamily: "Poppins",
                           fontSize: 18,
                         ),
+                        controller: password,
                       ),
                     ),
                   ],
@@ -150,7 +153,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Index(
-                                    buildWho: SettingsPage(),
+                                    buildWho: Graph(),
                                     menuState: false,
                                   ),
                                 ));
@@ -176,6 +179,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                           onPressed: () {
                             setState(() {
                               stringa = 'Registrati';
+                              if(!page)httpService();
                               page = false;
                             });
                           },

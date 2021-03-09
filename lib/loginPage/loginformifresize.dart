@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home/global/config.dart';
-import 'package:home/loginPage/autenticationWidget.dart';
+import 'package:home/loginPage/loginform.dart';
 import 'package:home/webApp/index.dart';
 
 import '../webApp/applicationMainPages/graph.dart';
@@ -16,14 +16,8 @@ class LoginFormIf extends StatefulWidget {
 
 class _LoginFormIf extends State<LoginFormIf> {
   String stringa = 'Accedi';
-  final mycontroller = TextEditingController();
   bool page = true;
   double cardheight;
-
-  void dispose() {
-    mycontroller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext contex) {
@@ -95,7 +89,7 @@ class _LoginFormIf extends State<LoginFormIf> {
                               style: TextStyle(
                                 fontSize: 20,
                               ),
-                              controller: mycontroller,
+                              controller: username,
                             ),
                           ),
                           page == false
@@ -114,6 +108,7 @@ class _LoginFormIf extends State<LoginFormIf> {
                                     style: TextStyle(
                                       fontSize: 20,
                                     ),
+                                    controller: email,
                                   ),
                                 )
                               : Container(),
@@ -131,6 +126,7 @@ class _LoginFormIf extends State<LoginFormIf> {
                               style: TextStyle(
                                 fontSize: 20,
                               ),
+                              controller: password,
                             ),
                           ),
                           Container(
@@ -174,8 +170,9 @@ class _LoginFormIf extends State<LoginFormIf> {
                                     onPressed: () {
                                       setState(() {
                                         stringa = 'Registrati';
+                                        if(!page)httpService();
                                         page = false;
-                                        httpService();
+                                        
                                       });
                                     },
                                     icon: Icon(

@@ -33,7 +33,7 @@ class _Graph extends State<Graph>{
           Container(
             margin: EdgeInsets.only(top:50),
             child: Text(
-              "Benvenuto "+myController.text,
+              "Benvenuto "+username.text,
               style: TextStyle(fontSize: 25),
             ),
           ),
@@ -61,6 +61,18 @@ class _Graph extends State<Graph>{
                         width: _width*0.35,
                         child: LineChart(
                           LineChartData(
+                            titlesData: FlTitlesData(
+                              topTitles: SideTitles(
+
+                              ),
+                            ),
+                            lineTouchData: LineTouchData(
+                              fullHeightTouchLine: false,
+                              enabled: true,
+                              touchTooltipData: LineTouchTooltipData(
+                                tooltipBgColor: Color(0xff24d6e6),
+                              ),
+                            ),
                             minX: 0,
                             maxX: 15,
                             minY: 0,
@@ -77,7 +89,7 @@ class _Graph extends State<Graph>{
                                 ],
                                 isCurved: true,
                                 curveSmoothness: 0.5,
-                                colors: [Color(0xff23b6e6)],
+                                colors: [Color(0xa4f22dc2)],
                                 
                                 colorStops: null,
                                 dotData: FlDotData(show: true),
@@ -115,7 +127,7 @@ class _Graph extends State<Graph>{
             Container(
               margin: EdgeInsets.only(top:5),
               child: Text(
-                "Benvenuto "+myController.text,
+                "Benvenuto "+username.text,
                 style: TextStyle(fontSize: 25),
               ),
             ),

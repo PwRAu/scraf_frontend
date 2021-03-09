@@ -7,5 +7,7 @@ import 'package:http/http.dart' as http;
 
 MyTheme currentTheme = MyTheme();
 Box box;
-final myController = TextEditingController();
+final username = TextEditingController();
+final email = TextEditingController();
+final password = TextEditingController();
 var client = http.Client();
