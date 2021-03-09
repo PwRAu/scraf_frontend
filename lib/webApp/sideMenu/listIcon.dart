@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:home/webApp/applicationMainPages/graph.dart';
+import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/sideMenu/icon_menu.dart';
 import '../index.dart';
 import '../../main.dart';
@@ -18,7 +18,7 @@ class _ListIcon extends State<ListIcon> {
   //bool isMenuOpen;
   //_ListIcon({this.isMenuOpen});
   final List<IconMmenu> menuIcons = [
-    IconMmenu(iconLabel: "Home", iconName: Icons.home, who: Graph()),
+    IconMmenu(iconLabel: "Home", iconName: Icons.home, who: MainPage()),
     IconMmenu(
       iconLabel: "Impostazioni",
       iconName: Icons.settings,

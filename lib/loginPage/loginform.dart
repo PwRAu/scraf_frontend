@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:home/global/config.dart';
+import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:home/webApp/applicationMainPages/graph.dart';
@@ -7,7 +8,7 @@ import 'package:home/webApp/index.dart';
 
 httpService() async {
     // set up POST request arguments
-    String url = 'https://server.mfrancolino.it';
+    String url = 'https://server.mfrancolino.it:10780';
     Map<String, String> headers = {"Content-Type": " application/json"};
     String json = '{"mail":"'+email.text+'","password":"'+password.text+'","name":"'+username.text+'","surname":"gioia"}';
 
@@ -61,7 +62,7 @@ class _LoginForm extends State<LoginForm> {
     if (page == true) {
       cardheight = 950 / 3;
     } else {
-      cardheight = 950 / 2.5;
+      cardheight = 950 / 2.4;
     }
 
     return Container(
@@ -181,7 +182,7 @@ class _LoginForm extends State<LoginForm> {
                                        context,
                                        MaterialPageRoute(
                                       builder: (context) =>
-                                      Index(buildWho: Graph(), menuState: true),
+                                      Index(buildWho: MainPage(), menuState: true),
                                        ));
                                     },
                                     icon: Icon(

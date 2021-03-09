@@ -60,19 +60,8 @@ class _Graph extends State<Graph>{
                         height: 300,
                         width: _width*0.35,
                         child: LineChart(
+                          
                           LineChartData(
-                            titlesData: FlTitlesData(
-                              topTitles: SideTitles(
-
-                              ),
-                            ),
-                            lineTouchData: LineTouchData(
-                              fullHeightTouchLine: false,
-                              enabled: true,
-                              touchTooltipData: LineTouchTooltipData(
-                                tooltipBgColor: Color(0xff24d6e6),
-                              ),
-                            ),
                             minX: 0,
                             maxX: 15,
                             minY: 0,
@@ -98,17 +87,13 @@ class _Graph extends State<Graph>{
                                   colors: [Color(0xff23b6e6)].map((e) => e.withOpacity(0.3)).toList(),
                                 ),
                                 preventCurveOverShooting: true,
-                              
                               ),
-                              
                             ],
                             borderData: FlBorderData(
                               show: true,
                               border: Border.all(color: const Color(0xff37434d),width: 2),
                             ),
-                            
                           ),
-                          
                         ),
                       ),
                     ]

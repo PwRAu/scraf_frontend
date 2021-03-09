@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:home/global/config.dart';
 import 'package:home/loginPage/loginform.dart';
+import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/applicationMainPages/settingsPage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -153,7 +154,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => Index(
-                                    buildWho: Graph(),
+                                    buildWho: MainPage(),
                                     menuState: false,
                                   ),
                                 ));

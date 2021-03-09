@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home/global/config.dart';
 import 'package:home/loginPage/loginform.dart';
+import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/index.dart';
 
 import '../webApp/applicationMainPages/graph.dart';
@@ -148,7 +149,7 @@ class _LoginFormIf extends State<LoginFormIf> {
                                       });
                                       Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) =>Index(buildWho: Graph(), menuState: true),));
+                                      MaterialPageRoute(builder: (context) =>Index(buildWho: MainPage(), menuState: true),));
                                     },
                                     icon: Icon(
                                       Icons.login,
