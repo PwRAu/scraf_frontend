@@ -1,11 +1,7 @@
-import 'dart:convert';
 import 'package:home/global/config.dart';
 import 'package:home/loginPage/loginform.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
-import 'package:home/webApp/applicationMainPages/settingsPage.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:home/webApp/applicationMainPages/graph.dart';
 import 'package:home/webApp/index.dart';
 
 class LoginFormMobile extends StatefulWidget {

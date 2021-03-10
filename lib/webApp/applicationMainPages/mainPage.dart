@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -11,12 +9,45 @@ class MainPage extends StatefulWidget{
 }
 
 class _MainPage extends State<MainPage>{
+  double r1=95,r2=95,r3 =95;
+  double avg(List<double> marks){
+    return(sumOfVotes(marks)/marks.length);
+  }
+
+  double sumOfVotes(List<double> subj){
+    double sum=0;
+    for(int i=0;i<subj.length;i++){
+      sum+=subj[i];
+    }
+    return sum;
+  }
+
+  double sumOfAvg(List<double> subj){
+    double sum=0;
+    for(int i=0;i<subj.length;i++){
+      sum+=subj[i];
+    }
+    return sum;
+  }
+
+  double calcPerncetage(List<double> subj,List<double> allAvg){
+    double avgSubj = avg(subj);
+    return (avgSubj*100)/sumOfVotes(allAvg);
+  }
+
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height= MediaQuery.of(context).size.height;
-    double k = 100;
     double pSize=224;
     int avgMark=82;
+    List<double> mathMarks = [50,70,80,55,80,20];
+    List<double> engMarks = [55,75,90,15,80,30];
+    List<double> gpoMarks = [22,35,90,85,40,100];
+
+    List<double> allMarks = mathMarks+engMarks+gpoMarks;
+    List<double> avgEachSubj=[avg(mathMarks),avg(engMarks),avg(gpoMarks)];
+
+    //print(calcPerncetage(mathMarks, avgEachSubj));
 
     return Container(
       height: _height*2,
@@ -107,8 +138,8 @@ class _MainPage extends State<MainPage>{
                       ),
                     ),
                     TweenAnimationBuilder(
-                      duration: Duration(milliseconds: 1500),
-                      tween: Tween<double>(begin: 0, end: avgMark.toDouble()),
+                      duration: Duration(milliseconds: 750),
+                      tween: Tween<double>(begin: 0, end: avg(allMarks)),
                       builder: (BuildContext context,double _tween, Widget child){
                         return Container(
                           margin: EdgeInsets.only(top:15),
@@ -118,20 +149,20 @@ class _MainPage extends State<MainPage>{
                             PieChartData(
                               centerSpaceRadius: 75,
                               sections: [
-                                avgMark>=60?
+                                avg(allMarks).toInt()>=60?
                                 new PieChartSectionData(
-                                  value:(_tween).toDouble(),color:Colors.green,radius: 15,showTitle: true,title: "${avgMark/10}",
-                                  titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xff000000): new Color(0xffffffff),)
+                                  value:(_tween).toDouble(),color:Colors.green,radius: 20,showTitle: true,title: "${avg(allMarks).toInt()}",
+                                  titlePositionPercentageOffset: -3.75,titleStyle: TextStyle(fontSize: 32,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xff000000): new Color(0xffffffff),)
                                 ):
-                                avgMark>=50? new PieChartSectionData(
-                                  value:(_tween).toDouble(),color:Colors.orange,radius: 15,showTitle: false,title: "${avgMark/10}",
-                                  titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: Colors.black,),
+                                avg(allMarks).toInt()>=50? new PieChartSectionData(
+                                  value:(_tween).toDouble(),color:Colors.orange,radius: 20,showTitle: true,title: "${avg(allMarks).toInt()}",
+                                  titlePositionPercentageOffset: -3.75,titleStyle: TextStyle(fontSize: 32,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xff000000): new Color(0xffffffff),),
                                 ):
                                 new PieChartSectionData(
-                                  value:(_tween).toDouble(),color:Colors.red,radius: 15,showTitle: false,title: "${avgMark/10}",
-                                  titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: Colors.black,)
+                                  value:(_tween).toDouble(),color:Colors.red,radius: 20,showTitle: true,title: "${avg(allMarks).toInt()}",
+                                  titlePositionPercentageOffset: -3.75,titleStyle: TextStyle(fontSize: 32,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xff000000): new Color(0xffffffff),)
                                 ),
-                                PieChartSectionData(value:(100-_tween).toDouble(),color:Colors.white,radius: 15,showTitle: false),
+                                PieChartSectionData(value:(100-_tween).toDouble(),color:Colors.grey[300],radius: 20,showTitle: false),
                               ],
                               startDegreeOffset: 270,
                               borderData: FlBorderData(show: false),
@@ -158,7 +189,7 @@ class _MainPage extends State<MainPage>{
                       width: (_width-pSize)*0.25,
                       height: 50,
                       child: Text(
-                        "Sondaggio: luca suca?",
+                        "Peso materie",
                         style: TextStyle(fontSize: 29,),
                         textAlign: TextAlign.center,
                       ),
@@ -171,13 +202,43 @@ class _MainPage extends State<MainPage>{
                         PieChartData(
                           centerSpaceRadius: 0,
                           sections: [
-                            new PieChartSectionData(
-                              value:(35).toDouble(),color:Colors.indigoAccent,radius: 95,showTitle: true,title: "SI",titleStyle: TextStyle(fontSize: 16,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xffffffff): new Color(0xffffffff),)
+                            PieChartSectionData(
+                              value:(calcPerncetage(mathMarks, avgEachSubj)).toDouble(),color:Colors.deepOrangeAccent,radius: r1,showTitle: true,title: "Mate",titleStyle: TextStyle(fontSize: 16,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xffffffff): new Color(0xffffffff),)
                             ),
-                            PieChartSectionData(value:(65).toDouble(),color:Colors.blue,radius: 95,showTitle: true,title:"SI, ma in blu",titleStyle: TextStyle(fontSize: 16,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xffffffff): new Color(0xffffffff))),
+                            PieChartSectionData(value:(calcPerncetage(engMarks, avgEachSubj)).toDouble(),color:Colors.purple,radius: r2,showTitle: true,title:"Ing",titleStyle: TextStyle(fontSize: 16,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xffffffff): new Color(0xffffffff))),
+                            PieChartSectionData(
+                              value:(calcPerncetage(gpoMarks, avgEachSubj)).toDouble(),color:Colors.brown,radius: r3,showTitle: true,title: "GPO",titleStyle: TextStyle(fontSize: 16,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xffffffff): new Color(0xffffffff),)
+                            ),
                           ],
                           startDegreeOffset: 270,
                           borderData: FlBorderData(show: false),
+                          pieTouchData: PieTouchData(
+                            touchCallback: (pieTouchResponse){
+                              //print(pieTouchResponse.touchedSectionIndex);
+                              // if(pieTouchResponse.touchInput is FlLongPressEnd)print("sos");
+                              if(pieTouchResponse.touchedSectionIndex==0){
+                                setState(() {
+                                  r1=105;
+                                  r2=95;
+                                  r3=95;
+                                });
+                              }
+                              if(pieTouchResponse.touchedSectionIndex==1){
+                                setState(() {
+                                  r1=95;
+                                  r2=105;
+                                  r3=95;
+                                });
+                              }
+                              if(pieTouchResponse.touchedSectionIndex==2){
+                                setState(() {
+                                  r1=95;
+                                  r2=95;
+                                  r3=105;
+                                });
+                              }
+                            }
+                          ),
                         ),
                       ),
                     ),

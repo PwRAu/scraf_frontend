@@ -1,18 +1,16 @@
-import 'dart:convert';
 import 'package:home/global/config.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:home/webApp/applicationMainPages/graph.dart';
 import 'package:home/webApp/index.dart';
 
 httpService() async {
     // set up POST request arguments
-    String url = 'https://server.mfrancolino.it:10780';
+    String url = 'https://server.mfrancolino.it/students';
     Map<String, String> headers = {"Content-Type": " application/json"};
     String json = '{"mail":"'+email.text+'","password":"'+password.text+'","name":"'+username.text+'","surname":"gioia"}';
-
-    http.Response response = await http.post(url,headers: headers, body: jsonEncode(json));
+    
+    http.Response response = await http.post(url,headers: headers, body: json);
 
     int statusCode = response.statusCode;
     // this API passes back the id of the new item added to the body
