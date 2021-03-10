@@ -106,33 +106,39 @@ class _MainPage extends State<MainPage>{
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top:15),
-                      height: 150,
-                      width:(_width-pSize)*0.25,
-                      child: PieChart(
-                        PieChartData(
-                          centerSpaceRadius: 75,
-                          sections: [
-                            avgMark>=60?
-                            new PieChartSectionData(
-                              value:(avgMark).toDouble(),color:Colors.green,radius: 15,showTitle: true,title: "${avgMark/10}",
-                              titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xff000000): new Color(0xffffffff),)
-                            ):
-                            avgMark>=50? new PieChartSectionData(
-                              value:(avgMark).toDouble(),color:Colors.orange,radius: 15,showTitle: false,title: "${avgMark/10}",
-                              titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: Colors.black,),
-                            ):
-                            new PieChartSectionData(
-                              value:(avgMark).toDouble(),color:Colors.red,radius: 15,showTitle: false,title: "${avgMark/10}",
-                              titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: Colors.black,)
+                    TweenAnimationBuilder(
+                      duration: Duration(milliseconds: 1500),
+                      tween: Tween<double>(begin: 0, end: avgMark.toDouble()),
+                      builder: (BuildContext context,double _tween, Widget child){
+                        return Container(
+                          margin: EdgeInsets.only(top:15),
+                          height: 150,
+                          width:(_width-pSize)*0.25,
+                          child: PieChart(
+                            PieChartData(
+                              centerSpaceRadius: 75,
+                              sections: [
+                                avgMark>=60?
+                                new PieChartSectionData(
+                                  value:(_tween).toDouble(),color:Colors.green,radius: 15,showTitle: true,title: "${avgMark/10}",
+                                  titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: currentTheme.currentTheme()==ThemeMode.light? new Color(0xff000000): new Color(0xffffffff),)
+                                ):
+                                avgMark>=50? new PieChartSectionData(
+                                  value:(_tween).toDouble(),color:Colors.orange,radius: 15,showTitle: false,title: "${avgMark/10}",
+                                  titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: Colors.black,),
+                                ):
+                                new PieChartSectionData(
+                                  value:(_tween).toDouble(),color:Colors.red,radius: 15,showTitle: false,title: "${avgMark/10}",
+                                  titlePositionPercentageOffset: -5.0,titleStyle: TextStyle(fontSize: 32,color: Colors.black,)
+                                ),
+                                PieChartSectionData(value:(100-_tween).toDouble(),color:Colors.white,radius: 15,showTitle: false),
+                              ],
+                              startDegreeOffset: 270,
+                              borderData: FlBorderData(show: false),
                             ),
-                            PieChartSectionData(value:(100-avgMark).toDouble(),color:Colors.white,radius: 15,showTitle: false),
-                          ],
-                          startDegreeOffset: 270,
-                          borderData: FlBorderData(show: false),
-                        ),
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
