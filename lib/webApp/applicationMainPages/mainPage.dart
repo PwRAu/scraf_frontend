@@ -38,8 +38,8 @@ class _MainPage extends State<MainPage> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-    double pSize = 224;
-    int avgMark = 82;
+    //double pSize = 224;
+    //int avgMark = 82;
     List<double> mathMarks = [50, 70, 80, 55, 80, 20];
     List<double> engMarks = [55, 75, 90, 15, 80, 30];
     List<double> gpoMarks = [22, 35, 90, 85, 40, 100];

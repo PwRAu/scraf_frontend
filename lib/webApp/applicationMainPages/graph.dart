@@ -31,8 +31,8 @@ class _Graph extends State<Graph> {
           Container(
             margin: EdgeInsets.only(top: 50),
             child: Text(
-              "Benvenuto " + username.text,
-              style: TextStyle(fontSize: 25),
+              "Matematica",
+              style: TextStyle(fontSize: 35),
             ),
           ),
           Card(

@@ -32,17 +32,18 @@ class _PhotoState extends State<Photo> {
           images: [
             Center(
               child: Container(
-                width: _width/2.5,
-                height: _height/1.5,
-                padding: EdgeInsets.only(left: 100,top: _height/3.5),
+                //width: _width / 2.5,
+                //height: _height / 1.5,
+                //padding: EdgeInsets.only(left: 100, top: _height / 3.5),
+                padding: EdgeInsets.only(left: 100),
                 child: Text(
                   "Prediti cura della tua carriera scolastica o dei tuoi alunni",
                   textAlign: TextAlign.left,
-                  style: TextStyle( fontSize: 40),
-                ),
+                  style: TextStyle(fontSize: 40),
+                ), /*
                 decoration: BoxDecoration(
                   image: DecorationImage(image: AssetImage("sunset.jpg"),fit: BoxFit.fill),
-                ),
+                ),*/
               ),
             ),
             Center(

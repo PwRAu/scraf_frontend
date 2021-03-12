@@ -1,23 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../global/config.dart';
+import 'sideMenu/menuWidget.dart';
 import 'sideMenu/menuWidget.dart';
 
-class Index extends StatelessWidget {
+class Index extends StatefulWidget {
   final Widget buildWho; //Serve per decidere quale Widget mandare in esecuzione
   final bool menuState; //è lo stato del menu, aperto o chiuso
   Index({this.buildWho, this.menuState}); //
+  _Index createState() => _Index();
+}
 
+class _Index extends State<Index> {
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     //print("index: "+_width.toString());
-    if(_width>=650){
-      return  Material(
-        child:Container(
+    //print(pSize);
+    if (_width >= 650) {
+      return Material(
+        child: Container(
           height: _height,
           width: _width,
           child: Center(
-            child:Container(
+            child: Container(
               child: Container(
                 height: _height,
                 width: _width,
@@ -26,24 +32,19 @@ class Index extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        menuState==null?
-                        new MenuWidget(
-                          menuState: false,
-                        ):new MenuWidget(
-                          menuState: menuState,
-                        ),
+                        MenuWidget(menuState: widget.menuState),
                       ],
                     ),
                     Scrollbar(
                       thickness: 0,
-                      child:SingleChildScrollView(
+                      child: SingleChildScrollView(
                         reverse: false,
-                        child:Container(
-                          width: _width-224,
-                          height: _height*2,
+                        child: Container(
+                          width: _width - pSize,
+                          height: _height * 2,
                           child: Column(
                             children: [
-                              buildWho, //widget passato al costruttore
+                              widget.buildWho, //widget passato al costruttore
                             ],
                           ),
                         ),
@@ -56,29 +57,32 @@ class Index extends StatelessWidget {
           ),
         ),
       );
-    }else{
+    } else {
       return Material(
-        child:Container(
+        child: Container(
           height: _height,
           width: _width,
           child: Column(
             children: [
               Container(
-                height: _height*0.91,
-                //La scrollbar serve a rendere la pagina scrollabile, in modo da avere lo spazio per 
+                height: _height * 0.91,
+                //La scrollbar serve a rendere la pagina scrollabile, in modo da avere lo spazio per
                 //più contenuti e lasciare sul fondo la barra di navigazione
                 child: Scrollbar(
                   thickness: 8,
                   child: SingleChildScrollView(
                     child: Container(
-                      height:_height*1.6,
-                      child:buildWho),
+                        height: _height * 1.6,
+                        width: _width,
+                        child: widget.buildWho),
                   ),
                 ),
               ),
               //Container che contiene la barra inferiore di navigazione
               Container(
-                child: MenuWidget(menuState: false,),
+                child: MenuWidget(
+                  menuState: false,
+                ),
               ),
             ],
           ),
