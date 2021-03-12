@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:home/webApp/sideMenu/listIcon.dart';
 
 import '../../global/config.dart';
-import '../applicationMainPages/mainPage.dart';
-import '../index.dart';
-import 'listIcon.dart';
 import 'listIconMobile.dart';
 import 'listIconTablet.dart';
 
@@ -35,9 +32,9 @@ class _MenuWidget extends State<MenuWidget> {
     //print("menu page: "+isMenuOpen.toString());
     if (_width >= 1000) {
       return AnimatedContainer(
-          duration: Duration(milliseconds: 0),
+          duration: Duration(milliseconds: 500),
           //width: _width*0.85*0.15*mul,
-          width: 160 * mul,
+          width: sizeOfMainPage.pSize,
           height: _height,
           child: Column(
             children: [
@@ -74,26 +71,13 @@ class _MenuWidget extends State<MenuWidget> {
                                 isMenuOpen = true;
                                 marginClosed = 0;
                                 widget.menuState = true;
-                                pSize = 224;
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Index(
-                                          buildWho: builder, menuState: true),
-                                    ));
-                                //print("menu page2: "+isMenuOpen.toString());
+                                sizeOfMainPage.swichChangeWidth();
                               } else {
                                 mul = 0.6;
                                 isMenuOpen = false;
                                 widget.menuState = false;
                                 marginClosed = 1;
-                                pSize = 96;
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Index(
-                                          buildWho: builder, menuState: false),
-                                    ));
+                                sizeOfMainPage.swichChangeWidth();
                               }
                             });
                           },

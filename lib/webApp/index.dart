@@ -2,21 +2,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../global/config.dart';
 import 'sideMenu/menuWidget.dart';
-import 'sideMenu/menuWidget.dart';
 
+// ignore: must_be_immutable
 class Index extends StatefulWidget {
   final Widget buildWho; //Serve per decidere quale Widget mandare in esecuzione
-  final bool menuState; //è lo stato del menu, aperto o chiuso
+  bool menuState; //è lo stato del menu, aperto o chiuso
   Index({this.buildWho, this.menuState}); //
   _Index createState() => _Index();
 }
 
 class _Index extends State<Index> {
+  void initState() {
+    super.initState();
+    sizeOfMainPage.addListener(() {
+      setState(() {
+        if (widget.menuState)
+          widget.menuState = false;
+        else
+          widget.menuState = true;
+      });
+    });
+  }
+
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     //print("index: "+_width.toString());
-    //print(pSize);
+    //print(sizeOfMainPage.pSize);
     if (_width >= 650) {
       return Material(
         child: Container(
@@ -40,7 +52,7 @@ class _Index extends State<Index> {
                       child: SingleChildScrollView(
                         reverse: false,
                         child: Container(
-                          width: _width - pSize,
+                          width: _width - sizeOfMainPage.pSize,
                           height: _height * 2,
                           child: Column(
                             children: [

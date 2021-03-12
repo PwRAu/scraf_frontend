@@ -9,6 +9,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPage extends State<MainPage> {
+  void initState() {
+    super.initState();
+    sizeOfMainPage.addListener(() {
+      setState(() {});
+    });
+  }
+
   double r1 = 95, r2 = 95, r3 = 95;
   double avg(List<double> marks) {
     return (sumOfVotes(marks) / marks.length);
@@ -48,15 +55,16 @@ class _MainPage extends State<MainPage> {
     List<double> avgEachSubj = [avg(mathMarks), avg(engMarks), avg(gpoMarks)];
 
     //print(calcPerncetage(mathMarks, avgEachSubj));
-
+    //print(_width - sizeOfMainPage.pSize);
     return Container(
+      width: _width - sizeOfMainPage.pSize,
       height: _height * 2,
       child: Stack(
         children: [
           Column(
             children: [
               Container(
-                width: _width - pSize,
+                width: _width - sizeOfMainPage.pSize,
                 height: 350,
                 decoration: BoxDecoration(
                   color: Colors.grey[850],
@@ -65,7 +73,7 @@ class _MainPage extends State<MainPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: _width - pSize - 50,
+                      width: _width - sizeOfMainPage.pSize - 50,
                       height: 300,
                       decoration: BoxDecoration(
                           //color: Colors.blue
@@ -127,12 +135,12 @@ class _MainPage extends State<MainPage> {
             child: Card(
               child: Container(
                 height: 250,
-                width: (_width - pSize) * 0.25,
+                width: (_width - sizeOfMainPage.pSize) * 0.25,
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 2),
-                      width: (_width - pSize) * 0.25,
+                      width: (_width - sizeOfMainPage.pSize) * 0.25,
                       height: 50,
                       child: Text(
                         "La tua media",
@@ -150,7 +158,7 @@ class _MainPage extends State<MainPage> {
                         return Container(
                           margin: EdgeInsets.only(top: 15),
                           height: 150,
-                          width: (_width - pSize) * 0.25,
+                          width: (_width - sizeOfMainPage.pSize) * 0.25,
                           child: PieChart(
                             PieChartData(
                               centerSpaceRadius: 75,
@@ -222,18 +230,18 @@ class _MainPage extends State<MainPage> {
               ),
             ),
             top: 325,
-            left: (_width - pSize) * (1 / 16),
+            left: (_width - sizeOfMainPage.pSize) * (1 / 16),
           ),
           Positioned(
             child: Card(
               child: Container(
                 height: 250,
-                width: (_width - pSize) * 0.25,
+                width: (_width - sizeOfMainPage.pSize) * 0.25,
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 2),
-                      width: (_width - pSize) * 0.25,
+                      width: (_width - sizeOfMainPage.pSize) * 0.25,
                       height: 50,
                       child: Text(
                         "Peso materie",
@@ -246,7 +254,7 @@ class _MainPage extends State<MainPage> {
                     Container(
                       margin: EdgeInsets.only(top: 15),
                       height: 150,
-                      width: (_width - pSize) * 0.25,
+                      width: (_width - sizeOfMainPage.pSize) * 0.25,
                       child: PieChart(
                         PieChartData(
                           centerSpaceRadius: 0,
@@ -304,20 +312,20 @@ class _MainPage extends State<MainPage> {
               ),
             ),
             top: 325,
-            left: (_width - pSize) * (1 / 16) +
-                (_width - pSize) * 0.25 +
-                (_width - pSize) * (1 / 16),
+            left: (_width - sizeOfMainPage.pSize) * (1 / 16) +
+                (_width - sizeOfMainPage.pSize) * 0.25 +
+                (_width - sizeOfMainPage.pSize) * (1 / 16),
           ),
           Positioned(
             child: Card(
               child: Container(
                 height: 250,
-                width: (_width - pSize) * 0.25,
+                width: (_width - sizeOfMainPage.pSize) * 0.25,
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 2),
-                      width: (_width - pSize) * 0.25,
+                      width: (_width - sizeOfMainPage.pSize) * 0.25,
                       height: 50,
                       child: Text(
                         "Sondaggio: luca suca?",
@@ -330,7 +338,7 @@ class _MainPage extends State<MainPage> {
                     Container(
                       margin: EdgeInsets.only(top: 15),
                       height: 150,
-                      width: (_width - pSize) * 0.25,
+                      width: (_width - sizeOfMainPage.pSize) * 0.25,
                       child: PieChart(
                         PieChartData(
                           centerSpaceRadius: 0,
@@ -371,9 +379,9 @@ class _MainPage extends State<MainPage> {
               ),
             ),
             top: 325,
-            left: (_width - pSize) * (1 / 16) +
-                2 * (_width - pSize) * 0.25 +
-                2 * (_width - pSize) * (1 / 16),
+            left: (_width - sizeOfMainPage.pSize) * (1 / 16) +
+                2 * (_width - sizeOfMainPage.pSize) * 0.25 +
+                2 * (_width - sizeOfMainPage.pSize) * (1 / 16),
           ),
         ],
       ),
