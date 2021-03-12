@@ -35,7 +35,7 @@ class _MenuWidget extends State<MenuWidget> {
     //print("menu page: "+isMenuOpen.toString());
     if (_width >= 1000) {
       return AnimatedContainer(
-          duration: Duration(milliseconds: 500),
+          duration: Duration(milliseconds: 0),
           //width: _width*0.85*0.15*mul,
           width: 160 * mul,
           height: _height,
