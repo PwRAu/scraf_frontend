@@ -36,20 +36,24 @@ class _LoginFormIf extends State<LoginFormIf> {
             SizedBox(
               height: 15,
             ),
-            currentTheme.currentTheme()==ThemeMode.light?//In base al tema che è attivo cambio il logo
-            new Container(
-              margin: EdgeInsets.only(bottom: _height / 20),
-              height: _height / 5,
-              width: 400,
-              child: Image.asset('scrafblacklogo.png',
-                  fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
-            ):new Container(
-              margin: EdgeInsets.only(bottom: _height / 20),
-              height: _height / 5,
-              width: 400,
-              child: Image.asset('scrafwhitelogo.png',
-                  fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
-            ),
+            currentTheme.currentTheme() == ThemeMode.light
+                ? //In base al tema che è attivo cambio il logo
+                new Container(
+                    margin: EdgeInsets.only(bottom: _height / 20),
+                    height: _height / 5,
+                    width: 400,
+                    child: Image.asset('scrafblacklogo.png',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.bottomCenter),
+                  )
+                : new Container(
+                    margin: EdgeInsets.only(bottom: _height / 20),
+                    height: _height / 5,
+                    width: 400,
+                    child: Image.asset('scrafwhitelogo.png',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.bottomCenter),
+                  ),
             Container(
               child: Card(
                 elevation: 5,
@@ -69,8 +73,7 @@ class _LoginFormIf extends State<LoginFormIf> {
                               child: Text(
                                 stringa,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 37),
+                                style: TextStyle(fontSize: 37),
                               ),
                             ),
                           ),
@@ -146,8 +149,15 @@ class _LoginFormIf extends State<LoginFormIf> {
                                         page = true;
                                       });
                                       Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) =>Index(buildWho: MainPage(), menuState: true),));
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Index(
+                                                buildWho: MainPage(),
+                                                menuState:
+                                                    sizeOfMainPage.pSize == 224
+                                                        ? true
+                                                        : false),
+                                          ));
                                     },
                                     icon: Icon(
                                       Icons.login,
@@ -169,9 +179,8 @@ class _LoginFormIf extends State<LoginFormIf> {
                                     onPressed: () {
                                       setState(() {
                                         stringa = 'Registrati';
-                                        if(!page)httpService();
+                                        if (!page) httpService();
                                         page = false;
-                                        
                                       });
                                     },
                                     icon: Icon(

@@ -4,30 +4,38 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:home/webApp/index.dart';
 
-httpService() async {
-    // set up POST request arguments
-    String url = 'https://server.mfrancolino.it/students';
-    Map<String, String> headers = {"Content-Type": " application/json"};
-    String json = '{"mail":"'+email.text+'","password":"'+password.text+'","name":"'+username.text+'","surname":"gioia"}';
-    
-    http.Response response = await http.post(url,headers: headers, body: json);
+import '../global/config.dart';
 
-    int statusCode = response.statusCode;
-    // this API passes back the id of the new item added to the body
-    //String body = response.body;
-    // {
-    //   "title": "Hello",
-    //   "body": "body text",
-    //   "userId": 1,
-    //   "id": 101
-    // }
-    print(response.body);
-    print(statusCode);
-    print(username.text);
-    print(password.text);
-    print(email.text);
-    print(json);
-  }
+httpService() async {
+  // set up POST request arguments
+  String url = 'https://server.mfrancolino.it/students';
+  Map<String, String> headers = {"Content-Type": " application/json"};
+  String json = '{"mail":"' +
+      email.text +
+      '","password":"' +
+      password.text +
+      '","name":"' +
+      username.text +
+      '","surname":"gioia"}';
+
+  http.Response response = await http.post(url, headers: headers, body: json);
+
+  int statusCode = response.statusCode;
+  // this API passes back the id of the new item added to the body
+  //String body = response.body;
+  // {
+  //   "title": "Hello",
+  //   "body": "body text",
+  //   "userId": 1,
+  //   "id": 101
+  // }
+  print(response.body);
+  print(statusCode);
+  //print(username.text);
+  //print(password.text);
+  //print(email.text);
+  //print(json);
+}
 
 class LoginForm extends StatefulWidget {
   LoginForm({Key key, this.title}) : super(key: key);
@@ -67,20 +75,24 @@ class _LoginForm extends State<LoginForm> {
       child: Center(
         child: Column(
           children: [
-            currentTheme.currentTheme()==ThemeMode.light?//In base al tema che è attivo cambio il logo
-            new Container(
-              margin: EdgeInsets.only(bottom: _height / 40),
-              height: _height / 3,
-              width: width / 4,
-              child: Image.asset('scrafblacklogo.png',
-                  fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
-            ):new Container(
-              margin: EdgeInsets.only(bottom: _height / 40),
-              height: _height / 3,
-              width: width / 4,
-              child: Image.asset('scrafwhitelogo.png',
-                  fit: BoxFit.fitWidth, alignment: Alignment.bottomCenter),
-            ),
+            currentTheme.currentTheme() == ThemeMode.light
+                ? //In base al tema che è attivo cambio il logo
+                new Container(
+                    margin: EdgeInsets.only(bottom: _height / 40),
+                    height: _height / 3,
+                    width: width / 4,
+                    child: Image.asset('scrafblacklogo.png',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.bottomCenter),
+                  )
+                : new Container(
+                    margin: EdgeInsets.only(bottom: _height / 40),
+                    height: _height / 3,
+                    width: width / 4,
+                    child: Image.asset('scrafwhitelogo.png',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.bottomCenter),
+                  ),
             Container(
               child: Card(
                 elevation: 5,
@@ -100,8 +112,7 @@ class _LoginForm extends State<LoginForm> {
                               child: Text(
                                 stringa,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 40),
+                                style: TextStyle(fontSize: 40),
                               ),
                             ),
                           ),
@@ -177,11 +188,15 @@ class _LoginForm extends State<LoginForm> {
                                         page = true;
                                       });
                                       Navigator.push(
-                                       context,
-                                       MaterialPageRoute(
-                                      builder: (context) =>
-                                      Index(buildWho: MainPage(), menuState: true),
-                                       ));
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Index(
+                                                buildWho: MainPage(),
+                                                menuState:
+                                                    sizeOfMainPage.pSize == 224
+                                                        ? true
+                                                        : false),
+                                          ));
                                     },
                                     icon: Icon(
                                       Icons.login,
@@ -203,7 +218,7 @@ class _LoginForm extends State<LoginForm> {
                                     onPressed: () {
                                       setState(() {
                                         stringa = 'Registrati';
-                                        if(!page)httpService();
+                                        if (!page) httpService();
                                         page = false;
                                       });
                                     },

@@ -328,7 +328,7 @@ class _MainPage extends State<MainPage> {
                       width: (_width - sizeOfMainPage.pSize) * 0.25,
                       height: 50,
                       child: Text(
-                        "Sondaggio: luca suca?",
+                        "Sondaggio: Si?",
                         style: TextStyle(
                           fontSize: 24,
                         ),
