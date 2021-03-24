@@ -21,20 +21,9 @@ httpService() async {
   http.Response response = await http.post(url, headers: headers, body: json);
 
   int statusCode = response.statusCode;
-  // this API passes back the id of the new item added to the body
-  //String body = response.body;
-  // {
-  //   "title": "Hello",
-  //   "body": "body text",
-  //   "userId": 1,
-  //   "id": 101
-  // }
+
   print(response.body);
   print(statusCode);
-  //print(username.text);
-  //print(password.text);
-  //print(email.text);
-  //print(json);
 }
 
 class LoginForm extends StatefulWidget {

@@ -26,32 +26,32 @@ class _ListIcon extends State<ListIcon> {
       iconName: Icons.home,
       who: MainPage(),
       isToBuild: true,
-      sizeIcon: 45,
+      sizeIcon: 35,
     ),
     IconMmenu(
       iconLabel: "Materie",
       iconName: Icons.arrow_drop_down,
       isToBuild: true,
-      sizeIcon: 45,
+      sizeIcon: 35,
     ),
     IconMmenu(
       iconLabel: "Matematica",
       iconName: Icons.mark_email_read,
       isToBuild: false,
-      sizeIcon: 15,
+      sizeIcon: 25,
     ),
     IconMmenu(
       iconLabel: "Impostazioni",
       iconName: Icons.settings,
       who: SettingsPage(),
       isToBuild: true,
-      sizeIcon: 45,
+      sizeIcon: 40,
     ),
     IconMmenu(
       iconLabel: "Esci",
       iconName: Icons.exit_to_app,
       isToBuild: true,
-      sizeIcon: 45,
+      sizeIcon: 40,
     ),
   ];
 
@@ -84,13 +84,13 @@ class _ListIcon extends State<ListIcon> {
                                 iconName: Icons.home,
                                 who: MainPage(),
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                               IconMmenu(
                                 iconLabel: "Materie",
-                                iconName: Icons.arrow_drop_up,
+                                iconName: Icons.arrow_drop_down,
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                               IconMmenu(
                                 iconLabel: "Matematica",
@@ -104,13 +104,13 @@ class _ListIcon extends State<ListIcon> {
                                 iconName: Icons.settings,
                                 who: SettingsPage(),
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                               IconMmenu(
                                 iconLabel: "Esci",
                                 iconName: Icons.exit_to_app,
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                             ];
                             isDropDownnActive = true;
@@ -121,13 +121,13 @@ class _ListIcon extends State<ListIcon> {
                                 iconName: Icons.home,
                                 who: MainPage(),
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                               IconMmenu(
                                 iconLabel: "Materie",
                                 iconName: Icons.arrow_drop_down,
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                               IconMmenu(
                                 iconLabel: "Matematica",
@@ -141,13 +141,13 @@ class _ListIcon extends State<ListIcon> {
                                 iconName: Icons.settings,
                                 who: SettingsPage(),
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                               IconMmenu(
                                 iconLabel: "Esci",
                                 iconName: Icons.exit_to_app,
                                 isToBuild: true,
-                                sizeIcon: 45,
+                                sizeIcon: 35,
                               ),
                             ];
                             isDropDownnActive = false;
@@ -156,12 +156,14 @@ class _ListIcon extends State<ListIcon> {
                       } else {
                         builder = menuIcons[i].who;
                         Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                                pageBuilder: (_, __, ___) => Index(
-                                      buildWho: menuIcons[i].who,
-                                      menuState: widget.isMenuOpen,
-                                    )));
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (_, __, ___) => Index(
+                              buildWho: menuIcons[i].who,
+                              menuState: widget.isMenuOpen,
+                            ),
+                          ),
+                        );
                       }
                     },
                     child: Column(
@@ -199,9 +201,9 @@ class _ListIcon extends State<ListIcon> {
                                               child: Text(
                                                 menuIcons[i].iconLabel,
                                                 style: menuIcons[i].sizeIcon ==
-                                                        35
+                                                        25
                                                     ? new TextStyle(
-                                                        fontSize: 12,
+                                                        fontSize: 14,
                                                         color: Colors.white)
                                                     : new TextStyle(
                                                         fontSize: 17,
