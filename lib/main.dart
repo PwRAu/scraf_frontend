@@ -1,26 +1,28 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'global/config.dart';
 import 'loginPage/homepage.dart';
 
-void main() async{
+void main() async {
+  Hive.init("sos");
   box = await Hive.openBox('theme');
+  EquatableConfig.stringify = kDebugMode;
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  _MyApp createState()=> _MyApp();
+  _MyApp createState() => _MyApp();
   // This widget is the root of your application.
-  
+
 }
 
-class _MyApp extends State<MyApp>{
-  void initState(){
+class _MyApp extends State<MyApp> {
+  void initState() {
     super.initState();
     currentTheme.addListener(() {
-      setState(() {
-        
-      });
+      setState(() {});
     });
   }
 
@@ -32,11 +34,10 @@ class _MyApp extends State<MyApp>{
         //primaryColor: Colors.indigo,
         //buttonColor: Colors.red,
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            //onPrimary: Colors.greenAccent[200],
-            primary: Colors.blueAccent[200],
-          )
-        ),
+            style: ElevatedButton.styleFrom(
+          //onPrimary: Colors.greenAccent[200],
+          primary: Colors.blueAccent[200],
+        )),
       ),
       darkTheme: ThemeData.dark(),
       /*ThemeData(

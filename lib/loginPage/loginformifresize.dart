@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:home/global/config.dart';
 import 'package:home/loginPage/loginform.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
+import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:home/webApp/index.dart';
 
 class LoginFormIf extends StatefulWidget {
@@ -149,15 +150,15 @@ class _LoginFormIf extends State<LoginFormIf> {
                                         page = true;
                                       });
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Index(
-                                                buildWho: MainPage(),
-                                                menuState:
-                                                    sizeOfMainPage.pSize == 224
-                                                        ? true
-                                                        : false),
-                                          ));
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Index(
+                                            buildWho: MainPage(),
+                                            menuState: MenuOpen(
+                                                menuWidth: 224, menuOpen: true),
+                                          ),
+                                        ),
+                                      );
                                     },
                                     icon: Icon(
                                       Icons.login,

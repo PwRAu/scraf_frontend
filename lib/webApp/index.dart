@@ -1,72 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../global/config.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home/webApp/applicationMainPages/mainPage.dart';
+import 'package:home/webApp/applicationMainPages/settingsPage.dart';
+import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'sideMenu/menuWidget.dart';
 
 // ignore: must_be_immutable
 class Index extends StatefulWidget {
   final Widget buildWho; //Serve per decidere quale Widget mandare in esecuzione
-  bool menuState; //è lo stato del menu, aperto o chiuso
+  MenuState menuState; //è lo stato del menu, aperto o chiuso
   Index({this.buildWho, this.menuState}); //
   _Index createState() => _Index();
 }
 
 class _Index extends State<Index> {
-  void initState() {
-    super.initState();
-    sizeOfMainPage.addListener(() {
-      setState(() {
-        if (widget.menuState)
-          widget.menuState = false;
-        else
-          widget.menuState = true;
-      });
-    });
-  }
-
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     //print("index: "+_width.toString());
     //print(sizeOfMainPage.pSize);
     if (_width >= 650) {
-      return Material(
-        child: Container(
-          height: _height,
-          width: _width,
-          child: Center(
-            child: Container(
-              child: Container(
-                height: _height,
-                width: _width,
-                //color: Colors.grey[300],
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        MenuWidget(menuState: widget.menuState),
-                      ],
-                    ),
-                    Scrollbar(
-                      thickness: 0,
-                      child: SingleChildScrollView(
-                        reverse: false,
-                        child: Container(
-                          width: _width - sizeOfMainPage.pSize,
-                          height: _height * 2,
-                          child: Column(
-                            children: [
-                              widget.buildWho, //widget passato al costruttore
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+      return BlocProvider(
+        create: (_) => MenuBloc(initial: widget.menuState),
+        child: IndexDesktop(
+          buildWho: widget.buildWho,
         ),
       );
     } else {
@@ -92,14 +50,113 @@ class _Index extends State<Index> {
               ),
               //Container che contiene la barra inferiore di navigazione
               Container(
-                child: MenuWidget(
-                  menuState: false,
-                ),
+                child: MenuWidget(),
               ),
             ],
           ),
         ),
       );
     }
+  }
+}
+
+class IndexDesktop extends StatefulWidget {
+  final Widget buildWho;
+  IndexDesktop({this.buildWho});
+  _IndexDesktop createState() => _IndexDesktop();
+}
+
+class _IndexDesktop extends State<IndexDesktop> {
+  void initState() {
+    super.initState();
+    //context.read<MenuBloc>().add(OpenMenuEvent());
+  }
+
+  Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+    return Material(
+      child: Container(
+        height: _height,
+        width: _width,
+        child: Center(
+          child: Container(
+            child: Container(
+              height: _height,
+              width: _width,
+              //color: Colors.grey[300],
+              child: Page(buildWho: widget.buildWho),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Page extends StatefulWidget {
+  final Widget buildWho;
+  Page({this.buildWho});
+  _Page createState() => _Page();
+}
+
+class _Page extends State<Page> {
+  Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+    return BlocBuilder<MenuBloc, MenuState>(
+      builder: (context, state) {
+        //print("index: " + state.toString());
+        return Row(
+          children: [
+            Column(
+              children: [
+                MenuWidget(
+                  state: state,
+                ),
+              ],
+            ),
+            Scrollbar(
+              thickness: 0,
+              child: SingleChildScrollView(
+                reverse: false,
+                child: Container(
+                  width: state.menuOpen == null
+                      ? (_width - 224)
+                      : (_width - state.menuWidth),
+                  height: _height * 2,
+                  child: Column(
+                    children: [
+                      Bridge(
+                        widgeToBuild: widget.buildWho,
+                        state: state,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class Bridge extends StatelessWidget {
+  Widget widgeToBuild;
+  MenuState state;
+
+  Bridge({this.widgeToBuild, this.state});
+
+  Widget build(BuildContext context) {
+    if (widgeToBuild is MainPage) {
+      return MainPage(
+        state: state,
+      );
+    } else if (widgeToBuild is SettingsPage) {
+      return SettingsPage();
+    }
+    return SizedBox();
   }
 }

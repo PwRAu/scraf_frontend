@@ -1,20 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:home/webApp/blocMenu/menu_bloc.dart';
 
 import '../../global/config.dart';
 
 class MainPage extends StatefulWidget {
+  MenuState state;
+  MainPage({this.state});
   _MainPage createState() => _MainPage();
 }
 
 class _MainPage extends State<MainPage> {
+  /*
   void initState() {
     super.initState();
     sizeOfMainPage.addListener(() {
       setState(() {});
     });
-  }
+  }*/
 
   double r1 = 95, r2 = 95, r3 = 95;
   double avg(List<double> marks) {
@@ -43,6 +47,7 @@ class _MainPage extends State<MainPage> {
   }
 
   Widget build(BuildContext context) {
+    double _menuSize;
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     //double pSize = 224;
@@ -55,16 +60,17 @@ class _MainPage extends State<MainPage> {
     List<double> avgEachSubj = [avg(mathMarks), avg(engMarks), avg(gpoMarks)];
 
     //print(calcPerncetage(mathMarks, avgEachSubj));
-    //print(_width - sizeOfMainPage.pSize);
+    widget.state is MenuOpen ? _menuSize = 224 : _menuSize = 96;
+    print(_menuSize);
     return Container(
-      width: _width - sizeOfMainPage.pSize,
+      width: _width,
       height: _height * 2,
       child: Stack(
         children: [
           Column(
             children: [
               Container(
-                width: _width - sizeOfMainPage.pSize,
+                width: _width,
                 height: 350,
                 decoration: BoxDecoration(
                   color: Colors.grey[850],
@@ -73,7 +79,7 @@ class _MainPage extends State<MainPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: _width - sizeOfMainPage.pSize - 50,
+                      width: _width - _menuSize - 50,
                       height: 300,
                       decoration: BoxDecoration(
                           //color: Colors.blue
@@ -135,13 +141,13 @@ class _MainPage extends State<MainPage> {
             child: Card(
               child: Container(
                 height: 250,
-                width: (_width - sizeOfMainPage.pSize) * 0.25,
+                width: (_width - _menuSize) * 0.25,
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 2),
-                      width: (_width - sizeOfMainPage.pSize) * 0.25,
-                      height: 50,
+                      width: (_width - _menuSize) * 0.25,
+                      height: 30,
                       child: Text(
                         "La tua media",
                         style: TextStyle(
@@ -157,8 +163,8 @@ class _MainPage extends State<MainPage> {
                           (BuildContext context, double _tween, Widget child) {
                         return Container(
                           margin: EdgeInsets.only(top: 15),
-                          height: 150,
-                          width: (_width - sizeOfMainPage.pSize) * 0.25,
+                          height: 190,
+                          width: (_width - _menuSize) * 0.25,
                           child: PieChart(
                             PieChartData(
                               centerSpaceRadius: 75,
@@ -230,19 +236,19 @@ class _MainPage extends State<MainPage> {
               ),
             ),
             top: 325,
-            left: (_width - sizeOfMainPage.pSize) * (1 / 16),
+            left: (_width - _menuSize) * (1 / 16),
           ),
           Positioned(
             child: Card(
               child: Container(
                 height: 250,
-                width: (_width - sizeOfMainPage.pSize) * 0.25,
+                width: (_width - _menuSize) * 0.25,
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 2),
-                      width: (_width - sizeOfMainPage.pSize) * 0.25,
-                      height: 50,
+                      width: (_width - _menuSize) * 0.25,
+                      height: 30,
                       child: Text(
                         "Peso materie",
                         style: TextStyle(
@@ -253,8 +259,8 @@ class _MainPage extends State<MainPage> {
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 15),
-                      height: 150,
-                      width: (_width - sizeOfMainPage.pSize) * 0.25,
+                      height: 190,
+                      width: (_width - _menuSize) * 0.25,
                       child: PieChart(
                         PieChartData(
                           centerSpaceRadius: 0,
@@ -312,21 +318,21 @@ class _MainPage extends State<MainPage> {
               ),
             ),
             top: 325,
-            left: (_width - sizeOfMainPage.pSize) * (1 / 16) +
-                (_width - sizeOfMainPage.pSize) * 0.25 +
-                (_width - sizeOfMainPage.pSize) * (1 / 16),
+            left: (_width - _menuSize) * (1 / 16) +
+                (_width - _menuSize) * 0.25 +
+                (_width - _menuSize) * (1 / 16),
           ),
           Positioned(
             child: Card(
               child: Container(
                 height: 250,
-                width: (_width - sizeOfMainPage.pSize) * 0.25,
+                width: (_width - _menuSize) * 0.25,
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(top: 2),
-                      width: (_width - sizeOfMainPage.pSize) * 0.25,
-                      height: 50,
+                      width: (_width - _menuSize) * 0.25,
+                      height: 30,
                       child: Text(
                         "Sondaggio: Si?",
                         style: TextStyle(
@@ -337,8 +343,8 @@ class _MainPage extends State<MainPage> {
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 15),
-                      height: 150,
-                      width: (_width - sizeOfMainPage.pSize) * 0.25,
+                      height: 190,
+                      width: (_width - _menuSize) * 0.25,
                       child: PieChart(
                         PieChartData(
                           centerSpaceRadius: 0,
@@ -379,9 +385,9 @@ class _MainPage extends State<MainPage> {
               ),
             ),
             top: 325,
-            left: (_width - sizeOfMainPage.pSize) * (1 / 16) +
-                2 * (_width - sizeOfMainPage.pSize) * 0.25 +
-                2 * (_width - sizeOfMainPage.pSize) * (1 / 16),
+            left: (_width - _menuSize) * (1 / 16) +
+                2 * (_width - _menuSize) * 0.25 +
+                2 * (_width - _menuSize) * (1 / 16),
           ),
         ],
       ),

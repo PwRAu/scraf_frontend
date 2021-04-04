@@ -1,5 +1,6 @@
 import 'package:home/global/config.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
+import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:home/webApp/index.dart';
@@ -177,15 +178,15 @@ class _LoginForm extends State<LoginForm> {
                                         page = true;
                                       });
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Index(
-                                                buildWho: MainPage(),
-                                                menuState:
-                                                    sizeOfMainPage.pSize == 224
-                                                        ? true
-                                                        : false),
-                                          ));
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Index(
+                                            buildWho: MainPage(),
+                                            menuState: MenuOpen(
+                                                menuWidth: 224, menuOpen: true),
+                                          ),
+                                        ),
+                                      );
                                     },
                                     icon: Icon(
                                       Icons.login,

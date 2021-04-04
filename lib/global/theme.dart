@@ -24,18 +24,3 @@ class MyTheme extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-class ChangeWidth extends ChangeNotifier {
-  double pSize;
-  ChangeWidth() {
-    pSize = 224;
-  }
-
-  void swichChangeWidth() {
-    if (pSize == 224)
-      pSize = 96;
-    else
-      pSize = 224;
-    notifyListeners();
-  }
-}

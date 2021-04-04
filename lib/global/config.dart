@@ -8,7 +8,6 @@ import 'package:http/http.dart' as http;
 
 MyTheme currentTheme = MyTheme();
 Box box;
-ChangeWidth sizeOfMainPage = ChangeWidth();
 Widget builder = MainPage();
 final username = TextEditingController();
 final email = TextEditingController();

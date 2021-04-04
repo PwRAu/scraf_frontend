@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
+import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:home/webApp/sideMenu/icon_menu.dart';
 import '../../global/config.dart';
 import '../applicationMainPages/graph.dart';
@@ -9,8 +10,8 @@ import '../../main.dart';
 import '../applicationMainPages/settingsPage.dart';
 
 class ListIcon extends StatefulWidget {
-  final bool isMenuOpen;
-  ListIcon({this.isMenuOpen});
+  final MenuState state;
+  ListIcon({this.state});
 
   @override
   _ListIcon createState() => _ListIcon();
@@ -20,44 +21,48 @@ class _ListIcon extends State<ListIcon> {
   //bool isMenuOpen;
   //_ListIcon({this.isMenuOpen});
   bool isDropDownnActive = false;
-  List<IconMmenu> menuIcons = [
-    IconMmenu(
-      iconLabel: "Home",
-      iconName: Icons.home,
-      who: MainPage(),
-      isToBuild: true,
-      sizeIcon: 35,
-    ),
-    IconMmenu(
-      iconLabel: "Materie",
-      iconName: Icons.arrow_drop_down,
-      isToBuild: true,
-      sizeIcon: 35,
-    ),
-    IconMmenu(
-      iconLabel: "Matematica",
-      iconName: Icons.mark_email_read,
-      isToBuild: false,
-      sizeIcon: 25,
-    ),
-    IconMmenu(
-      iconLabel: "Impostazioni",
-      iconName: Icons.settings,
-      who: SettingsPage(),
-      isToBuild: true,
-      sizeIcon: 40,
-    ),
-    IconMmenu(
-      iconLabel: "Esci",
-      iconName: Icons.exit_to_app,
-      isToBuild: true,
-      sizeIcon: 40,
-    ),
-  ];
+  // ignore: deprecated_member_use
+  List<IconMmenu> menuIcons = new List<IconMmenu>(7);
 
   Widget build(BuildContext context) {
+    menuIcons = [
+      IconMmenu(
+        iconLabel: "Home",
+        iconName: Icons.home,
+        who: MainPage(state: widget.state),
+        isToBuild: true,
+        sizeIcon: 35,
+      ),
+      IconMmenu(
+        iconLabel: "Materie",
+        iconName: Icons.arrow_drop_down,
+        isToBuild: true,
+        sizeIcon: 35,
+      ),
+      IconMmenu(
+        iconLabel: "Matematica",
+        iconName: Icons.mark_email_read,
+        isToBuild: isDropDownnActive,
+        sizeIcon: 25,
+      ),
+      IconMmenu(
+        iconLabel: "Impostazioni",
+        iconName: Icons.settings,
+        who: SettingsPage(),
+        isToBuild: true,
+        sizeIcon: 40,
+      ),
+      IconMmenu(
+        iconLabel: "Esci",
+        iconName: Icons.exit_to_app,
+        isToBuild: true,
+        sizeIcon: 40,
+      ),
+    ];
+
     //print("lico: "+widget.isMenuOpen.toString());
     double _height = MediaQuery.of(context).size.height;
+    //print("list icon:" + widget.state.toString() + '\n');
     return Container(
       height: _height * 0.85,
       width: 300,
@@ -76,13 +81,14 @@ class _ListIcon extends State<ListIcon> {
                           ),
                         );
                       } else if (menuIcons[i].iconLabel == "Materie") {
+                        print(isDropDownnActive);
                         setState(() {
                           if (!isDropDownnActive) {
                             menuIcons = [
                               IconMmenu(
                                 iconLabel: "Home",
                                 iconName: Icons.home,
-                                who: MainPage(),
+                                who: MainPage(state: widget.state),
                                 isToBuild: true,
                                 sizeIcon: 35,
                               ),
@@ -119,7 +125,7 @@ class _ListIcon extends State<ListIcon> {
                               IconMmenu(
                                 iconLabel: "Home",
                                 iconName: Icons.home,
-                                who: MainPage(),
+                                who: MainPage(state: widget.state),
                                 isToBuild: true,
                                 sizeIcon: 35,
                               ),
@@ -155,15 +161,33 @@ class _ListIcon extends State<ListIcon> {
                         });
                       } else {
                         builder = menuIcons[i].who;
+                        if (widget.state is MenuClose) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => Index(
+                              buildWho: menuIcons[i].who,
+                              menuState:
+                                  MenuClose(menuWidth: 96, menuOpen: false),
+                            ),
+                          ));
+                        } else {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) => Index(
+                              buildWho: menuIcons[i].who,
+                              menuState:
+                                  MenuOpen(menuWidth: 224, menuOpen: true),
+                            ),
+                          ));
+                        }
+                        /*
                         Navigator.push(
                           context,
                           PageRouteBuilder(
-                            pageBuilder: (_, __, ___) => Index(
+                            pageBuilder: (_, __, ___) => IndexDesktop(
                               buildWho: menuIcons[i].who,
-                              menuState: widget.isMenuOpen,
                             ),
                           ),
                         );
+                        */
                       }
                     },
                     child: Column(
@@ -188,7 +212,7 @@ class _ListIcon extends State<ListIcon> {
                                       size: menuIcons[i].sizeIcon,
                                       color: Colors.white,
                                     )),
-                                widget.isMenuOpen == true
+                                widget.state.menuOpen == true
                                     ? new TweenAnimationBuilder(
                                         duration: Duration(milliseconds: 00),
                                         tween:
