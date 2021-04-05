@@ -5,6 +5,7 @@ import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:home/webApp/sideMenu/icon_menu.dart';
 import '../../global/config.dart';
 import '../applicationMainPages/graph.dart';
+import '../blocMenu/menu_bloc.dart';
 import '../index.dart';
 import '../../main.dart';
 import '../applicationMainPages/settingsPage.dart';
@@ -162,21 +163,31 @@ class _ListIcon extends State<ListIcon> {
                       } else {
                         builder = menuIcons[i].who;
                         if (widget.state is MenuClose) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => Index(
-                              buildWho: menuIcons[i].who,
-                              menuState:
-                                  MenuClose(menuWidth: 96, menuOpen: false),
+                          Navigator.pushReplacement(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (context, animation1, animation2) =>
+                                  Index(
+                                buildWho: menuIcons[i].who,
+                                menuState:
+                                    MenuClose(menuWidth: 96, menuOpen: false),
+                              ),
+                              transitionDuration: Duration(seconds: 0),
                             ),
-                          ));
+                          );
                         } else {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => Index(
-                              buildWho: menuIcons[i].who,
-                              menuState:
-                                  MenuOpen(menuWidth: 224, menuOpen: true),
+                          Navigator.pushReplacement(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (context, animation1, animation2) =>
+                                  Index(
+                                buildWho: menuIcons[i].who,
+                                menuState:
+                                    MenuOpen(menuWidth: 224, menuOpen: true),
+                              ),
+                              transitionDuration: Duration(seconds: 0),
                             ),
-                          ));
+                          );
                         }
                         /*
                         Navigator.push(

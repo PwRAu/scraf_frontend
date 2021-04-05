@@ -144,8 +144,8 @@ class _Page extends State<Page> {
 }
 
 class Bridge extends StatelessWidget {
-  Widget widgeToBuild;
-  MenuState state;
+  final Widget widgeToBuild;
+  final MenuState state;
 
   Bridge({this.widgeToBuild, this.state});
 

@@ -6,7 +6,7 @@ import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import '../../global/config.dart';
 
 class MainPage extends StatefulWidget {
-  MenuState state;
+  final MenuState state;
   MainPage({this.state});
   _MainPage createState() => _MainPage();
 }
@@ -61,7 +61,7 @@ class _MainPage extends State<MainPage> {
 
     //print(calcPerncetage(mathMarks, avgEachSubj));
     widget.state is MenuOpen ? _menuSize = 224 : _menuSize = 96;
-    print(_menuSize);
+    //print(_menuSize);
     return Container(
       width: _width,
       height: _height * 2,
