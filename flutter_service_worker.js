@@ -7,10 +7,10 @@ const RESOURCES = {
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "manifest.json": "097c83ab2fb02e2f7368a94ae4888344",
-"index.html": "f68d752b2bbbbb31a8010f160eb535f5",
-"/": "f68d752b2bbbbb31a8010f160eb535f5",
+"index.html": "761bd800ef734bcc12e41bbda6ea28ea",
+"/": "761bd800ef734bcc12e41bbda6ea28ea",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/NOTICES": "5b7e7a6b8b791f5ed93453fd0b59e9e2",
+"assets/NOTICES": "08b43c05a7f72fb857027fcd67cb5b05",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
 "assets/AssetManifest.json": "ce73f3bf954054aa9fe6ab89f2810db6",
 "assets/assets/slogo.png": "1dceb219cdf534e03e4a2e0277aecbff",
@@ -18,7 +18,7 @@ const RESOURCES = {
 "assets/assets/scrafblacklogo.png": "35688cd01f28f217816fd237ef4187aa",
 "assets/assets/scrafwhitelogo.png": "c3f83563cea5fd749ed7dc304f256641",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"main.dart.js": "478b866e6347f4b083a3deace201579b",
+"main.dart.js": "1d2488d91b7605c3f7b43660235242b2",
 "version.json": "0e84aa025e6566e3bbf39ced19d134f1"
 };
 
