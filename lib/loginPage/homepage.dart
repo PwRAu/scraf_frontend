@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home/loginPage/blocForm/my_form_bloc.dart';
 import 'package:home/loginPage/loginform.dart';
 import 'package:home/loginPage/loginmobile.dart';
 import 'package:home/loginPage/textscroll.dart';
@@ -53,7 +55,7 @@ class HomePage extends StatelessWidget {
     );
   }
   */
-  double resize = 1700;
+    double resize = 1700;
     if (_width >= resize) {
       return Material(
         child: Container(
@@ -61,7 +63,6 @@ class HomePage extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                
                 height: _height,
                 width: _width / 2,
                 child: Photo(),
@@ -69,13 +70,16 @@ class HomePage extends StatelessWidget {
               Container(
                 height: _height,
                 width: _width / 2,
-                child: LoginForm(),
+                child: BlocProvider(
+                  create: (_) => MyFormBloc(),
+                  child: LoginForm(),
+                ),
               ),
             ],
           ),
         ),
       );
-    } else if(_width>=900) {
+    } else if (_width >= 900) {
       return Material(
         child: Container(
           height: _height,
@@ -83,17 +87,14 @@ class HomePage extends StatelessWidget {
           child: LoginFormIf(),
         ),
       );
-    }else{
+    } else {
       return Material(
         child: Container(
-          height: _height*1.2,
+          height: _height * 1.2,
           width: _width,
           padding: EdgeInsets.only(
-                      top: 18,
-                      bottom: 18,
-                      left: _width * 0.014,
-                      right: _width * 0.014),
-                  margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+              top: 18, bottom: 18, left: _width * 0.014, right: _width * 0.014),
+          margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
           child: Row(
             children: [
               LoginFormMobile(),
@@ -103,5 +104,4 @@ class HomePage extends StatelessWidget {
       );
     }
   }
-
 }
