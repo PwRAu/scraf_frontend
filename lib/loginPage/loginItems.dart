@@ -12,15 +12,16 @@ import 'blocForm/my_form_bloc.dart';
 import 'loginform.dart';
 
 class EmailInput extends StatelessWidget {
-  const EmailInput({Key key, this.focusNode}) : super(key: key);
+  const EmailInput({Key key, this.focusNode, this.page}) : super(key: key);
 
   final FocusNode focusNode;
+  final bool page;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MyFormBloc, MyFormState>(
       builder: (context, state) {
-        context.read<MyFormBloc>().add(EmailChanged(email: email.text));
+        //context.read<MyFormBloc>().add(EmailChanged(email: email.text));
         return TextFormField(
           //initialValue: state.email.value,
           controller: email,
@@ -35,7 +36,9 @@ class EmailInput extends StatelessWidget {
           ),
           keyboardType: TextInputType.emailAddress,
           onChanged: (value) {
-            context.read<MyFormBloc>().add(EmailChanged(email: value));
+            context
+                .read<MyFormBloc>()
+                .add(EmailChanged(email: value, page: page));
           },
           textInputAction: TextInputAction.next,
         );
@@ -91,9 +94,13 @@ class PasswordInput extends StatelessWidget {
     //print(page);
     return BlocBuilder<MyFormBloc, MyFormState>(
       builder: (context, state) {
-        context
-            .read<MyFormBloc>()
-            .add(PasswordChanged(password: password.text, page: page));
+        /*
+        page == false && password.text.isEmpty
+            ? context
+                .read<MyFormBloc>()
+                .add(PasswordChanged(password: password.text, page: page))
+            : null;
+        */
         return TextFormField(
           //initialValue: state.password.value,
           controller: password,

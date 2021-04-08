@@ -8,15 +8,22 @@ abstract class MyFormEvent extends Equatable {
 }
 
 class EmailChanged extends MyFormEvent {
-  const EmailChanged({this.email});
+  const EmailChanged({this.email, this.page});
 
   final String email;
+  final bool page;
 
   @override
   List<Object> get props => [email];
 }
 
-class EmailUnfocused extends MyFormEvent {}
+class EmailUnfocused extends MyFormEvent {
+  const EmailUnfocused({this.page});
+
+  final bool page;
+
+  List<Object> get props => [page];
+}
 
 class PasswordChanged extends MyFormEvent {
   const PasswordChanged({this.password, this.page});
@@ -28,7 +35,13 @@ class PasswordChanged extends MyFormEvent {
   List<Object> get props => [password];
 }
 
-class PasswordUnfocused extends MyFormEvent {}
+class PasswordUnfocused extends MyFormEvent {
+  const PasswordUnfocused({this.page});
+
+  final bool page;
+
+  List<Object> get props => [page];
+}
 
 class UsernameChanged extends MyFormEvent {
   const UsernameChanged({this.username});

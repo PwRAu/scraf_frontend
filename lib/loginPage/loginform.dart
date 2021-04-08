@@ -73,13 +73,13 @@ class _LoginForm extends State<LoginForm> {
     super.initState();
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {
-        context.read<MyFormBloc>().add(EmailUnfocused());
+        context.read<MyFormBloc>().add(EmailUnfocused(page: page));
         //FocusScope.of(context).requestFocus(_usernameFocusNode);
       }
     });
     _passwordFocusNode.addListener(() {
       if (!_passwordFocusNode.hasFocus) {
-        context.read<MyFormBloc>().add(PasswordUnfocused());
+        context.read<MyFormBloc>().add(PasswordUnfocused(page: page));
       }
     });
     _usernameFocusNode.addListener(() {
@@ -165,6 +165,7 @@ class _LoginForm extends State<LoginForm> {
                                 margin: EdgeInsets.only(top: _height / 40),
                                 child: EmailInput(
                                   focusNode: _emailFocusNode,
+                                  page: page,
                                 )),
                             page == false
                                 ? Container(

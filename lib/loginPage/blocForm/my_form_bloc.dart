@@ -23,10 +23,17 @@ class MyFormBloc extends Bloc<MyFormEvent, MyFormState> {
   Stream<MyFormState> mapEventToState(MyFormEvent event) async* {
     if (event is EmailChanged) {
       final email = Email.dirty(event.email);
-      yield state.copyWith(
-        email: email.valid ? email : Email.pure(event.email),
-        status: Formz.validate([email, state.password, state.username]),
-      );
+      if (event.page) {
+        yield state.copyWith(
+          email: email.valid ? email : Email.pure(event.email),
+          status: Formz.validate([email, state.password]),
+        );
+      } else {
+        yield state.copyWith(
+          email: email.valid ? email : Email.pure(event.email),
+          status: Formz.validate([email, state.password, state.username]),
+        );
+      }
     } else if (event is PasswordChanged) {
       final password = Password.dirty(event.password);
       if (event.page) {
@@ -48,16 +55,30 @@ class MyFormBloc extends Bloc<MyFormEvent, MyFormState> {
       );
     } else if (event is EmailUnfocused) {
       final email = Email.dirty(state.email.value);
-      yield state.copyWith(
-        email: email,
-        status: Formz.validate([email, state.password, state.username]),
-      );
+      if (event.page) {
+        yield state.copyWith(
+          email: email,
+          status: Formz.validate([email, state.password]),
+        );
+      } else {
+        yield state.copyWith(
+          email: email,
+          status: Formz.validate([email, state.password, state.username]),
+        );
+      }
     } else if (event is PasswordUnfocused) {
       final password = Password.dirty(state.password.value);
-      yield state.copyWith(
-        password: password,
-        status: Formz.validate([state.email, password, state.username]),
-      );
+      if (event.page) {
+        yield state.copyWith(
+          password: password,
+          status: Formz.validate([state.email, password]),
+        );
+      } else {
+        yield state.copyWith(
+          password: password,
+          status: Formz.validate([state.email, password, state.username]),
+        );
+      }
     } else if (event is UsernameUnfocused) {
       final username = Username.dirty(state.username.value);
       yield state.copyWith(
