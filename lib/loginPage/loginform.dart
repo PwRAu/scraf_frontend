@@ -73,6 +73,10 @@ class _LoginForm extends State<LoginForm> {
     double containerwidth = 460;
     double allcontainerwidth = 540;
 
+    email.text = "";
+    password.text = "";
+    username.text = "";
+
     if (page == true) {
       cardheight = 1150 / 3;
     } else {
@@ -172,14 +176,30 @@ class _LoginForm extends State<LoginForm> {
                               child: Wrap(
                                 children: [
                                   SizedBox(
-                                    width: 60,
+                                    width: page == true ? 60 : 120,
                                   ),
+                                  page == true
+                                      ? new SizedBox(
+                                          height: 40,
+                                          width: 140,
+                                          child: SubmitButton())
+                                      : SizedBox(
+                                          height: 40,
+                                          width: 30,
+                                          child: IconButton(
+                                            icon: Icon(Icons.arrow_back_rounded,
+                                                size: 22),
+                                            onPressed: () {
+                                              setState(() {
+                                                stringa = 'Accedi';
+                                                page = true;
+                                                email.text = "";
+                                              });
+                                            },
+                                          ),
+                                        ),
                                   SizedBox(
-                                      height: 40,
-                                      width: 140,
-                                      child: SubmitButton()),
-                                  SizedBox(
-                                    width: 60,
+                                    width: page == true ? 60 : 10,
                                   ),
                                   SizedBox(
                                     height: 40,
