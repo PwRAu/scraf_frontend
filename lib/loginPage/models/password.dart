@@ -9,6 +9,9 @@ class Password extends FormzInput<String, PasswordValidationError> {
   static final _passwordRegex =
       RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
 
+  //static final _passwordRegex =
+  //    RegExp(r'[^\s]^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$');
+
   @override
   PasswordValidationError validator(String value) {
     return _passwordRegex.hasMatch(value ?? '')

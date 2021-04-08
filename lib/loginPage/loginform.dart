@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/global/config.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
@@ -9,8 +10,9 @@ import 'package:home/webApp/index.dart';
 
 import '../global/config.dart';
 import 'blocForm/my_form_bloc.dart';
+import 'loginItems.dart';
 
-httpService() async {
+httpService(BuildContext context) async {
   // set up POST request arguments
   /*
   String url = 'https://server.mfrancolino.it/students';
@@ -31,6 +33,21 @@ httpService() async {
   print(statusCode);
   */
   print(email.text);
+  /*
+  if (statusCode == 202) {
+    return true;
+  } else {
+    return false;
+  }*/
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => Index(
+        buildWho: MainPage(),
+        menuState: MenuOpen(menuWidth: 224, menuOpen: true),
+      ),
+    ),
+  );
 }
 
 class LoginForm extends StatefulWidget {
@@ -49,6 +66,7 @@ class _LoginForm extends State<LoginForm> {
 
   final _emailFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
+  final _usernameFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -56,12 +74,17 @@ class _LoginForm extends State<LoginForm> {
     _emailFocusNode.addListener(() {
       if (!_emailFocusNode.hasFocus) {
         context.read<MyFormBloc>().add(EmailUnfocused());
-        FocusScope.of(context).requestFocus(_passwordFocusNode);
+        //FocusScope.of(context).requestFocus(_usernameFocusNode);
       }
     });
     _passwordFocusNode.addListener(() {
       if (!_passwordFocusNode.hasFocus) {
         context.read<MyFormBloc>().add(PasswordUnfocused());
+      }
+    });
+    _usernameFocusNode.addListener(() {
+      if (!_usernameFocusNode.hasFocus) {
+        context.read<MyFormBloc>().add(UsernameUnfocused());
       }
     });
   }
@@ -73,14 +96,14 @@ class _LoginForm extends State<LoginForm> {
     double containerwidth = 460;
     double allcontainerwidth = 540;
 
-    email.text = "";
-    password.text = "";
-    username.text = "";
+    //email.text = "";
+    //password.text = "";
+    //username.text = "";
 
     if (page == true) {
       cardheight = 1150 / 3;
     } else {
-      cardheight = 1150 / 2.4;
+      cardheight = 1200 / 2.4;
     }
     return BlocListener<MyFormBloc, MyFormState>(
       listener: (context, state) {
@@ -147,7 +170,9 @@ class _LoginForm extends State<LoginForm> {
                                 ? Container(
                                     margin: EdgeInsets.only(top: _height / 40),
                                     width: containerwidth,
-                                    child: UserName(),
+                                    child: UserName(
+                                      focusNode: _usernameFocusNode,
+                                    ),
                                     /*TextFormField(
                                       decoration: InputDecoration(
                                         labelText: "Inserisci e-mail",
@@ -169,6 +194,7 @@ class _LoginForm extends State<LoginForm> {
                                 width: containerwidth,
                                 child: PasswordInput(
                                   focusNode: _passwordFocusNode,
+                                  page: page,
                                 )),
                             Container(
                               margin: EdgeInsets.only(top: _height / 40),
@@ -194,6 +220,8 @@ class _LoginForm extends State<LoginForm> {
                                                 stringa = 'Accedi';
                                                 page = true;
                                                 email.text = "";
+                                                password.text = "";
+                                                username.text = "";
                                               });
                                             },
                                           ),
@@ -204,23 +232,24 @@ class _LoginForm extends State<LoginForm> {
                                   SizedBox(
                                     height: 40,
                                     width: 140,
-                                    child: ElevatedButton.icon(
-                                      onPressed: () {
-                                        setState(() {
-                                          stringa = 'Registrati';
-                                          if (!page) httpService();
-                                          page = false;
-                                        });
-                                      },
-                                      icon: Icon(
-                                        Icons.app_registration,
-                                        size: 18,
-                                      ),
-                                      label: Text(
-                                        'Registrati',
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                    ),
+                                    child: page == true
+                                        ? ElevatedButton.icon(
+                                            onPressed: () {
+                                              setState(() {
+                                                stringa = 'Registrati';
+                                                page = false;
+                                              });
+                                            },
+                                            icon: Icon(
+                                              Icons.app_registration,
+                                              size: 18,
+                                            ),
+                                            label: Text(
+                                              'Registrati',
+                                              style: TextStyle(fontSize: 18),
+                                            ),
+                                          )
+                                        : RegButton(),
                                   ),
                                 ],
                               ),
@@ -236,119 +265,6 @@ class _LoginForm extends State<LoginForm> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class EmailInput extends StatelessWidget {
-  const EmailInput({Key key, this.focusNode}) : super(key: key);
-
-  final FocusNode focusNode;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<MyFormBloc, MyFormState>(
-      builder: (context, state) {
-        return TextFormField(
-          //initialValue: state.email.value,
-          controller: email,
-          focusNode: focusNode,
-          decoration: InputDecoration(
-            icon: const Icon(Icons.email),
-            labelText: 'Email',
-            helperText: 'Email valida, es: luca@suca.it',
-            errorText: state.email.invalid
-                ? 'Controlla di aver inserito una email nel formato corretto'
-                : null,
-          ),
-          keyboardType: TextInputType.emailAddress,
-          onChanged: (value) {
-            context.read<MyFormBloc>().add(EmailChanged(email: value));
-          },
-          textInputAction: TextInputAction.next,
-        );
-      },
-    );
-  }
-}
-
-class UserName extends StatelessWidget {
-  const UserName({Key key, this.focusNode}) : super(key: key);
-
-  final FocusNode focusNode;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      //initialValue: state.email.value,
-      controller: username,
-      focusNode: focusNode,
-      decoration: InputDecoration(
-        icon: const Icon(Icons.person),
-        labelText: 'Username',
-        helperText: 'Inserire un nome utente',
-      ),
-    );
-  }
-}
-
-class PasswordInput extends StatelessWidget {
-  const PasswordInput({Key key, this.focusNode}) : super(key: key);
-
-  final FocusNode focusNode;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<MyFormBloc, MyFormState>(
-      builder: (context, state) {
-        return TextFormField(
-          //initialValue: state.password.value,
-          controller: password,
-          focusNode: focusNode,
-          decoration: InputDecoration(
-            icon: const Icon(Icons.lock),
-            helperText:
-                '''La password deve esere di almeno 8 caratteri e con almemo un numero e una lettera''',
-            helperMaxLines: 2,
-            labelText: 'Password',
-            errorMaxLines: 2,
-            errorText: state.password.invalid
-                ? '''La password deve esere di almeno 8 caratteri e contenere almemo un numero e una lettera'''
-                : null,
-          ),
-          obscureText: true,
-          onChanged: (value) {
-            context.read<MyFormBloc>().add(PasswordChanged(password: value));
-          },
-          textInputAction: TextInputAction.done,
-        );
-      },
-    );
-  }
-}
-
-class SubmitButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<MyFormBloc, MyFormState>(
-      buildWhen: (previous, current) => previous.status != current.status,
-      builder: (context, state) {
-        return ElevatedButton.icon(
-          icon: Icon(Icons.login, size: 18),
-          onPressed: state.status.isValidated
-              ? () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Index(
-                        buildWho: MainPage(),
-                        menuState: MenuOpen(menuWidth: 224, menuOpen: true),
-                      ),
-                    ),
-                  )
-              : null,
-          label: const Text('Accedi', style: TextStyle(fontSize: 18)),
-        );
-      },
     );
   }
 }
