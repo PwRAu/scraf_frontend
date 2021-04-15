@@ -7,8 +7,8 @@ const RESOURCES = {
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "manifest.json": "097c83ab2fb02e2f7368a94ae4888344",
-"index.html": "a53361a060eef242a25eeff02cfc8df4",
-"/": "a53361a060eef242a25eeff02cfc8df4",
+"index.html": "bad2f5528c5fb227f87a1c3b39189383",
+"/": "bad2f5528c5fb227f87a1c3b39189383",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/NOTICES": "08b43c05a7f72fb857027fcd67cb5b05",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
@@ -18,7 +18,7 @@ const RESOURCES = {
 "assets/assets/scrafblacklogo.png": "35688cd01f28f217816fd237ef4187aa",
 "assets/assets/scrafwhitelogo.png": "c3f83563cea5fd749ed7dc304f256641",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"main.dart.js": "e1b9384699276105ceb31eaeb26cf2cd",
+"main.dart.js": "95743f8ec1b7063dc877e8cb4b5ac143",
 "version.json": "0e84aa025e6566e3bbf39ced19d134f1"
 };
 
