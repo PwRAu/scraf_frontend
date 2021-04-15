@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/global/config.dart';
+import 'package:home/loginPage/registryreg.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -39,6 +40,7 @@ httpService(BuildContext context) async {
   } else {
     return false;
   }*/
+  /*
   Navigator.push(
     context,
     MaterialPageRoute(
@@ -47,6 +49,11 @@ httpService(BuildContext context) async {
         menuState: MenuOpen(menuWidth: 224, menuOpen: true),
       ),
     ),
+  );*/
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+        builder: (context) => Material(child: RegisterRegistration())),
   );
 }
 
