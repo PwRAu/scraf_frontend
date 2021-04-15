@@ -84,7 +84,18 @@ class HomePage extends StatelessWidget {
         child: Container(
           height: _height,
           width: _width,
-          child: LoginFormIf(),
+          child: BlocProvider(
+            create: (_) => MyFormBloc(),
+            child: Scrollbar(
+              thickness: 8,
+              child: SingleChildScrollView(
+                child: Container(
+                  height: _height * 2,
+                  child: LoginFormIf(),
+                ),
+              ),
+            ),
+          ),
         ),
       );
     } else {
