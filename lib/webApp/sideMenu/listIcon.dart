@@ -42,7 +42,7 @@ class _ListIcon extends State<ListIcon> {
       ),
       IconMmenu(
         iconLabel: "Matematica",
-        iconName: Icons.mark_email_read,
+        //iconName: Icons.mark_email_read,
         isToBuild: isDropDownnActive,
         sizeIcon: 25,
       ),
@@ -51,13 +51,13 @@ class _ListIcon extends State<ListIcon> {
         iconName: Icons.settings,
         who: SettingsPage(),
         isToBuild: true,
-        sizeIcon: 40,
+        sizeIcon: 35,
       ),
       IconMmenu(
         iconLabel: "Esci",
         iconName: Icons.exit_to_app,
         isToBuild: true,
-        sizeIcon: 40,
+        sizeIcon: 35,
       ),
     ];
 
@@ -289,7 +289,7 @@ class _ListIcon extends State<ListIcon> {
                         menuIcons[i].iconLabel == "Matematica"
                             ? new TweenAnimationBuilder(
                                 duration: Duration(milliseconds: 500),
-                                tween: Tween<double>(begin: 50, end: 80),
+                                tween: Tween<double>(begin: 50, end: 125),
                                 child: Container(
                                   width: 50,
                                   height: 1,

@@ -1,17 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/global/config.dart';
 import 'package:home/loginPage/homepage.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
-import 'package:http/http.dart' as http;
-import 'package:formz/formz.dart';
 import 'package:flutter/material.dart';
 import 'package:home/webApp/index.dart';
 
 import '../global/config.dart';
-import 'blocForm/my_form_bloc.dart';
-import 'loginItems.dart';
 
 class RegisterRegistration extends StatefulWidget {
   _RegisterRegistration createState() => _RegisterRegistration();
@@ -20,12 +15,13 @@ class RegisterRegistration extends StatefulWidget {
 class _RegisterRegistration extends State<RegisterRegistration> {
   bool isToDisplay = false;
   int _groupValue = 0;
+  double cardheight = 200;
+  bool _isButtonActive = true;
   Widget build(BuildContext context) {
     //double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     double containerwidth = 450;
     double allcontainerwidth = 580;
-    double cardheight = 1150 / 2.5;
     return Container(
       child: Center(
         child: Column(
@@ -77,10 +73,15 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                           isToDisplay == false
                               ? new Column(
                                   children: [
-                                    SizedBox(height: 20),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
                                     Text(
                                       "Possiedi un account classeviva",
                                       style: TextStyle(fontSize: 18),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
                                     ),
                                     Row(
                                       children: [
@@ -90,19 +91,36 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                           onChanged: (T) => {
                                             setState(() {
                                               _groupValue = 1;
+                                              cardheight = 450;
                                               isToDisplay = true;
                                             }),
                                           },
                                         ),
-                                        Text("Si"),
+                                        Text(
+                                          "Si",
+                                        ),
                                         SizedBox(width: 50),
                                         Radio(
                                           value: 2,
                                           groupValue: _groupValue,
                                           onChanged: (T) => {
-                                            setState(() {
-                                              _groupValue = 2;
-                                            }),
+                                            setState(
+                                              () {
+                                                _groupValue = 2;
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) => Index(
+                                                      buildWho: MainPage(),
+                                                      menuState: MenuOpen(
+                                                        menuWidth: 224,
+                                                        menuOpen: true,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
                                           },
                                         ),
                                         Text("No"),
@@ -137,11 +155,27 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                         //initialValue: state.email.value,
                                         //controller: username,
                                         decoration: InputDecoration(
-                                          icon: const Icon(Icons.person),
+                                          icon: const Icon(Icons.lock),
                                           labelText: 'Password',
                                           helperMaxLines: 2,
                                           helperText:
                                               'Inserire la password di classeviva',
+                                          errorMaxLines: 2,
+                                        ),
+                                        keyboardType: TextInputType.name,
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(top: 15),
+                                      width: containerwidth,
+                                      child: TextFormField(
+                                        //initialValue: state.email.value,
+                                        //controller: username,
+                                        decoration: InputDecoration(
+                                          icon: const Icon(Icons.lock),
+                                          labelText: 'Conferma Password',
+                                          helperMaxLines: 2,
+                                          helperText: 'Conferma la password',
                                           errorMaxLines: 2,
                                         ),
                                         keyboardType: TextInputType.name,
@@ -157,17 +191,20 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                           ),
                                           SizedBox(
                                             height: 40,
-                                            width: 30,
+                                            width: 40,
                                             child: IconButton(
+                                              splashRadius: 22,
                                               icon: Icon(
-                                                  Icons.arrow_back_rounded,
-                                                  size: 22),
+                                                Icons.arrow_back_rounded,
+                                                size: 22,
+                                              ),
                                               onPressed: () {
                                                 Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          HomePage()),
+                                                    builder: (context) =>
+                                                        HomePage(),
+                                                  ),
                                                 );
                                               },
                                             ),
@@ -179,26 +216,31 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                             height: 40,
                                             width: 140,
                                             child: ElevatedButton.icon(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) => Index(
-                                                      buildWho: MainPage(),
-                                                      menuState: MenuOpen(
-                                                          menuWidth: 224,
-                                                          menuOpen: true),
-                                                    ),
-                                                  ),
-                                                );
-                                              },
+                                              onPressed: _isButtonActive
+                                                  ? () => Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              Index(
+                                                            buildWho:
+                                                                MainPage(),
+                                                            menuState: MenuOpen(
+                                                              menuWidth: 224,
+                                                              menuOpen: true,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      )
+                                                  : null,
                                               icon: Icon(
                                                 Icons.app_registration,
                                                 size: 18,
                                               ),
                                               label: Text(
                                                 'Registrati',
-                                                style: TextStyle(fontSize: 18),
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -206,7 +248,7 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
                         ],
                       ),
                     ],

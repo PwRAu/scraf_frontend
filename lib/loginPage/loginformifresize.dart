@@ -156,10 +156,13 @@ class _LoginFormIf extends State<LoginFormIf> {
                                         )
                                       : SizedBox(
                                           height: 40,
-                                          width: 30,
+                                          width: 40,
                                           child: IconButton(
-                                            icon: Icon(Icons.arrow_back_rounded,
-                                                size: 22),
+                                            splashRadius: 22,
+                                            icon: Icon(
+                                              Icons.arrow_back_rounded,
+                                              size: 22,
+                                            ),
                                             onPressed: () {
                                               setState(() {
                                                 stringa = 'Accedi';
