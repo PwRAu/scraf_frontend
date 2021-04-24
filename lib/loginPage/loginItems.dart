@@ -29,7 +29,7 @@ class EmailInput extends StatelessWidget {
           decoration: InputDecoration(
             icon: const Icon(Icons.email),
             labelText: 'Email',
-            helperText: 'Email valida, es: luca@suca.it',
+            helperText: 'Email valida, es: pwrau@pwrau.it',
             errorText: state.email.invalid
                 ? 'Controlla di aver inserito una email nel formato corretto'
                 : null,

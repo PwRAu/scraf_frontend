@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/global/config.dart';
@@ -33,7 +35,55 @@ httpService(BuildContext context) async {
   print(response.body);
   print(statusCode);
   */
-  print(email.text);
+
+  //URL richiesta per ottenere token
+  String urlCVForToken = "https://web.spaggiari.eu/rest/v1/auth/login";
+
+  //Header richieste Token
+  Map<String, String> headersCVRequestForToken = {
+    "Content-Type": "application/json",
+    "User-Agent": "CVVS/std/3.2 Android/10",
+    "Z-Dev-ApiKey": "Tg1NWEwNGIgIC0K",
+  };
+
+  //Header richieste ID
+  Map<String, String> headersCVRequestForID = {
+    "Content-Type": "application/json",
+    "Location": "/v1/login",
+    "Z-Dev-ApiKey": "Tg1NWEwNGIgIC0K",
+  };
+
+  //Json per richiesta Token
+  String jsonForToken = '{"uid":"S5861340Z","pass":"ga30456n"}';
+  http.Response response = await http.post(
+    urlCVForToken,
+    headers: headersCVRequestForToken,
+    body: jsonForToken,
+  );
+  //print(response);
+  print(response.body);
+
+  //decodifica risposta per ottenere solo il token
+  Map respondeDecoded = jsonDecode(response.body);
+  print(respondeDecoded["token"]);
+  String userToken = respondeDecoded["token"];
+
+  //URL richiesta per ottenere materie
+  String urlCVForSubject =
+      "https://web.spaggiari.eu/rest/v1/students/55861340/subjects?ffilter=subjects(id,description)";
+
+  //Header richiesta materie
+  Map<String, String> headersCVRequestForSubject = {
+    "Content-Type": "application/json",
+    "User-Agent": "CVVS/std/3.2 Android/10",
+    "Z-Dev-ApiKey": "Tg1NWEwNGIgIC0K",
+    "Z-Auth-token": "$userToken",
+  };
+  print(headersCVRequestForSubject);
+  http.Response responseSubject =
+      await http.get(urlCVForSubject, headers: headersCVRequestForSubject);
+  print(responseSubject.body);
+  //print(email.text);
   /*
   if (statusCode == 202) {
     return true;

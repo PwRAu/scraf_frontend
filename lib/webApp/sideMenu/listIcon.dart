@@ -82,7 +82,7 @@ class _ListIcon extends State<ListIcon> {
                           ),
                         );
                       } else if (menuIcons[i].iconLabel == "Materie") {
-                        print(isDropDownnActive);
+                        //print(isDropDownnActive);
                         setState(() {
                           if (!isDropDownnActive) {
                             menuIcons = [
