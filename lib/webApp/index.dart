@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/applicationMainPages/settingsPage.dart';
+import 'package:home/webApp/applicationMainPages/subjcetPage.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'sideMenu/menuWidget.dart';
 
@@ -156,6 +157,8 @@ class Bridge extends StatelessWidget {
       );
     } else if (widgeToBuild is SettingsPage) {
       return SettingsPage();
+    } else if (widgeToBuild is SubjcetPage) {
+      return widgeToBuild;
     }
     return SizedBox();
   }

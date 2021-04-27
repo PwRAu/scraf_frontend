@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
+import 'package:home/webApp/applicationMainPages/subjcetPage.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:home/webApp/sideMenu/icon_menu.dart';
 import '../../global/config.dart';
@@ -30,12 +31,18 @@ List<IconMmenu> createListMenu(MenuState _state, bool _isToBuild) {
     ),
   );
   for (int i = 0; i < subjects.length; i++) {
-    toReturn.add(IconMmenu(
-      iconLabel: subjects[i],
-      iconName: Icons.donut_large,
-      isToBuild: _isToBuild,
-      sizeIcon: 25,
-    ));
+    toReturn.add(
+      IconMmenu(
+        iconLabel: subjects[i],
+        iconName: Icons.donut_large,
+        isToBuild: _isToBuild,
+        who: SubjcetPage(
+          name: subjects[i],
+          stateM: _state,
+        ),
+        sizeIcon: 25,
+      ),
+    );
   }
   toReturn.add(
     IconMmenu(
@@ -144,6 +151,7 @@ class _ListIcon extends State<ListIcon> {
                         });
                       } else {
                         builder = menuIcons[i].who;
+
                         if (widget.state is MenuClose) {
                           Navigator.pushReplacement(
                             context,
