@@ -10,6 +10,53 @@ import '../index.dart';
 import '../../main.dart';
 import '../applicationMainPages/settingsPage.dart';
 
+List<IconMmenu> createListMenu(MenuState _state, bool _isToBuild) {
+  List<IconMmenu> toReturn = [];
+  toReturn.add(
+    IconMmenu(
+      iconLabel: "Home",
+      iconName: Icons.home,
+      who: MainPage(state: _state),
+      isToBuild: true,
+      sizeIcon: 35,
+    ),
+  );
+  toReturn.add(
+    IconMmenu(
+      iconLabel: "Materie",
+      iconName: Icons.arrow_drop_down,
+      isToBuild: true,
+      sizeIcon: 35,
+    ),
+  );
+  for (int i = 0; i < subjects.length; i++) {
+    toReturn.add(IconMmenu(
+      iconLabel: subjects[i],
+      iconName: Icons.donut_large,
+      isToBuild: _isToBuild,
+      sizeIcon: 25,
+    ));
+  }
+  toReturn.add(
+    IconMmenu(
+      iconLabel: "Impostazioni",
+      iconName: Icons.settings,
+      who: SettingsPage(),
+      isToBuild: true,
+      sizeIcon: 35,
+    ),
+  );
+  toReturn.add(
+    IconMmenu(
+      iconLabel: "Esci",
+      iconName: Icons.exit_to_app,
+      isToBuild: true,
+      sizeIcon: 35,
+    ),
+  );
+  return toReturn;
+}
+
 class ListIcon extends StatefulWidget {
   final MenuState state;
   ListIcon({this.state});
@@ -26,6 +73,8 @@ class _ListIcon extends State<ListIcon> {
   List<IconMmenu> menuIcons = new List<IconMmenu>(7);
 
   Widget build(BuildContext context) {
+    menuIcons = createListMenu(widget.state, isDropDownnActive);
+    /*
     menuIcons = [
       IconMmenu(
         iconLabel: "Home",
@@ -60,6 +109,7 @@ class _ListIcon extends State<ListIcon> {
         sizeIcon: 35,
       ),
     ];
+    */
 
     //print("lico: "+widget.isMenuOpen.toString());
     double _height = MediaQuery.of(context).size.height;
@@ -85,78 +135,10 @@ class _ListIcon extends State<ListIcon> {
                         //print(isDropDownnActive);
                         setState(() {
                           if (!isDropDownnActive) {
-                            menuIcons = [
-                              IconMmenu(
-                                iconLabel: "Home",
-                                iconName: Icons.home,
-                                who: MainPage(state: widget.state),
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Materie",
-                                iconName: Icons.arrow_drop_down,
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Matematica",
-                                iconName: Icons.mark_email_read,
-                                isToBuild: true,
-                                who: Graph(),
-                                sizeIcon: 25,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Impostazioni",
-                                iconName: Icons.settings,
-                                who: SettingsPage(),
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Esci",
-                                iconName: Icons.exit_to_app,
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                            ];
+                            //createListMenu(widget.state, true);
                             isDropDownnActive = true;
                           } else {
-                            menuIcons = [
-                              IconMmenu(
-                                iconLabel: "Home",
-                                iconName: Icons.home,
-                                who: MainPage(state: widget.state),
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Materie",
-                                iconName: Icons.arrow_drop_down,
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Matematica",
-                                iconName: Icons.mark_email_read,
-                                isToBuild: false,
-                                who: Graph(),
-                                sizeIcon: 25,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Impostazioni",
-                                iconName: Icons.settings,
-                                who: SettingsPage(),
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                              IconMmenu(
-                                iconLabel: "Esci",
-                                iconName: Icons.exit_to_app,
-                                isToBuild: true,
-                                sizeIcon: 35,
-                              ),
-                            ];
+                            //createListMenu(widget.state, false);
                             isDropDownnActive = false;
                           }
                         });

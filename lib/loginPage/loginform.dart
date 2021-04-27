@@ -42,15 +42,8 @@ httpService(BuildContext context) async {
   //Header richieste Token
   Map<String, String> headersCVRequestForToken = {
     "Content-Type": "application/json",
-    "User-Agent": "CVVS/std/3.2 Android/10",
-    "Z-Dev-ApiKey": "Tg1NWEwNGIgIC0K",
-  };
-
-  //Header richieste ID
-  Map<String, String> headersCVRequestForID = {
-    "Content-Type": "application/json",
-    "Location": "/v1/login",
-    "Z-Dev-ApiKey": "Tg1NWEwNGIgIC0K",
+    "User-Agent": "zorro/1.0",
+    "Z-Dev-ApiKey": "+zorro+",
   };
 
   //Json per richiesta Token
@@ -61,28 +54,45 @@ httpService(BuildContext context) async {
     body: jsonForToken,
   );
   //print(response);
-  print(response.body);
+  //print(response.body);
 
   //decodifica risposta per ottenere solo il token
   Map respondeDecoded = jsonDecode(response.body);
-  print(respondeDecoded["token"]);
+  //print(respondeDecoded["token"]);
   String userToken = respondeDecoded["token"];
 
   //URL richiesta per ottenere materie
   String urlCVForSubject =
-      "https://web.spaggiari.eu/rest/v1/students/55861340/subjects?ffilter=subjects(id,description)";
+      "https://web.spaggiari.eu/rest/v1/students/5861340/subjects?ffilter=subjects(id,description)";
 
   //Header richiesta materie
   Map<String, String> headersCVRequestForSubject = {
     "Content-Type": "application/json",
-    "User-Agent": "CVVS/std/3.2 Android/10",
-    "Z-Dev-ApiKey": "Tg1NWEwNGIgIC0K",
+    "User-Agent": "zorro/1.0",
+    "Z-Dev-ApiKey": "+zorro+",
     "Z-Auth-token": "$userToken",
   };
-  print(headersCVRequestForSubject);
+  //print(headersCVRequestForSubject);
   http.Response responseSubject =
       await http.get(urlCVForSubject, headers: headersCVRequestForSubject);
-  print(responseSubject.body);
+  //print(responseSubject.body);
+
+  //decodifica risposta per ottenere solo il token
+  Map responseSubDec = jsonDecode(responseSubject.body);
+  //Map so = jsonDecode(responseSubDec["subject"]);
+
+  List<dynamic> pppp = responseSubDec["subjects"];
+  for (int i = 0; i < pppp.length; i++) {
+    subjects.add(pppp[i]["description"]);
+  }
+  //print(subjects);
+
+  //print(responseSubDec);
+  //print(responseSubDec.length);
+  //for (int i = 0; i < 20; i++) {
+  // print(responseSubDec["subjects"][i]["description"]);
+  //}
+  //print(responseSubDec["subjects"][0]["description"]);
   //print(email.text);
   /*
   if (statusCode == 202) {
