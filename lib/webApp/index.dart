@@ -120,6 +120,7 @@ class _Page extends State<Page> {
             Scrollbar(
               thickness: 0,
               child: SingleChildScrollView(
+                primary: false,
                 reverse: false,
                 child: Container(
                   width: state.menuOpen == null

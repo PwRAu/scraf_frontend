@@ -79,6 +79,7 @@ class _ListIcon extends State<ListIcon> {
   // ignore: deprecated_member_use
   List<IconMmenu> menuIcons = new List<IconMmenu>(7);
 
+  @override
   Widget build(BuildContext context) {
     menuIcons = createListMenu(widget.state, isDropDownnActive);
     /*
@@ -214,51 +215,56 @@ class _ListIcon extends State<ListIcon> {
                                       color: Colors.white,
                                     )),
                                 widget.state.menuOpen == true
-                                    ? new TweenAnimationBuilder(
-                                        duration: Duration(milliseconds: 00),
-                                        tween:
-                                            Tween<double>(begin: 105, end: 105),
-                                        child: AnimatedContainer(
-                                            width: 0,
-                                            duration:
-                                                Duration(milliseconds: 500),
-                                            child: TweenAnimationBuilder(
-                                              child: Text(
-                                                menuIcons[i].iconLabel,
-                                                style: menuIcons[i].sizeIcon ==
-                                                        25
-                                                    ? new TextStyle(
-                                                        fontSize: 14,
-                                                        color: Colors.white)
-                                                    : new TextStyle(
-                                                        fontSize: 17,
-                                                        color: Colors.white),
-                                              ),
-                                              tween: Tween<double>(
-                                                  begin: 1,
-                                                  end:
-                                                      1), //l'animazione è ancora presente ma non si vede perchè il range di cambiamento è uguale
+                                    ? SingleChildScrollView(
+                                        primary: true,
+                                        child: new TweenAnimationBuilder(
+                                          duration: Duration(milliseconds: 00),
+                                          tween: Tween<double>(
+                                              begin: 105, end: 105),
+                                          child: AnimatedContainer(
+                                              width: 0,
                                               duration:
                                                   Duration(milliseconds: 500),
-                                              builder: (BuildContext context,
-                                                  double _tween, Widget child) {
-                                                return Opacity(
-                                                  opacity: _tween,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: _tween * 5),
-                                                    child: child,
-                                                  ),
-                                                );
-                                              },
-                                            )),
-                                        builder: (BuildContext context,
-                                            double _sa, Widget child) {
-                                          return Container(
-                                            width: _sa,
-                                            child: child,
-                                          );
-                                        },
+                                              child: TweenAnimationBuilder(
+                                                child: Text(
+                                                  menuIcons[i].iconLabel,
+                                                  style: menuIcons[i]
+                                                              .sizeIcon ==
+                                                          25
+                                                      ? new TextStyle(
+                                                          fontSize: 14,
+                                                          color: Colors.white)
+                                                      : new TextStyle(
+                                                          fontSize: 17,
+                                                          color: Colors.white),
+                                                ),
+                                                tween: Tween<double>(
+                                                    begin: 1,
+                                                    end:
+                                                        1), //l'animazione è ancora presente ma non si vede perchè il range di cambiamento è uguale
+                                                duration:
+                                                    Duration(milliseconds: 500),
+                                                builder: (BuildContext context,
+                                                    double _tween,
+                                                    Widget child) {
+                                                  return Opacity(
+                                                    opacity: _tween,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: _tween * 5),
+                                                      child: child,
+                                                    ),
+                                                  );
+                                                },
+                                              )),
+                                          builder: (BuildContext context,
+                                              double _sa, Widget child) {
+                                            return Container(
+                                              width: _sa,
+                                              child: child,
+                                            );
+                                          },
+                                        ),
                                       )
                                     : new Text(""),
                               ],
