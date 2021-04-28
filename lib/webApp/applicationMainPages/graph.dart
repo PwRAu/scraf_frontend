@@ -11,6 +11,7 @@ class Graph extends StatefulWidget {
 }
 
 class _Graph extends State<Graph> {
+  @override
   Widget build(BuildContext context) {
     // ignore: deprecated_member_use
     List<double> voti = new List(5);
@@ -88,6 +89,14 @@ class _Graph extends State<Graph> {
                             show: true,
                             border: Border.all(
                                 color: const Color(0xff37434d), width: 2),
+                          ),
+                          lineTouchData: LineTouchData(
+                            fullHeightTouchLine: false,
+                            handleBuiltInTouches: true,
+                            touchTooltipData: LineTouchTooltipData(
+                              tooltipBgColor: Colors.white,
+                              showOnTopOfTheChartBoxArea: false,
+                            ),
                           ),
                         ),
                       ),

@@ -126,7 +126,7 @@ class _MainPage extends State<MainPage> {
                               fullHeightTouchLine: false,
                               handleBuiltInTouches: true,
                               touchTooltipData: LineTouchTooltipData(
-                                tooltipBgColor: Colors.redAccent[200],
+                                tooltipBgColor: Colors.grey[500],
                                 showOnTopOfTheChartBoxArea: false,
                               )),
                         ),
