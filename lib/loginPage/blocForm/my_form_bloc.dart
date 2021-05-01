@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:home/global/config.dart';
 import 'package:home/loginPage/models/email.dart';
 import 'package:home/loginPage/models/password.dart';
 import 'package:home/loginPage/models/username.dart';

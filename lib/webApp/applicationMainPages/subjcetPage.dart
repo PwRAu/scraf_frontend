@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,15 @@ class SubjcetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
+    List<Marks> subMarks = [];
+    List<FlSpot> spotsList = [];
+    for (int i = 1; i < 14; i++) {
+      var r = new Random();
+      double n = r.nextDouble() * 9 + 1;
+      subMarks.add(Marks(
+          vote: n, description: "questo è quel cazzo di voto che hai preso"));
+      spotsList.add(FlSpot(i.toDouble(), n));
+    }
     //print(_width - stateM.menuWidth);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -34,24 +44,14 @@ class SubjcetPage extends StatelessWidget {
               ),
           child: LineChart(
             LineChartData(
-              minX: 0,
-              maxX: 30,
+              minX: 1,
+              maxX: subMarks.length.toDouble(),
               minY: 1,
               maxY: 10,
               //backgroundColor: Color(0xff4dd0e1),
               lineBarsData: [
                 LineChartBarData(
-                  spots: [
-                    FlSpot(0, 4),
-                    FlSpot(3, 3),
-                    FlSpot(7, 2),
-                    FlSpot(13, 6),
-                    FlSpot(18, 5),
-                    FlSpot(21, 3),
-                    FlSpot(24, 8),
-                    FlSpot(27, 4),
-                    FlSpot(30, 10),
-                  ],
+                  spots: spotsList,
                   isCurved: true,
                   curveSmoothness: 0.5,
                   colors: [Color(0xffaab123)],
@@ -73,14 +73,103 @@ class SubjcetPage extends StatelessWidget {
                 fullHeightTouchLine: false,
                 handleBuiltInTouches: true,
                 touchTooltipData: LineTouchTooltipData(
-                  tooltipBgColor: Colors.blueAccent[200],
+                  tooltipBgColor: Colors.blueAccent[100],
                   showOnTopOfTheChartBoxArea: false,
                 ),
               ),
             ),
           ),
         ),
+        SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          child: Text(
+            "I tuoi voti:",
+            style: TextStyle(fontSize: 30),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Scrollbar(
+          controller: ScrollController(),
+          thickness: 8,
+          child: SingleChildScrollView(
+            primary: false,
+            child: Container(
+              width: (_width - stateM.menuWidth) - 100,
+              height: 700,
+              child: MarksList(
+                listOfMarsk: subMarks,
+              ),
+            ),
+          ),
+        ),
       ],
+    );
+  }
+}
+
+class Marks {
+  Marks({this.vote, this.description});
+  double vote;
+  String description;
+}
+
+class MarksList extends StatelessWidget {
+  MarksList({this.listOfMarsk});
+  final List<Marks> listOfMarsk;
+  Widget build(BuildContext context) {
+    double _width = MediaQuery.of(context).size.width;
+    return Container(
+      child: ListView.builder(
+          itemCount: listOfMarsk.length,
+          itemBuilder: (context, i) {
+            return Card(
+              child: Container(
+                width: _width * 0.75,
+                height: 75,
+                child: Row(
+                  children: [
+                    Container(
+                      width: (_width * 0.75) * 0.90,
+                      height: 75,
+                      child: Center(
+                        child: Text(
+                          listOfMarsk[i].description,
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: (_width * 0.75) * 0.1,
+                      height: 75,
+                      child: Center(
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: listOfMarsk[i].vote > 6
+                                ? Colors.green
+                                : Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Text(listOfMarsk[i].vote.toInt().toString(),
+                                style: TextStyle(
+                                  fontSize: 19,
+                                  color: Colors.white70,
+                                )),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }),
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/loginPage/blocForm/my_form_bloc.dart';
 import 'package:home/loginPage/loginform.dart';
 import 'package:home/loginPage/loginmobile.dart';
-import 'package:home/loginPage/registryreg.dart';
 import 'package:home/loginPage/textscroll.dart';
 
 import 'loginformifresize.dart';

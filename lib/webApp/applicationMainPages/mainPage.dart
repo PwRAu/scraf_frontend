@@ -86,20 +86,20 @@ class _MainPage extends State<MainPage> {
                           ),
                       child: LineChart(
                         LineChartData(
-                          minX: 0,
+                          minX: 1,
                           maxX: 30,
-                          minY: 0,
-                          maxY: 6,
+                          minY: 1,
+                          maxY: 10,
                           //backgroundColor: Color(0xff4dd0e1),
                           lineBarsData: [
                             LineChartBarData(
                               spots: [
-                                FlSpot(0, 3),
-                                FlSpot(3, 1),
-                                FlSpot(7, 2),
+                                FlSpot(1, 3),
+                                FlSpot(3, 2),
+                                FlSpot(7, 7),
                                 FlSpot(13, 4),
-                                FlSpot(18, 5),
-                                FlSpot(21, 1),
+                                FlSpot(18, 9),
+                                FlSpot(21, 7),
                                 FlSpot(24, 3),
                                 FlSpot(27, 2),
                                 FlSpot(30, 4),
