@@ -91,7 +91,6 @@ class _Graph extends State<Graph> {
                                 color: const Color(0xff37434d), width: 2),
                           ),
                           lineTouchData: LineTouchData(
-                            fullHeightTouchLine: false,
                             handleBuiltInTouches: true,
                             touchTooltipData: LineTouchTooltipData(
                               tooltipBgColor: Colors.white,

@@ -16,7 +16,7 @@ class SubjcetPage extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     List<Marks> subMarks = [];
     List<FlSpot> spotsList = [];
-    for (int i = 1; i < 14; i++) {
+    for (int i = 1; i < 12; i++) {
       var r = new Random();
       double n = r.nextDouble() * 9 + 1;
       subMarks.add(Marks(
@@ -54,11 +54,11 @@ class SubjcetPage extends StatelessWidget {
                   spots: spotsList,
                   isCurved: true,
                   curveSmoothness: 0.5,
-                  colors: [Color(0xffaab123)],
+                  colors: [Color(0xffadd8e6)],
                   dotData: FlDotData(show: true),
                   belowBarData: BarAreaData(
                     show: true,
-                    colors: [Color(0xff00ff00)]
+                    colors: [Color(0xff0277bd)]
                         .map((e) => e.withOpacity(0.3))
                         .toList(),
                   ),
@@ -70,7 +70,6 @@ class SubjcetPage extends StatelessWidget {
                 border: Border.all(color: const Color(0xff37434d), width: 2),
               ),
               lineTouchData: LineTouchData(
-                fullHeightTouchLine: false,
                 handleBuiltInTouches: true,
                 touchTooltipData: LineTouchTooltipData(
                   tooltipBgColor: Colors.blueAccent[100],
@@ -98,7 +97,7 @@ class SubjcetPage extends StatelessWidget {
           child: SingleChildScrollView(
             primary: false,
             child: Container(
-              width: (_width - stateM.menuWidth) - 100,
+              width: (_width - stateM.menuWidth) - 150,
               height: 700,
               child: MarksList(
                 listOfMarsk: subMarks,
@@ -130,37 +129,44 @@ class MarksList extends StatelessWidget {
               child: Container(
                 width: _width * 0.75,
                 height: 75,
-                child: Row(
+                child: Stack(
                   children: [
-                    Container(
-                      width: (_width * 0.75) * 0.90,
-                      height: 75,
-                      child: Center(
-                        child: Text(
-                          listOfMarsk[i].description,
-                          style: TextStyle(fontSize: 17),
+                    Positioned(
+                      left: 0,
+                      child: Container(
+                        width: (_width * 0.75) * 0.80,
+                        height: 75,
+                        child: Center(
+                          child: Text(
+                            listOfMarsk[i].description,
+                            style: TextStyle(fontSize: 17),
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      width: (_width * 0.75) * 0.1,
-                      height: 75,
-                      child: Center(
-                        child: Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: listOfMarsk[i].vote > 6
-                                ? Colors.green
-                                : Colors.red,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Text(listOfMarsk[i].vote.toInt().toString(),
-                                style: TextStyle(
-                                  fontSize: 19,
-                                  color: Colors.white70,
-                                )),
+                    Positioned(
+                      right: 5,
+                      child: Container(
+                        width: 50,
+                        height: 75,
+                        child: Center(
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: listOfMarsk[i].vote > 6
+                                  ? Colors.green
+                                  : Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child:
+                                  Text(listOfMarsk[i].vote.toInt().toString(),
+                                      style: TextStyle(
+                                        fontSize: 19,
+                                        color: Colors.white70,
+                                      )),
+                            ),
                           ),
                         ),
                       ),

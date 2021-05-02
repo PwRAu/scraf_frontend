@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -46,6 +48,7 @@ class _MainPage extends State<MainPage> {
     return (avgSubj * 100) / sumOfVotes(allAvg);
   }
 
+  @override
   Widget build(BuildContext context) {
     double _menuSize;
     double _width = MediaQuery.of(context).size.width;
@@ -62,6 +65,30 @@ class _MainPage extends State<MainPage> {
     //print(calcPerncetage(mathMarks, avgEachSubj));
     widget.state is MenuOpen ? _menuSize = 224 : _menuSize = 96;
     //print(_menuSize);
+    //
+    List<BarChartGroupData> myListOfData = [];
+
+    for (int i = 0; i < subjects.length; i++) {
+      var r = new Random();
+      double n = r.nextDouble() * 9 + 1;
+      n = num.parse(n.toStringAsFixed(1));
+      myListOfData.add(
+        BarChartGroupData(
+          x: i,
+          barRods: [
+            BarChartRodData(
+              y: n,
+              width: 8,
+              colors: [Color(0xff19bfff)],
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(6),
+                topRight: Radius.circular(6),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
     return Container(
       width: _width,
       height: _height * 2,
@@ -123,7 +150,6 @@ class _MainPage extends State<MainPage> {
                                 color: const Color(0xff37434d), width: 2),
                           ),
                           lineTouchData: LineTouchData(
-                              fullHeightTouchLine: false,
                               handleBuiltInTouches: true,
                               touchTooltipData: LineTouchTooltipData(
                                 tooltipBgColor: Colors.grey[500],
@@ -389,8 +415,132 @@ class _MainPage extends State<MainPage> {
                 2 * (_width - _menuSize) * 0.25 +
                 2 * (_width - _menuSize) * (1 / 16),
           ),
+          Positioned(
+            child: Card(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 35,
+                    child: Text(
+                      "La tua media:",
+                      style: TextStyle(fontSize: 21),
+                    ),
+                  ),
+                  Container(
+                    height: 500,
+                    width: (_width - _menuSize) * 0.45,
+                    child: Center(
+                      child: Container(
+                        width: (_width - _menuSize) * 0.40,
+                        height: 435,
+                        child: BarChart(
+                          BarChartData(
+                            maxY: 10,
+                            minY: 0,
+                            barGroups: myListOfData,
+                            barTouchData: BarTouchData(
+                              allowTouchBarBackDraw: false,
+                            ),
+                            axisTitleData: FlAxisTitleData(
+                              show: true,
+                              bottomTitle: AxisTitle(
+                                titleText: "Le tue materie",
+                                showTitle: true,
+                              ),
+                              leftTitle: AxisTitle(
+                                titleText: "La tua media",
+                                showTitle: true,
+                                //textStyle: TextStyle(fontSize: 19),
+                              ),
+                            ),
+                            borderData: FlBorderData(
+                              show: false,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            top: 625,
+            left: 100,
+          ),
         ],
       ),
     );
   }
+}
+
+class BarData {
+  //static List<Data> barData = [];
+
+  void sos() {
+    for (int i = 0; i < subjects.length; i++) {
+      barData.add(
+        Data(color: Color(0xff19bfff), id: i, name: subjects[i], y: 3),
+      );
+    }
+  }
+
+  static List<Data> barData = [
+    Data(
+      id: 0,
+      name: 'Mon',
+      y: 5,
+      color: Color(0xff19bfff),
+    ),
+    Data(
+      name: 'Tue',
+      id: 1,
+      y: 2,
+      color: Color(0xffff4d94),
+    ),
+    Data(
+      name: 'Wed',
+      id: 2,
+      y: 9,
+      color: Color(0xff2bdb90),
+    ),
+    Data(
+      name: 'Thu',
+      id: 3,
+      y: 10,
+      color: Color(0xffffdd80),
+    ),
+    Data(
+      name: 'Fri',
+      id: 4,
+      y: 5,
+      color: Color(0xff2bdb90),
+    ),
+    Data(
+      name: 'Sat',
+      id: 5,
+      y: 7,
+      color: Color(0xffffdd80),
+    ),
+    Data(
+      name: 'Sun',
+      id: 6,
+      y: 9,
+      color: Color(0xffff4d94),
+    ),
+  ];
+}
+
+class Data {
+  // for ordering in the graph
+  final int id;
+  final String name;
+  final double y;
+  final Color color;
+
+  const Data({
+    @required this.name,
+    @required this.id,
+    @required this.y,
+    @required this.color,
+  });
 }
