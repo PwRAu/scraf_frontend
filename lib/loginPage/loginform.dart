@@ -47,7 +47,7 @@ httpService(BuildContext context) async {
   };
 
   //Json per richiesta Token
-  String jsonForToken = '{"uid":"S5861340Z","pass":"ga30456n"}';
+  String jsonForToken = '{"uid":"$cvUser","pass":"$cvPwd"}';
   http.Response response = await http.post(
     urlCVForToken,
     headers: headersCVRequestForToken,

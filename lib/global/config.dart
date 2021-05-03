@@ -12,5 +12,7 @@ Widget builder = MainPage();
 final username = TextEditingController();
 final email = TextEditingController();
 final password = TextEditingController();
+String cvUser = "S5861340Z";
+String cvPwd = "ga30456n";
 var client = http.Client();
 List<String> subjects = [];

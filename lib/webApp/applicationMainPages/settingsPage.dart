@@ -9,12 +9,13 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPage extends State<SettingsPage> {
   bool _light = false;
+  bool readOnly = true;
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
-
+    FocusNode focusNode;
     if (box.containsKey('theme')) {
       _light = box.get('theme');
     } else {
@@ -22,51 +23,159 @@ class _SettingsPage extends State<SettingsPage> {
     }
 
     if (_width > 650) {
-      return Flexible(
-        flex: 1,
-        child: Container(
-          padding: EdgeInsets.only(top: 50),
-          width: _width * 0.6,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: _width * 0.35,
-                height: 500,
-                //color: Colors.grey[100],
-                child: Column(
-                  children: [
-                    Center(
-                      child: Column(
+      return Container(
+        padding: EdgeInsets.only(top: 50),
+        width: _width * 0.8,
+        child: Column(
+          children: [
+            Center(
+              child: Container(
+                width: _width,
+                child: Text(
+                  "Impostazioni",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 26),
+                ),
+              ),
+            ),
+            Container(
+              width: _width,
+              height: 125,
+              //color: Colors.grey[100],
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: _width,
+                    height: 25,
+                  ),
+                  Container(
+                    width: _width,
+                    height: 75,
+                    child: Row(
+                      children: [
+                        Text(
+                          "Dark theme",
+                          style: TextStyle(fontSize: 19),
+                        ),
+                        Switch(
+                          value: _light,
+                          onChanged: (state) {
+                            currentTheme.switchTheme();
+                            setState(() {
+                              _light = state;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: _width,
+              child: Card(
+                child: Container(
+                  width: _width,
+                  height: 250,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        width: _width,
+                        height: 15,
+                      ),
+                      Text(
+                        "Aggiorna credenziali classeviva",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 22),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
                         children: [
-                          Text(
-                            "Impostazioni",
-                            style: TextStyle(fontSize: 26),
+                          Container(
+                            width: 120,
+                            margin: EdgeInsets.only(left: 15),
+                            child: Text(
+                              "Nome utente: ",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
-                          SizedBox(height: 25),
-                          Row(
-                            children: [
-                              Text("Dark theme",
-                                  style: TextStyle(fontSize: 19)),
-                              Switch(
-                                value: _light,
-                                onChanged: (state) {
-                                  currentTheme.switchTheme();
-                                  setState(() {
-                                    _light = state;
-                                  });
-                                },
-                              ),
-                            ],
+                          Container(
+                            width: 250,
+                            child: TextFormField(
+                              readOnly: readOnly,
+                              focusNode: focusNode,
+                              initialValue: cvUser,
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      Row(
+                        children: [
+                          Container(
+                            width: 120,
+                            margin: EdgeInsets.only(left: 15),
+                            child: Text(
+                              "Password: ",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                          Container(
+                            width: 250,
+                            child: TextFormField(
+                              readOnly: readOnly,
+                              focusNode: focusNode,
+                              initialValue: cvPwd,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                readOnly = false;
+                              });
+                            },
+                            child: Text(
+                              "Modifica",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              httpPatchCvCredential();
+                              setState(() {
+                                readOnly = true;
+                              });
+                            },
+                            child: Text(
+                              "Applica modifiche",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ],
-          ),
+            )
+          ],
         ),
       );
     } else {
@@ -112,4 +221,9 @@ class _SettingsPage extends State<SettingsPage> {
       );
     }
   }
+}
+
+httpPatchCvCredential() async {
+  //to do
+  //PATCH CV
 }
