@@ -33,7 +33,7 @@ List<IconMmenu> createListMenu(MenuState _state, bool _isToBuild) {
     toReturn.add(
       IconMmenu(
         iconLabel: subjects[i],
-        iconName: Icons.donut_large,
+        iconName: Icons.open_in_full_sharp,
         isToBuild: _isToBuild,
         who: SubjcetPage(
           name: subjects[i],

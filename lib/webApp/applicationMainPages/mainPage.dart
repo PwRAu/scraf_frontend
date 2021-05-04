@@ -8,6 +8,7 @@ import 'package:home/webApp/applicationMainPages/Widgets/avgWidget.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
 
 import '../../global/config.dart';
+import 'Widgets/lastMark.dart';
 import 'Widgets/pieChartSubject.dart';
 import 'Widgets/poll.dart';
 
@@ -123,6 +124,9 @@ class _MainPage extends State<MainPage> {
             menuSize: _menuSize,
           ),
           AvgBarChart(
+            menuSize: _menuSize,
+          ),
+          LastMarks(
             menuSize: _menuSize,
           ),
         ],

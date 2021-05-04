@@ -19,6 +19,7 @@ class SubjcetPage extends StatelessWidget {
     for (int i = 1; i < 12; i++) {
       var r = new Random();
       double n = r.nextDouble() * 9 + 1;
+      n = num.parse(n.toStringAsFixed(1));
       subMarks.add(Marks(
           vote: n, description: "questo è quel cazzo di voto che hai preso"));
       spotsList.add(FlSpot(i.toDouble(), n));
@@ -123,59 +124,61 @@ class MarksList extends StatelessWidget {
     double _width = MediaQuery.of(context).size.width;
     return Container(
       child: ListView.builder(
-          itemCount: listOfMarsk.length,
-          itemBuilder: (context, i) {
-            return Card(
-              child: Container(
-                width: _width * 0.75,
-                height: 75,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 0,
-                      child: Container(
-                        width: (_width * 0.75) * 0.80,
-                        height: 75,
-                        child: Center(
-                          child: Text(
-                            listOfMarsk[i].description,
-                            style: TextStyle(fontSize: 17),
+        itemCount: listOfMarsk.length,
+        itemBuilder: (context, i) {
+          return Card(
+            child: Container(
+              width: _width * 0.75,
+              height: 75,
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 0,
+                    child: Container(
+                      width: (_width * 0.75) * 0.80,
+                      height: 75,
+                      child: Center(
+                        child: Text(
+                          listOfMarsk[i].description,
+                          style: TextStyle(fontSize: 17),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: 5,
+                    child: Container(
+                      width: 50,
+                      height: 75,
+                      child: Center(
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: listOfMarsk[i].vote > 6
+                                ? Colors.green
+                                : Colors.red,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Text(
+                              listOfMarsk[i].vote.toInt().toString(),
+                              style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.white70,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      right: 5,
-                      child: Container(
-                        width: 50,
-                        height: 75,
-                        child: Center(
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: listOfMarsk[i].vote > 6
-                                  ? Colors.green
-                                  : Colors.red,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child:
-                                  Text(listOfMarsk[i].vote.toInt().toString(),
-                                      style: TextStyle(
-                                        fontSize: 19,
-                                        color: Colors.white70,
-                                      )),
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 }

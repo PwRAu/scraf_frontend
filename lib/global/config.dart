@@ -16,3 +16,15 @@ String cvUser = "S5861340Z";
 String cvPwd = "ga30456n";
 var client = http.Client();
 List<String> subjects = [];
+List<Color> colorsForSubj = [
+  Colors.amber,
+  Colors.blueAccent,
+  Colors.cyan,
+  Colors.lightBlue,
+  Colors.lightGreen,
+  Colors.green,
+  Colors.indigo,
+  Colors.lime,
+  Colors.orange,
+  Colors.pink
+];

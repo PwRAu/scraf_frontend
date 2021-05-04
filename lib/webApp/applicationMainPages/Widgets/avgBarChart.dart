@@ -29,6 +29,11 @@ class AvgBarChart extends StatelessWidget {
                 topLeft: Radius.circular(6),
                 topRight: Radius.circular(6),
               ),
+              backDrawRodData: BackgroundBarChartRodData(
+                show: true,
+                y: 10,
+                colors: [Colors.grey[350]],
+              ),
             ),
           ],
         ),
@@ -40,11 +45,11 @@ class AvgBarChart extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: 35,
-              child: Text(
-                "La tua media:",
-                style: TextStyle(fontSize: 21),
-              ),
+              height: 15,
+            ),
+            Text(
+              "La tua media:",
+              style: TextStyle(fontSize: 21),
             ),
             Container(
               height: 500,
@@ -56,7 +61,7 @@ class AvgBarChart extends StatelessWidget {
                   child: BarChart(
                     BarChartData(
                       maxY: 10,
-                      minY: 0,
+                      minY: 1,
                       barGroups: myListOfData,
                       barTouchData: BarTouchData(
                         allowTouchBarBackDraw: false,
@@ -85,7 +90,7 @@ class AvgBarChart extends StatelessWidget {
         ),
       ),
       top: 625,
-      left: (_width - menuSize) * (1 / 16),
+      left: (_width - menuSize) * (1 / 50),
     );
   }
 }
