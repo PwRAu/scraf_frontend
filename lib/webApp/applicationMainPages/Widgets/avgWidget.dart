@@ -62,7 +62,7 @@ class AvgMarkCard extends StatelessWidget {
               ),
               TweenAnimationBuilder(
                 duration: Duration(milliseconds: 750),
-                tween: Tween<double>(begin: 0, end: avg(allMarks)),
+                tween: Tween<double>(begin: 1, end: avg(allMarks)),
                 builder: (BuildContext context, double _tween, Widget child) {
                   return Container(
                     margin: EdgeInsets.only(top: 15),

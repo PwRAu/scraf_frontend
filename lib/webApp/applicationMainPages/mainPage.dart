@@ -114,9 +114,10 @@ class _MainPage extends State<MainPage> {
               ),
             ],
           ),
-          AvgMarkCard(
-            menuSize: _menuSize,
-          ),
+          //AvgMarkCard(
+          //menuSize: _menuSize,
+          //),
+          /*
           PieChartSubjects(
             menuSize: _menuSize,
           ),
@@ -128,7 +129,7 @@ class _MainPage extends State<MainPage> {
           ),
           LastMarks(
             menuSize: _menuSize,
-          ),
+          ),*/
         ],
       ),
     );

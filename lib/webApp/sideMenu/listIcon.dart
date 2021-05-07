@@ -38,6 +38,7 @@ List<IconMmenu> createListMenu(MenuState _state, bool _isToBuild) {
         who: SubjcetPage(
           name: subjects[i],
           stateM: _state,
+          index: i,
         ),
         sizeIcon: 25,
       ),

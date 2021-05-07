@@ -1,21 +1,28 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:home/global/config.dart';
+import 'package:home/httpRequest/httpRequest.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
 
 // ignore: must_be_immutable
 class SubjcetPage extends StatelessWidget {
   String name;
   MenuState stateM;
-  SubjcetPage({this.name, this.stateM});
+  int index;
+  SubjcetPage({this.name, this.stateM, this.index});
 
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    List<Marks> subMarks = [];
     List<FlSpot> spotsList = [];
+    //print(index);
+    httpGetMarks(context, subjectsId[index]);
+    sleep(Duration(seconds: 1));
+    /*
     for (int i = 1; i < 12; i++) {
       var r = new Random();
       double n = r.nextDouble() * 9 + 1;
@@ -24,7 +31,17 @@ class SubjcetPage extends StatelessWidget {
           vote: n, description: "questo è quel cazzo di voto che hai preso"));
       spotsList.add(FlSpot(i.toDouble(), n));
     }
-    //print(_width - stateM.menuWidth);
+    */
+
+    for (int i = 1; i <= subMarks.length; i++) {
+      print(subMarks[i - 1].description);
+      print(subMarks[i - 1].vote);
+      spotsList.add(
+        FlSpot(i.toDouble(), subMarks[i - 1].vote),
+      );
+    }
+
+    //print(subMarks.length);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

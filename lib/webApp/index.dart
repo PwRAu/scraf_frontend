@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home/global/config.dart';
+import 'package:home/httpRequest/httpRequest.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/applicationMainPages/settingsPage.dart';
 import 'package:home/webApp/applicationMainPages/subjcetPage.dart';
@@ -17,6 +19,7 @@ class Index extends StatefulWidget {
 
 class _Index extends State<Index> {
   Widget build(BuildContext context) {
+    //httpGetSubj(context);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     //print("index: "+_width.toString());

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/global/config.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
+import 'package:home/httpRequest/httpRequest.dart';
 import 'package:formz/formz.dart';
 import 'package:flutter/material.dart';
 import 'package:home/webApp/index.dart';
@@ -138,15 +139,24 @@ class SubmitButton extends StatelessWidget {
         return ElevatedButton.icon(
           icon: Icon(Icons.login, size: 18),
           onPressed: state.status.isValidated
-              ? () => Navigator.push(
+              ? () async {
+                  await httpGetId().then((value) {
+                    httpGetSubj(context);
+                  });
+
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Index(
                         buildWho: MainPage(),
-                        menuState: MenuOpen(menuWidth: 224, menuOpen: true),
+                        menuState: MenuOpen(
+                          menuWidth: 224,
+                          menuOpen: true,
+                        ),
                       ),
                     ),
-                  )
+                  );
+                }
               : null,
           label: const Text('Accedi', style: TextStyle(fontSize: 18)),
         );
@@ -164,7 +174,7 @@ class RegButton extends StatelessWidget {
         return ElevatedButton.icon(
           icon: Icon(Icons.app_registration, size: 18),
           onPressed:
-              state.status.isValidated ? () => httpService(context) : null,
+              state.status.isValidated ? () => httpRegScraf(context) : null,
           label: const Text('Registrati', style: TextStyle(fontSize: 18)),
         );
       },

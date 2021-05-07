@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:home/httpRequest/httpRequest.dart';
 
 import '../../global/config.dart';
 
@@ -108,7 +109,8 @@ class _SettingsPage extends State<SettingsPage> {
                             child: TextFormField(
                               readOnly: readOnly,
                               focusNode: focusNode,
-                              initialValue: cvUser,
+                              //initialValue: cvUser,
+                              controller: usernameCV,
                             ),
                           ),
                         ],
@@ -129,7 +131,8 @@ class _SettingsPage extends State<SettingsPage> {
                             child: TextFormField(
                               readOnly: readOnly,
                               focusNode: focusNode,
-                              initialValue: cvPwd,
+                              //initialValue: cvPwd,
+                              controller: pwdCV,
                             ),
                           ),
                         ],
@@ -158,7 +161,7 @@ class _SettingsPage extends State<SettingsPage> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              httpPatchCvCredential();
+                              httpPatchCvInfo(context);
                               setState(() {
                                 readOnly = true;
                               });

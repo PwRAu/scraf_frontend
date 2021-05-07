@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:home/global/config.dart';
+import 'package:home/httpRequest/httpRequest.dart';
 import 'package:home/loginPage/homepage.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
@@ -136,7 +137,7 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                       margin: EdgeInsets.only(top: 15),
                                       child: TextFormField(
                                         //initialValue: state.email.value,
-                                        //controller: username,
+                                        controller: usernameCV,
                                         decoration: InputDecoration(
                                           icon: const Icon(Icons.person),
                                           labelText: 'Username',
@@ -170,7 +171,7 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                       width: containerwidth,
                                       child: TextFormField(
                                         //initialValue: state.email.value,
-                                        //controller: username,
+                                        controller: pwdCV,
                                         decoration: InputDecoration(
                                           icon: const Icon(Icons.lock),
                                           labelText: 'Conferma Password',
@@ -217,20 +218,8 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                             width: 140,
                                             child: ElevatedButton.icon(
                                               onPressed: _isButtonActive
-                                                  ? () => Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              Index(
-                                                            buildWho:
-                                                                MainPage(),
-                                                            menuState: MenuOpen(
-                                                              menuWidth: 224,
-                                                              menuOpen: true,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      )
+                                                  ? () =>
+                                                      httpPatchCvInfo(context)
                                                   : null,
                                               icon: Icon(
                                                 Icons.app_registration,

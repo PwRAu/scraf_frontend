@@ -1,6 +1,7 @@
 library config.globals;
 
 import 'package:flutter/material.dart';
+import 'package:home/webApp/applicationMainPages/subjcetPage.dart';
 import '../webApp/applicationMainPages/mainPage.dart';
 import 'theme.dart';
 import 'package:hive/hive.dart';
@@ -12,10 +13,16 @@ Widget builder = MainPage();
 final username = TextEditingController();
 final email = TextEditingController();
 final password = TextEditingController();
-String cvUser = "S5861340Z";
-String cvPwd = "ga30456n";
+final usernameCV = TextEditingController();
+final pwdCV = TextEditingController();
+int studentID;
+String cvUser;
+String cvPwd;
 var client = http.Client();
 List<String> subjects = [];
+List<int> subjectsId = [];
+List<Marks> subMarks = [];
+
 List<Color> colorsForSubj = [
   Colors.amber,
   Colors.blueAccent,
@@ -25,6 +32,7 @@ List<Color> colorsForSubj = [
   Colors.green,
   Colors.indigo,
   Colors.lime,
+  Colors.orange,
   Colors.orange,
   Colors.pink
 ];

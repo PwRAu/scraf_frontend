@@ -1,4 +1,5 @@
 import 'package:home/global/config.dart';
+import 'package:home/httpRequest/httpRequest.dart';
 import 'package:home/loginPage/loginform.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:flutter/material.dart';
@@ -181,7 +182,7 @@ class _LoginFormMobile extends State<LoginFormMobile> {
                         onPressed: () {
                           setState(() {
                             stringa = 'Registrati';
-                            if (!page) httpService(context);
+                            if (!page) httpRegScraf(context);
                             page = false;
                           });
                         },

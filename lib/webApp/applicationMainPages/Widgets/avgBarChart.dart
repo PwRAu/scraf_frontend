@@ -24,7 +24,7 @@ class AvgBarChart extends StatelessWidget {
             BarChartRodData(
               y: n,
               width: 8,
-              colors: [Color(0xff19bfff)],
+              colors: [Color(0xff5afac4)],
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(6),
                 topRight: Radius.circular(6),
