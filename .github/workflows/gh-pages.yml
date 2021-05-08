@@ -21,18 +21,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       - name: Setup Flutter
         run: |
-          git clone https://github.com/flutter/flutter.git --depth=1 --branch=stable _flutter
+          git clone https://github.com/flutter/flutter.git --depth=1 --branch=stable _flutter --single-branch
           echo "${GITHUB_WORKSPACE}/_flutter/bin" >> ${GITHUB_PATH}
           export PATH=_flutter/bin:$PATH
-      
+
       - name: Build Scraf
         run: |
           flutter pub get
-          flutter build web --web-renderer html --release
-      
+          flutter build web --web-renderer canvaskit --release
+
       - name: Publish site
         uses: peaceiris/actions-gh-pages@v3
         with:
