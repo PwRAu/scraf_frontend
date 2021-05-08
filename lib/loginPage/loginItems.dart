@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/global/config.dart';
 import 'package:home/gradesCalc/gnerateGradesList.dart';
+import 'package:home/gradesCalc/sortMark.dart';
+import 'package:home/gradesCalc/splitMounths.dart';
 import 'package:home/httpRequest/httpGetId.dart';
 import 'package:home/httpRequest/httpGetSubjects.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
@@ -147,8 +149,10 @@ class SubmitButton extends StatelessWidget {
                     (value) async {
                       await httpGetSubj(context).then(
                         (value) async {
-                          await generateGradesList().then(
-                            (value) => Navigator.push(
+                          await generateGradesList().then((value) {
+                            sortMarks();
+                            splitMounths();
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Index(
@@ -159,8 +163,8 @@ class SubmitButton extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            ),
-                          );
+                            );
+                          });
                         },
                       );
                     },

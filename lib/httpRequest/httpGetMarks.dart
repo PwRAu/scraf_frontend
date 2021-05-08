@@ -27,6 +27,7 @@ Future<int> httpGetMarks(BuildContext context, int subid) async {
       Marks(
         description: pppp[i]["notesForFamily"],
         vote: s.toDouble(),
+        date: pppp[i]["evtDate"],
       ),
     );
   }

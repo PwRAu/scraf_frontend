@@ -133,6 +133,23 @@ class _ListIcon extends State<ListIcon> {
                 ? new InkWell(
                     onTap: () {
                       if (menuIcons[i].iconLabel == "Esci") {
+                        username.text = "";
+                        email.text = "";
+                        password.text = "";
+                        usernameCV.text = "";
+                        pwdCV.text = "";
+                        subjects.clear();
+                        subjectsId.clear();
+                        subMarks.clear();
+                        avgForEachSub.clear();
+                        grades.clear();
+                        dateM.clear();
+                        descriptionM.clear();
+                        sortedGrades.clear();
+                        sortedDateM.clear();
+                        sortedDescriptionM.clear();
+                        gradeForMounth.clear();
+                        mounthDone = 0;
                         Navigator.push(
                           context,
                           MaterialPageRoute(

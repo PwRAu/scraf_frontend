@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:home/httpRequest/httpRequest.dart';
 import 'global/config.dart';
 import 'loginPage/homepage.dart';
 

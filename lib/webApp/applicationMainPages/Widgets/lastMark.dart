@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:home/global/config.dart';
 import 'package:home/webApp/applicationMainPages/subjcetPage.dart';
 
+// ignore: must_be_immutable
 class LastMarks extends StatelessWidget {
   double menuSize;
   LastMarks({this.menuSize});
@@ -11,9 +13,10 @@ class LastMarks extends StatelessWidget {
     for (int i = 1; i < 6; i++) {
       var r = new Random();
       double n = r.nextDouble() * 9 + 1;
-      n = num.parse(n.toStringAsFixed(1));
+      n = sortedGrades[sortedGrades.length - i];
       subMarks.add(Marks(
-          vote: n, description: "questo è quel cazzo di voto che hai preso"));
+          vote: n,
+          description: sortedDescriptionM[sortedDescriptionM.length - i]));
     }
     double _width = MediaQuery.of(context).size.width;
     return Positioned(
@@ -69,14 +72,14 @@ class LastMarks extends StatelessWidget {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: subMarks[i].vote > 6
+                                    color: subMarks[i].vote >= 6
                                         ? Colors.green
                                         : Colors.red,
                                     shape: BoxShape.circle,
                                   ),
                                   child: Center(
                                     child: Text(
-                                      subMarks[i].vote.toInt().toString(),
+                                      subMarks[i].vote.toString(),
                                       style: TextStyle(
                                         fontSize: 19,
                                         color: Colors.white70,

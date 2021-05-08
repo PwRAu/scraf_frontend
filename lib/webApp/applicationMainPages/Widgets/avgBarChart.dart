@@ -13,7 +13,7 @@ class AvgBarChart extends StatelessWidget {
 
   BarChartGroupData makeGroupData(int x, double y, Color col, int i) {
     return BarChartGroupData(
-      x: x,
+      x: x + 1,
       barRods: [
         BarChartRodData(
           y: num.parse(getAvgForSubject(grades[i]).toStringAsFixed(1)),

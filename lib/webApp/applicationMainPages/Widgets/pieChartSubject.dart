@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/global/config.dart';
+import 'package:home/gradesCalc/getAvgForSubject.dart';
 
 // ignore: must_be_immutable
 class PieChartSubjects extends StatelessWidget {
@@ -21,18 +22,20 @@ class PieChartSubjects extends StatelessWidget {
       return sum;
     }
 
-    double r1 = 95, r2 = 95, r3 = 95;
-    double avg(List<double> marks) {
-      return (sumOfVotes(marks) / marks.length);
+    double r1 = 95;
+
+    double calcPerncetage(double subj) {
+      double avgSubj = subj;
+      return (avgSubj * 100) / sumOfVotes(avgForEachSub);
     }
 
-    double calcPerncetage(List<double> subj, List<double> allAvg) {
-      double avgSubj = avg(subj);
-      return (avgSubj * 100) / sumOfVotes(allAvg);
+    //List<double> avgEachSubj = [avg(mathMarks), avg(engMarks), avg(gpoMarks)];
+    avgForEachSub.clear();
+    for (int i = 0; i < subjects.length - 1; i++) {
+      avgForEachSub
+          .add(num.parse(getAvgForSubject(grades[i]).toStringAsFixed(1)));
     }
-
-    List<double> avgEachSubj = [avg(mathMarks), avg(engMarks), avg(gpoMarks)];
-
+    //print(avgForEachSub);
     return Positioned(
       child: Card(
         child: Container(
@@ -59,7 +62,44 @@ class PieChartSubjects extends StatelessWidget {
                 child: PieChart(
                   PieChartData(
                     centerSpaceRadius: 0,
-                    sections: [
+                    sections: List.generate(
+                      subjects.length - 1,
+                      (i) {
+                        //print(avgForEachSub[i]);
+                        return PieChartSectionData(
+                          value: (calcPerncetage(avgForEachSub[i])),
+                          color: colorsForSubj[i],
+                          radius: r1,
+                          showTitle: true,
+                          title: (i + 1).toString(),
+                          titleStyle: TextStyle(
+                            fontSize: 16,
+                            color:
+                                currentTheme.currentTheme() == ThemeMode.light
+                                    ? new Color(0xffffffff)
+                                    : new Color(0xffffffff),
+                          ),
+                        );
+                      },
+                    ),
+                    startDegreeOffset: 270,
+                    borderData: FlBorderData(show: false),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      top: 325,
+      left: (_width - menuSize) * (1 / 16) +
+          (_width - menuSize) * 0.25 +
+          (_width - menuSize) * (1 / 16),
+    );
+  }
+}
+/*
+[
                       PieChartSectionData(
                         value:
                             (calcPerncetage(mathMarks, avgEachSubj)).toDouble(),
@@ -102,19 +142,4 @@ class PieChartSubjects extends StatelessWidget {
                                     : new Color(0xffffffff),
                           )),
                     ],
-                    startDegreeOffset: 270,
-                    borderData: FlBorderData(show: false),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      top: 325,
-      left: (_width - menuSize) * (1 / 16) +
-          (_width - menuSize) * 0.25 +
-          (_width - menuSize) * (1 / 16),
-    );
-  }
-}
+                    */

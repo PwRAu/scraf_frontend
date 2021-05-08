@@ -22,8 +22,18 @@ var client = http.Client();
 List<String> subjects = [];
 List<int> subjectsId = [];
 List<Marks> subMarks = [];
+List<double> avgForEachSub = [];
 
 List<List<double>> grades = [];
+List<List<String>> dateM = [];
+List<List<String>> descriptionM = [];
+
+List<double> sortedGrades = [];
+List<String> sortedDateM = [];
+List<String> sortedDescriptionM = [];
+
+List<List<double>> gradeForMounth = [];
+int mounthDone;
 
 List<Color> colorsForSubj = [
   Colors.amber,
@@ -36,5 +46,6 @@ List<Color> colorsForSubj = [
   Colors.lime,
   Colors.orange,
   Colors.orange,
-  Colors.pink
+  Colors.pink,
+  Colors.purple,
 ];
