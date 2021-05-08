@@ -12,7 +12,7 @@ Future<int> httpGetMarks(BuildContext context, int subid) async {
   //subMarks.clear();
 
   String urlAPIMarks =
-      "http://87.250.73.28:10780/students/$studentIDtoStr/subjects/$subjId/marks";
+      "https://scraf.pappacoda.it/api/students/$studentIDtoStr/subjects/$subjId/marks";
 
   http.Response responseMarks = await http.get(urlAPIMarks);
 

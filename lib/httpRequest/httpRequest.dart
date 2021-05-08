@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 httpRegScraf(BuildContext context) async {
   // set up POST request arguments
 
-  String url = 'http://87.250.73.28:10780/students';
+  String url = 'https://scraf.pappacoda.it/api/students';
   Map<String, String> headers = {"Content-Type": " application/json"};
   String json = '{"mail":"' +
       email.text +

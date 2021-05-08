@@ -2,14 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:home/global/config.dart';
-import 'package:home/webApp/applicationMainPages/mainPage.dart';
-import 'package:home/webApp/applicationMainPages/subjcetPage.dart';
-import 'package:home/webApp/blocMenu/menu_bloc.dart';
-import 'package:home/webApp/index.dart';
 import 'package:http/http.dart' as http;
 
 Future<void> httpGetSubj(BuildContext context) async {
-  String urlApiSubj = "http://87.250.73.28:10780/students/$studentID/subjects";
+  String urlApiSubj =
+      "https://scraf.pappacoda.it/api/students/$studentID/subjects";
 
   http.Response responseSubject = await http.get(urlApiSubj);
 

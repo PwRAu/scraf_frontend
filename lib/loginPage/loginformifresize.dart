@@ -18,7 +18,7 @@ class LoginFormIf extends StatefulWidget {
 }
 
 class _LoginFormIf extends State<LoginFormIf> {
-  String stringa = 'Accedi';
+  String stringa = "Accedi";
   bool page = true;
   double cardheight;
   final _emailFocusNodeP = FocusNode();

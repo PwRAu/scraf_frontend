@@ -16,6 +16,7 @@ import 'package:home/webApp/index.dart';
 import '../global/config.dart';
 import 'blocForm/my_form_bloc.dart';
 import 'loginform.dart';
+import 'loginformifresize.dart';
 
 class EmailInput extends StatelessWidget {
   const EmailInput({Key key, this.focusNode, this.page}) : super(key: key);
