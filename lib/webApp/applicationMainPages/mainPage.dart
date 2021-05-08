@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:home/gradesCalc/gnerateGradesList.dart';
 import 'package:home/webApp/applicationMainPages/Widgets/avgBarChart.dart';
 import 'package:home/webApp/applicationMainPages/Widgets/avgWidget.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
@@ -39,7 +40,6 @@ class _MainPage extends State<MainPage> {
     widget.state is MenuOpen ? _menuSize = 224 : _menuSize = 96;
     //print(_menuSize);
     //
-
     return Container(
       width: _width,
       height: _height * 2,
@@ -114,10 +114,9 @@ class _MainPage extends State<MainPage> {
               ),
             ],
           ),
-          //AvgMarkCard(
-          //menuSize: _menuSize,
-          //),
-          /*
+          AvgMarkCard(
+            menuSize: _menuSize,
+          ),
           PieChartSubjects(
             menuSize: _menuSize,
           ),
@@ -129,7 +128,7 @@ class _MainPage extends State<MainPage> {
           ),
           LastMarks(
             menuSize: _menuSize,
-          ),*/
+          ),
         ],
       ),
     );

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home/global/config.dart';
+import 'package:home/gradesCalc/gnerateGradesList.dart';
+import 'package:home/httpRequest/httpGetId.dart';
+import 'package:home/httpRequest/httpGetSubjects.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:home/httpRequest/httpRequest.dart';
@@ -140,21 +143,27 @@ class SubmitButton extends StatelessWidget {
           icon: Icon(Icons.login, size: 18),
           onPressed: state.status.isValidated
               ? () async {
-                  await httpGetId().then((value) {
-                    httpGetSubj(context);
-                  });
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Index(
-                        buildWho: MainPage(),
-                        menuState: MenuOpen(
-                          menuWidth: 224,
-                          menuOpen: true,
-                        ),
-                      ),
-                    ),
+                  await httpGetId().then(
+                    (value) async {
+                      await httpGetSubj(context).then(
+                        (value) async {
+                          await generateGradesList().then(
+                            (value) => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Index(
+                                  buildWho: MainPage(),
+                                  menuState: MenuOpen(
+                                    menuWidth: 224,
+                                    menuOpen: true,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
                   );
                 }
               : null,

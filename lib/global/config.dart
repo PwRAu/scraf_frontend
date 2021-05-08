@@ -23,6 +23,8 @@ List<String> subjects = [];
 List<int> subjectsId = [];
 List<Marks> subMarks = [];
 
+List<List<double>> grades = [];
+
 List<Color> colorsForSubj = [
   Colors.amber,
   Colors.blueAccent,
