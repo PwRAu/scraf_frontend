@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home/global/config.dart';
-import 'package:home/httpRequest/httpRequest.dart';
 import 'package:home/webApp/applicationMainPages/mainPage.dart';
 import 'package:home/webApp/applicationMainPages/settingsPage.dart';
 import 'package:home/webApp/applicationMainPages/subjcetPage.dart';

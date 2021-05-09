@@ -11,7 +11,7 @@ import 'package:home/webApp/index.dart';
 import 'package:http/http.dart' as http;
 
 httpPatchCvInfo(BuildContext context) async {
-  String urlPatch = "http://87.250.73.28:10780/students/$studentID";
+  String urlPatch = "https://scraf.pappacoda.it/api/students/$studentID";
 
   //print()
 
@@ -20,8 +20,19 @@ httpPatchCvInfo(BuildContext context) async {
       '","cvv_password":"' +
       pwdCV.text +
       '"}';
-
-  await http.patch(urlPatch, body: json).then(
+  subjects.clear();
+  subjectsId.clear();
+  subMarks.clear();
+  avgForEachSub.clear();
+  grades.clear();
+  dateM.clear();
+  descriptionM.clear();
+  sortedGrades.clear();
+  sortedDateM.clear();
+  sortedDescriptionM.clear();
+  gradeForMounth.clear();
+  mounthDone = 0;
+  await client.patch(urlPatch, body: json).timeout(Duration(minutes: 1)).then(
     (value) async {
       await httpGetId().then(
         (value) async {
@@ -48,5 +59,5 @@ httpPatchCvInfo(BuildContext context) async {
         },
       );
     },
-  );
+  ).timeout(Duration(minutes: 1));
 }

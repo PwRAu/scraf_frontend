@@ -8,16 +8,18 @@ Future<void> httpGetSubj(BuildContext context) async {
   String urlApiSubj =
       "https://scraf.pappacoda.it/api/students/$studentID/subjects";
 
-  http.Response responseSubject = await http.get(urlApiSubj);
+  await client.get(urlApiSubj).timeout(Duration(minutes: 1)).then((value) {
+    Map responseSubDec = jsonDecode(value.body);
+
+    List<dynamic> pppp = responseSubDec["subjects"];
+    for (int i = 0; i < pppp.length - 1; i++) {
+      subjects.add(pppp[i]["description"]);
+      subjectsId.add(pppp[i]["id"]);
+    }
+  }).timeout(Duration(minutes: 1));
 
   //decodifica risposta per ottenere solo il token
-  Map responseSubDec = jsonDecode(responseSubject.body);
 
-  List<dynamic> pppp = responseSubDec["subjects"];
-  for (int i = 0; i < pppp.length - 1; i++) {
-    subjects.add(pppp[i]["description"]);
-    subjectsId.add(pppp[i]["id"]);
-  }
   /*
   Navigator.push(
     context,

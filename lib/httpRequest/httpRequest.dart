@@ -18,7 +18,9 @@ httpRegScraf(BuildContext context) async {
       username.text +
       '","surname":"gioia"}';
 
-  http.Response response = await http.post(url, headers: headers, body: json);
+  http.Response response = await client
+      .post(url, headers: headers, body: json)
+      .timeout(Duration(minutes: 1));
   Map responseSubDec = jsonDecode(response.body);
   int statusCode = response.statusCode;
   studentID = responseSubDec["id"];

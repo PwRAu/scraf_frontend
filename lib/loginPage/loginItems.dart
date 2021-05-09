@@ -146,6 +146,18 @@ class SubmitButton extends StatelessWidget {
           icon: Icon(Icons.login, size: 18),
           onPressed: state.status.isValidated
               ? () async {
+                  subjects.clear();
+                  subjectsId.clear();
+                  subMarks.clear();
+                  avgForEachSub.clear();
+                  grades.clear();
+                  dateM.clear();
+                  descriptionM.clear();
+                  sortedGrades.clear();
+                  sortedDateM.clear();
+                  sortedDescriptionM.clear();
+                  gradeForMounth.clear();
+                  mounthDone = 0;
                   await httpGetId().then(
                     (value) async {
                       await httpGetSubj(context).then(

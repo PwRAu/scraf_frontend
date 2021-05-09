@@ -9,7 +9,6 @@ import 'package:home/webApp/blocMenu/menu_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:formz/formz.dart';
 import 'package:flutter/material.dart';
-import 'package:home/webApp/index.dart';
 
 import '../global/config.dart';
 import 'blocForm/my_form_bloc.dart';
@@ -90,17 +89,21 @@ class _LoginForm extends State<LoginForm> {
                       margin: EdgeInsets.only(bottom: _height / 40),
                       height: _height / 3,
                       width: width / 4,
-                      child: Image.asset('scrafblacklogo.png',
-                          fit: BoxFit.fitWidth,
-                          alignment: Alignment.bottomCenter),
+                      child: Image.asset(
+                        'scrafblacklogo.png',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.bottomCenter,
+                      ),
                     )
                   : new Container(
                       margin: EdgeInsets.only(bottom: _height / 40),
                       height: _height / 3,
                       width: width / 4,
-                      child: Image.asset('scrafwhitelogo.png',
-                          fit: BoxFit.fitWidth,
-                          alignment: Alignment.bottomCenter),
+                      child: Image.asset(
+                        'scrafwhitelogo.png',
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.bottomCenter,
+                      ),
                     ),
               Container(
                 child: Card(

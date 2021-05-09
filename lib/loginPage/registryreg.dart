@@ -154,6 +154,7 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                       margin: EdgeInsets.only(top: 15),
                                       width: containerwidth,
                                       child: TextFormField(
+                                        obscureText: true,
                                         //initialValue: state.email.value,
                                         //controller: username,
                                         decoration: InputDecoration(
@@ -171,6 +172,7 @@ class _RegisterRegistration extends State<RegisterRegistration> {
                                       margin: EdgeInsets.only(top: 15),
                                       width: containerwidth,
                                       child: TextFormField(
+                                        obscureText: true,
                                         //initialValue: state.email.value,
                                         controller: pwdCV,
                                         decoration: InputDecoration(

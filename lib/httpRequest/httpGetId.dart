@@ -6,8 +6,8 @@ httpGetId() async {
   String urlGetStudent =
       "https://scraf.pappacoda.it/api/students?mail=${email.text}";
 
-  http.Response responseId = await http.get(urlGetStudent);
-
-  Map responseIdDec = jsonDecode(responseId.body);
-  studentID = responseIdDec["id"];
+  await client.get(urlGetStudent).timeout(Duration(minutes: 1)).then((value) {
+    Map responseIdDec = jsonDecode(value.body);
+    studentID = responseIdDec["id"];
+  }).timeout(Duration(minutes: 1));
 }
